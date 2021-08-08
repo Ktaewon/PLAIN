@@ -14,24 +14,77 @@ Upload Your Melody
 
 {% block in_container_content %}
 <form class="was-validated f1">
-    <div class="mb-3 title">
-        <label for="validationTextarea" class="form-label">1. Title</label>
-        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-        <div class="invalid-feedback">
-        Please enter a Title in the textarea.
+    <div class="frow">
+        <div class="fcol">
+            <div class="mb-3 title">
+                <label for="validationTextarea" class="form-label">1. Title</label>
+                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                <div class="invalid-feedback">
+                Please enter a Title in the textarea.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">2. Your Instrument</label>
+                <select class="form-select" required aria-label="select example">
+                    <option value="">Choose your instrument</option>
+                    <option value="1">Piano</option>
+                    <option value="2">Guitar</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Drum</option>
+                    <option value="5">Else...</option>
+                </select>
+                <div class="invalid-feedback">Example invalid select feedback</div>
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">3. Necessary Instruments</label>
+                <button type="button" class="btn btn-info btn-inst">+</button>
+                <button type="button" class="btn btn-danger btn-inst">-</button>
+                <select class="form-select" required aria-label="select example">
+                    <option value="">Choose your instrument</option>
+                    <option value="1">Piano</option>
+                    <option value="2">Guitar</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Drum</option>
+                    <option value="5">Else...</option>
+                </select>
+                <div class="invalid-feedback">Example invalid select feedback</div>
+            </div>
+            <div class="mb-3 date">
+                <label for="deadline" class="form-label">4. Deadline</label>
+                <p><input id="deadline" type="date"></p>
+            </div>
+            <div class="mb-3">
+                <label for="hashtags" class="form-label">5. Hashtags</label>
+                <p>
+                    <input id="hashtags" type="text">
+                    <button type="button" class="btn btn-secondary">ADD</button>
+                </p>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+                <label class="form-check-label" for="validationFormCheck1">Allow use your Melody to advertisement.</label>
+                <div class="invalid-feedback">Please Check and upload your music!</div>
+            </div>
+        </div>
+        <div class="fcol">
+            <div class="img_preview">
+                <img src="http://placehold.it/300x300" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section">
+                <input type="file" id="imgInput" class="image_inputType_file" accept="img/*">
+            </div>
+            <div class="umelody">
+                <div class="melody_content">
+                    upload your melody
+                </div>
+                <p>drag and drop your image!</p>
+            </div>
         </div>
     </div>
-    
-    <div class="img_preview">
-        <img src="{% static 'images/default_image.png' %}" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section">
-        <input type="file" id="imgInput" class="image_inputType_file" accept="img/*">
-    </div>
-    <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-        <label class="form-check-label" for="validationFormCheck1">Check this checkbox</label>
-        <div class="invalid-feedback">Example invalid feedback text</div>
-    </div>
 
+    <div class="frow">
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+        </div>
+    </div>
     <div class="form-check">
         <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
         <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
@@ -41,7 +94,6 @@ Upload Your Melody
         <label class="form-check-label" for="validationFormCheck3">Or toggle this other radio</label>
         <div class="invalid-feedback">More example invalid feedback text</div>
     </div>
-
     <div class="mb-3">
         <select class="form-select" required aria-label="select example">
             <option value="">Open this select menu</option>
@@ -64,9 +116,7 @@ Upload Your Melody
         Please enter a message in the textarea.
         </div>
     </div>
-    <div class="mb-3">
-        <button class="btn btn-primary" type="submit" disabled>Submit form</button>
-    </div>
+    
 </form>
 
 {% endblock %}

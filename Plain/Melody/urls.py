@@ -4,5 +4,8 @@ from . import views
 
 urlpatterns = [
     path("", views.melody),
-    path("uploads/", views.upload_melody, name="upload")
+    path("uploads/", views.upload_melody, name="upload"),
+    #path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
+    #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
+    #    name='tagged_object_list'),
 ]

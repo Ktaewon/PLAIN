@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class Melody(models.Model):
@@ -10,6 +11,6 @@ class Melody(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deadline = models.DateTimeField()
-    hashtags = models.TextField()
+    hashtags = TaggableManager()
     def __str__(self):
         return f'[{self.pk}]{self.title}'

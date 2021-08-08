@@ -2,10 +2,10 @@ function imgSize(which){
     img = document.getElementById(which)
     var width = img.width;
     var height = img.height;
-    var max_width= 200;   // 이미지의 가로 최대 크기    
-    var max_height = 200; // 이미지의 세로 최대 크기
+    var max_width= 300;   // 이미지의 가로 최대 크기    
+    var max_height = 300; // 이미지의 세로 최대 크기
     
-    if ( width > max_width ) {  // 이미지가 200보다 크다면 너비를 600으로 맞우고 비율에 맞춰 세로값을 변경한다. 
+    if ( width > max_width ) {  // 이미지가 300보다 크다면 너비를 300으로 맞우고 비율에 맞춰 세로값을 변경한다. 
         height = height/(width / max_width);
         img.width = max_width;
         img.height = height;
@@ -52,3 +52,46 @@ $(document).ready(function() {
     });
 });
 
+function dragOver(e){
+    e.stopPropagation();
+    e.preventDefault();
+    if (e.type == "dragover") {
+        $(e.target).css({
+            "background-color": "gray",
+            "outline-offset": "-20px"
+        });
+    } else {
+        $(e.target).css({
+            "background-color": "lightgray",
+            "outline-offset": "-10px"
+        });
+    }
+}
+
+function uploadFiles(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    dragOver(e); //1
+
+    e.dataTransfer = e.originalEvent.dataTransfer; //2
+    var files = e.target.files || e.dataTransfer.files;
+
+    if (files.length > 1) {
+        alert('Upload 1 file!');
+        return;
+    }
+    if (files[0].type.match(/audio.*/)) {
+        $(e.target).css({
+            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+            "outline": "none",
+            "background-size": "100% 100%"
+        });
+    }else{
+        alert('이미지가 아닙니다.');
+        return;
+    }
+}
+$('.melody_content')
+    .on("dragover", dragOver)
+    .on("dragleave", dragOver)
+    .on("drop", uploadFiles);
