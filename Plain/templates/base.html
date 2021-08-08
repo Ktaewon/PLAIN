@@ -59,8 +59,12 @@
             </div>
         </div>
     </nav>
+    <div class="out">
+        {% block out_container_content %}
+        {% endblock %}
+    </div>
     <div class="container">
-        {% block content %}
+        {% block in_container_content %}
         {% endblock %}
     </div>
     

@@ -1,0 +1,36 @@
+.f1 {
+    border-style:solid !important;
+    border-radius: 15px !important;
+    border-color: #02D5C6 !important;
+    margin: 20px;
+    padding: 20px;
+}
+.img_preview {
+    float: left !important;
+    width : 200px;
+    height : 200px;
+    margin: 20px;
+}
+.title {
+    float : left;
+    margin:20px;
+}
+
+#upload_bg {
+    object-fit: cover;
+    width : 100%;
+}
+.form-check {
+
+}
+#id_title {
+    font-size: 50;
+}
+.forms {
+    color: blue;
+}
+h1 {
+    color: blue;
+}
+
+
