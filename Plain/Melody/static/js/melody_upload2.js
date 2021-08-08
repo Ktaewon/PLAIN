@@ -65,8 +65,12 @@ $(document).ready(function() {
     });
 });
 
-$("#image_section").on('click', function() {
+$("#img_up").on('click', function() {
     document.all.imgInput.click();
+})
+
+$("#up_mel").on('click', function() {
+    document.all.melodyInput.click();
 })
 $(function() {
     $("#melodyInput").on('change', function(){

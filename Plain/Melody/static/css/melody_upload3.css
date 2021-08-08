@@ -9,10 +9,12 @@
 .fcol {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin:20px;
 }
 .frow {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
 .prow {
@@ -22,6 +24,8 @@
 .img_preview {
     /* display: flex; */
     /*float: left !important;*/
+    cursor: pointer;
+    flex-direction: column; 
     width : 300px;
     height : 300px;
     margin: 20px;
@@ -40,6 +44,9 @@
                 0 -1px white;
 }
 #imgInput{
+    display: none;
+}
+#melodyInput {
     display: none;
 }
 
@@ -74,9 +81,20 @@
     
 }
 .umelody {
-    width: 300px;
+    width : 300px;
+    height : 200px;
+    margin: 20px;
+    position: relative;
+    flex-direction: column; 
+    justify-content: space-between;
+    border-radius: 27px;
+    border-style: none;
+    background-color: lightgrey;
 }
 
+#ump{
+    padding: 20px;
+}
 
 /**/
 h3, p {
