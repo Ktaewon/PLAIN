@@ -9,9 +9,8 @@ def signup(request):
         if request.POST['password1'] == request.POST['password2']:
             user=User.objects.create_user(request.POST['username'], password=request.POST['password1'])
             auth.login(request, user)
-            return redirect('login')
+            return redirect('')
     return render(request, 'signup.html')
-
 def create(request):
     new_user=user()
     new_user.email=request.POST['email']
@@ -19,8 +18,6 @@ def create(request):
     new_user.genre=request.POST['genre']
     new_user.instrument=request.POST['instrument']
     new_user.save()
-    return redirect('login', new_user.id)
-
 def login(request):
     if request.method == "POST":
         username=request.POST['username']
@@ -28,7 +25,7 @@ def login(request):
         user=auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('signup')
+            return redirect('')
         else:
             return render(request, 'login.html', {'error': 'username or password is incorrect'})
     else:
