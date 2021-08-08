@@ -5,7 +5,7 @@ Upload Your Melody
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/melody_upload1.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/melody_upload2.css' %}" type="text/css">
 {% endblock %}
 
 {% block out_container_content %}
@@ -67,9 +67,17 @@ Upload Your Melody
             </div>
         </div>
         <div class="fcol">
-            <div class="img_preview">
+            <div class="img_preview mb-3">
+                <input type="file" id="imgInput" name="imgInput" class="image_inputType_file" accept="img/*">
                 <img src="http://placehold.it/300x300" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section">
-                <input type="file" id="imgInput" class="image_inputType_file" accept="img/*">
+                <div class="img-text">
+                    <p>Click to upload your Album Image</p>
+                </div>
+            </div>
+            <div class="mb-3 mupload">
+                <p>Upload your Melody (mp3, wav, etc...)</p>
+                <input type="file" id="melodyInput" name="melodyInput" class="" accept="audio/*">
+                <audio src="" id="audio_section" controls>오디오 플레이어가 지원되지 않습니다.</audio>
             </div>
         </div>
     </div>
@@ -116,5 +124,5 @@ Upload Your Melody
 
 {% block script %}
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="{% static 'js/melody_upload.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/melody_upload1.js' %}"></script>
 {% endblock %}
