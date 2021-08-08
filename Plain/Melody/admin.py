@@ -18,3 +18,4 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Melody, PostAdmin)
 """
+admin.site.register(Melody)
