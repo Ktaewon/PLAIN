@@ -19,7 +19,7 @@
 }
 .prow {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around !important;
 }
 .img_preview {
     /* display: flex; */
@@ -30,6 +30,7 @@
     height : 300px;
     margin: 20px;
     position: relative;
+    /* border-radius: 27px; */
 }
 .img_preview .img-text {
     position:absolute;
@@ -43,18 +44,31 @@
                 1px 0 white,
                 0 -1px white;
 }
+#image_section {
+    border-style: none;
+    border-radius: 27px;
+}
 #imgInput{
     display: none;
 }
 #melodyInput {
     display: none;
 }
-
+#hashtag-btn {
+    height:45px;
+    width: 60px;
+    margin-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
 #hash {
     border-style: none;
     border-radius: 5px;
     background-color: lightgrey;
-    padding: 2px;
+    padding: 3px;
+    margin:5px;
 }
 
 .btn-inst {
@@ -80,7 +94,15 @@
     background-color: lightgray;
     
 }
+#music_name {
+    border-style: none;
+    border-radius: 27px;
+    background-color: lightgray;
+    font-size: 12px;
+    text-align: center;
+}
 .umelody {
+    cursor: pointer;
     width : 300px;
     height : 200px;
     margin: 20px;
@@ -89,9 +111,18 @@
     justify-content: space-between;
     border-radius: 27px;
     border-style: none;
-    background-color: lightgrey;
+    background-color: #f0f0f0;
 }
-
+.mel-text {
+    text-align: center;
+    padding:10px;
+}
+.fa-music {
+    text-align: center;
+    font-size: 50px;
+    color:lightgray;
+    padding-bottom: 20px;
+}
 #ump{
     padding: 20px;
 }

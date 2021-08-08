@@ -57,9 +57,12 @@ Upload Your Melody
                 <label for="hashtags" class="form-label" >5. Hashtags</label>
                 <p id="hp" class="prow">
                     <input id="hashtags" type="text" class="form-control">
-                    <button type="button" class="btn btn-secondary">ADD</button>
+                    <button type="button" class="btn btn-secondary" id="hashtag-btn">ADD</button>
                 </p>
-                <span id="hash">#Plain</span>
+                <div id="hash-con">
+                    <span id="hash">#Plain</span>
+                </div>
+                
             </div>
             <div class="mb-3">
                 <label for="validationTextarea" class="form-label">6. Leave a comment for your music!</label>
@@ -79,11 +82,13 @@ Upload Your Melody
                 </div>
             </div>
             <div class="mb-3 umelody fcol" id="up_mel">
-                <div class="img-text">
-                    <p>Click to Upload your Melody (mp3, wav, etc...)</p>
+                <div class="mel-text">
+                    <p>Click to Upload your Melody<br>(mp3, wav, etc...)</p>
                 </div>
+                <i class="fas fa-music"></i>
                 <div>
                     <input type="file" id="melodyInput" name="melodyInput" class="" accept="audio/*" required>
+                    <div id="music_name"></div>
                     <div class="invalid-feedback mel-txt">
                         Please upload your melody.
                     </div>

@@ -67,13 +67,32 @@ $(document).ready(function() {
 
 $("#img_up").on('click', function() {
     document.all.imgInput.click();
-})
+});
 
 $("#up_mel").on('click', function() {
     document.all.melodyInput.click();
-})
+});
 $(function() {
     $("#melodyInput").on('change', function(){
         readAudio(this);
+        var fileValue = $("#melodyInput").val().split("\\");
+        var fileName = fileValue[fileValue.length-1];
+        var text = document.getElementById("music_name");
+        text.innerText = fileName;
+        text.style.padding=5;
     });
 });
+let hashtags = "";
+
+function makehash(){
+    var hashtag = document.getElementById("hashtags");
+    if (hashtag.value == "" || hashtag.value == null) {
+        alert("Empty! Write a hashtag and push Add button.");
+        return false;
+    }
+    document.getElementById("hash-con").innerHTML += "<span id='hash'>" + "#" + hashtag.value + "</span>";
+    hashtag.value = null;
+}
+
+var hash_btn = document.getElementById("hashtag-btn");
+hash_btn.addEventListener('click', makehash);
