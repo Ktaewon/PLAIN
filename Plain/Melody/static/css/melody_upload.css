@@ -1,0 +1,16 @@
+#id_title {
+    font-size: 50;
+}
+.forms {
+    color: blue;
+}
+h1 {
+    color: blue;
+}
+.img_preview {
+    float: right;
+    border: 2px;
+    border-color: black;
+    width : 200px;
+    height : 200px;
+}
