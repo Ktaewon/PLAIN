@@ -62,6 +62,8 @@ $(function() {
 $(document).ready(function() {
     $("#image_section").load(function() {
         imgSize("image_section");
+        document.getElementById("image_section").style.borderRadius=27;
+        document.getElementById("image_section").style.visibility="visible";
     });
 });
 
