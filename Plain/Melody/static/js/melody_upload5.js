@@ -79,7 +79,7 @@ $(function() {
         var fileName = fileValue[fileValue.length-1];
         var text = document.getElementById("music_name");
         text.innerText = fileName;
-        text.style.padding=5;
+        $("#music_name").show();
     });
 });
 let hashtags = "";

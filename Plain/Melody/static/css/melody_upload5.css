@@ -98,16 +98,21 @@
     
 }
 #music_name {
-    border-style: none;
-    border-radius: 27px;
-    background-color: lightgray;
+    display: none;
+    border-style: solid;
+    border-right: none;
+    border-left: none;
+    border-width: 0.5px;
+    border-color: lightgray;
+    background-color: #f1f3f4;
     font-size: 12px;
     text-align: center;
+    padding:20px;
 }
 .umelody {
     cursor: pointer;
     width : 300px;
-    height : 200px;
+    height : 300px;
     margin: 20px;
     position: relative;
     flex-direction: column; 
