@@ -23,8 +23,11 @@ def upload_melody(request):
         melody.owner = request.user
         melody.myInstrument = request.POST["mine"]
         melody.audio = request.FILES.get("melodyInput")
-        melody.hashtags = request.POST["hashtag_data"]
-        print("==============", melody.hashtags)
+        melody.save()
+        tags = request.POST["hashtag_data"].split(",")
+        for tag in tags:
+            tag = tag.strip()
+            melody.hashtags.add(tag)
         melody.save()
         messages.warning(request, 'Upload Finish!')
         return redirect('detail', melody.id)
