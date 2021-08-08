@@ -5,7 +5,7 @@ Upload Your Melody
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/melody_upload2.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/melody_upload3.css' %}" type="text/css">
 {% endblock %}
 
 {% block out_container_content %}
@@ -51,20 +51,17 @@ Upload Your Melody
             </div>
             <div class="mb-3 date">
                 <label for="deadline" class="form-label">4. Deadline</label>
-                <p><input id="deadline" type="date"></p>
+                <p><input id="deadline" type="date" class="form-control"></p>
             </div>
             <div class="mb-3">
                 <label for="hashtags" class="form-label">5. Hashtags</label>
-                <p>
-                    <input id="hashtags" type="text">
+                <p id="hp" class="prow">
+                    <input id="hashtags" type="text" class="form-control">
                     <button type="button" class="btn btn-secondary">ADD</button>
                 </p>
+                <span id="hash">#Plain</span>
             </div>
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-                <label class="form-check-label" for="validationFormCheck1">Allow use your Melody to advertisement.</label>
-                <div class="invalid-feedback">Please Check and upload your music!</div>
-            </div>
+            
         </div>
         <div class="fcol">
             <div class="img_preview mb-3">
@@ -81,12 +78,20 @@ Upload Your Melody
             </div>
         </div>
     </div>
-
+    
+    <div class="frow">
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+            <label class="form-check-label" for="validationFormCheck1">Allow use your Melody to advertisement.</label>
+            <div class="invalid-feedback">Please Check and upload your music!</div>
+        </div>
+    </div>
     <div class="frow">
         <div class="mb-3">
             <button class="btn btn-primary" type="submit" disabled>Submit form</button>
         </div>
     </div>
+    <!--
     <div class="form-check">
         <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
         <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
@@ -118,6 +123,7 @@ Upload Your Melody
         Please enter a message in the textarea.
         </div>
     </div>
+    -->
 </form>
 
 {% endblock %}

@@ -15,6 +15,10 @@
     display: flex;
     justify-content: space-around;
 }
+.prow {
+    display: flex;
+    justify-content: space-around;
+}
 .img_preview {
     /* display: flex; */
     /*float: left !important;*/
@@ -38,15 +42,19 @@
 #imgInput{
     display: none;
 }
+
+#hash {
+    border-style: none;
+    border-radius: 5px;
+    background-color: lightgrey;
+    padding: 2px;
+}
+
 .btn-inst {
     width : 20px;
     height: 20px;
     color: white;
     text-align: center;
-}
-.title {
-    /* display: flex; */
-    /* float : left; */
 }
 
 
