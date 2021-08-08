@@ -31,3 +31,8 @@ def upload_melody(request):
         melody.save()
         messages.warning(request, 'Upload Finish!')
         return redirect('detail', melody.id)
+
+def delete(request, melody_id):
+    melody = get_object_or_404(Melody, pk=melody_id)
+    melody.delete()
+    return redirect('/Melody')
