@@ -43,18 +43,6 @@ def upload_melody(request):
         messages.warning(request, 'Upload Finish!')
         return redirect('detail', melody.id)
 
-<<<<<<< HEAD
-def delete(request, melody_id):
-    melody = get_object_or_404(Melody, pk=melody_id)
-    melody.delete()
-    return redirect('/Melody')
-=======
-
-
-
-
-
-
 # Comments
 def comment(request, melody_id):
         if request.method == "POST" :
@@ -86,4 +74,3 @@ def post_like(request, melody_id):
         melody.likes.add(user)
 
     return redirect('/melody/detail/' + str(melody_id))
->>>>>>> 65f5efb6258e3d0ebc203642a9bf875b5ce0ec2d
