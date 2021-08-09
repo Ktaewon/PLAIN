@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Melody
+from .models import Melody, Comment, Like, Follow
 
 # Register your models here.
 """
@@ -19,3 +19,6 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Melody, PostAdmin)
 """
 admin.site.register(Melody)
+admin.site.register(Comment)
+admin.site.register(Like)
+admin.site.register(Follow)
