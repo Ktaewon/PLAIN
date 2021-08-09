@@ -11,3 +11,5 @@
 /Plain/media
 /Plain/accounts/migrations
 /Plain/accounts/__pycache__
+/Plain/Comments/__pycache__
+/Plain/Comments/migrations
