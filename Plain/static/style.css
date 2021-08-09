@@ -36,3 +36,7 @@ li {
 #navbar-nav-right {
     margin-right: 0;
 }
+#footer-logo {
+    height: 100px;
+    margin-left: 150px;
+}
