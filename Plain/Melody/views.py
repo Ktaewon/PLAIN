@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Melody, Comment
+from .models import Melody, Comment, Follow
 from .forms import MelodyForm
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 def melody(request):
@@ -74,3 +75,16 @@ def post_like(request, melody_id):
         melody.likes.add(user)
 
     return redirect('/melody/detail/' + str(melody_id))
+<<<<<<< HEAD
+
+# follows
+def follow(request, user_id):
+    people = get_object_or_404(User, id=user_id)
+
+    if request.user in people.follower.all():
+        people.follower.remove(request.user)
+    else: 
+        people.follower.add(request.user)
+    return redirect('', people.username)
+=======
+>>>>>>> 68492e62987834622721fefbd6903d6483719d42
