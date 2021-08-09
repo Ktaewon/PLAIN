@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Upload Your Melody
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/melody_upload5.css' %}" type="text/css">
+{% endblock %}
+
+{% block out_container_content %}
+<img id="upload_bg" src="{% static 'images/upload_bg.png' %}">
+{% endblock %}
+
+{% block in_container_content %}
+<form class="was-validated f1" action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="frow">
+        <div class="fcol">
+            <div class="mb-3 title">
+                <label for="validationTextarea" class="form-label">1. Title</label>
+                <input class="form-control " type="text"  placeholder="Required Melody Title" required name="title">
+                <div class="invalid-feedback">
+                Please enter a Title in the textarea.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">2. Your Instrument</label>
+                <select class="form-select" required aria-label="select example" name="mine">
+                    <option value="">Choose your instrument</option>
+                    <option value="1">Piano</option>
+                    <option value="2">Guitar</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Drum</option>
+                    <option value="5">Else...</option>
+                </select>
+                <div class="invalid-feedback">Example invalid select feedback</div>
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">3. Necessary Instruments</label>
+                <button type="button" class="btn btn-info btn-inst">+</button>
+                <button type="button" class="btn btn-danger btn-inst">-</button>
+                <select class="form-select" aria-label="select example">
+                    <option value="">Choose your instrument</option>
+                    <option value="1">Piano</option>
+                    <option value="2">Guitar</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Drum</option>
+                    <option value="5">Else...</option>
+                </select>
+            </div>
+            <div class="mb-3 date">
+                <label for="deadline" class="form-label">4. Deadline</label>
+                <input id="deadline" type="date" class="form-control" required name="deadline">
+                <div class="invalid-feedback">Please select a Deadline of your Project.</div>
+            </div>
+            <div class="mb-3">
+                <label for="hashtags" class="form-label" >5. Hashtags</label>
+                <p id="hp" class="prow">
+                    <input id="hashtags" type="text" class="form-control">
+                    <button type="button" class="btn btn-secondary" id="hashtag-btn">ADD</button>
+                </p>
+                <div id="hash-con">
+                    <span id="hash">#Plain</span>
+                </div>
+                <div id="hashtag_all_div" display="none">
+                    <textarea id="hashtag_data" name="hashtag_data"></textarea>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="validationTextarea" class="form-label">6. Leave a comment for your music!</label>
+                <br>
+                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" name="body"></textarea>
+            </div>
+        </div>
+        <div class="fcol">
+            <div class="img_preview mb-3 fcol" id="img_up">
+                <input type="file" id="imgInput" name="imgInput" class="image_inputType_file" accept="img/*" required>
+                <img src="http://placehold.it/300x300" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section">
+                <div class="img-text">
+                    <p>Click to upload your Album Image</p>
+                </div>
+                <div class="invalid-feedback">
+                    Please upload your Album image.
+                </div>
+            </div>
+            <div class="mb-3 umelody fcol" id="up_mel">
+                <div class="mel-text">
+                    <p>Click to Upload your Melody<br>(mp3, wav, etc...)</p>
+                </div>
+                <i class="fas fa-music"></i>
+                <div>
+                    <input type="file" id="melodyInput" name="melodyInput" class="" accept="audio/*" required>
+                    <div id="music_name"></div>
+                    <div class="invalid-feedback mel-txt">
+                        Please upload your melody.
+                    </div>
+                </div>
+                <audio src="" id="audio_section" controls>오디오 플레이어가 지원되지 않습니다.</audio>
+            </div>
+        </div>
+    </div>
+    
+    <div class="frow">
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+            <label class="form-check-label" for="validationFormCheck1">Allow use your Melody to advertisement.</label>
+            <div class="invalid-feedback">Please Check and upload your music!</div>
+        </div>
+    </div>
+    <div class="frow">
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit" >Submit form</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{% static 'js/melody_upload5.js' %}"></script>
+{% endblock %}

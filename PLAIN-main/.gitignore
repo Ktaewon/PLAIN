@@ -1,0 +1,8 @@
+/myvenv
+/myvenv/
+/README.md
+/Plain/Plain/__pycache__
+/Plain/Melody/__pycache__
+/Plain/Melody/migrations
+/Plain/db.sqlite3
+/Plain/migrations

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock %}
+
+<head>
+    <link rel="stylesheet" href="profile.css"
+</head>
+
+<div class=profile>
+    <h1>Profile</h1>
+    <div class=tumbnail>
+        <img class="round" style="border-radius: 50%;" src = "{{ app.profile.profile_photo.url}}"  width="80" height="80">
+    </div>
+
+    <div class=profile_text>
+        <form>
+        name: {{user.profile.name}}
+        <br>
+        genre : {{user.profile.genre}}
+        <br>
+        position : {{user.profile.position}}
+        </form>
+    </div>
+</div>
