@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Melody',
     'taggit', #Tags for Melody
-    'Comments',
     'accounts',
 ]
 
