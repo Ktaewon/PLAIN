@@ -36,3 +36,8 @@ def delete(request, melody_id):
     melody = get_object_or_404(Melody, pk=melody_id)
     melody.delete()
     return redirect('/Melody')
+
+
+def default(request):
+    return render(request,'melody_default.html')
+
