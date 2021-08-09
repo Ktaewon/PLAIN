@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Profile
+from .models import User
 # Create your views here.
 def signup(request):
     if request.method == "POST":
@@ -11,7 +11,7 @@ def signup(request):
             return redirect('melody')
     return render(request, 'signup.html')
 def create(request):
-    new_user=user()
+    new_user=User()
     new_user.email=request.POST['email']
     new_user.nickname=request.POST['nickname']
     new_user.genre=request.POST['genre']

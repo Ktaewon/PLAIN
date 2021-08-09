@@ -4,13 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email=models.CharField(max_length=30, blank=True)
-    nickname=models.CharField(max_length=20, blank=True)
-    genre=models.CharField(max_length=20, blank=True)
-    instrument=models.TextField()
-
 class UserManager(BaseUserManager):
     def create_user(self, name, email, nickname, genre, instrument, password=None):
         if not name:
@@ -48,14 +41,12 @@ class User(AbstractBaseUser):
     instrument=models.TextField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
     objects = UserManager()
-
     USERNAME_FIELD = 'name'
     REQUIRED_FIELDS = ['email','nickname','genre', 'instrument']
-    
     def __str__(self):
         return self.name
+    
 def has_perm(self, perm, obj=None):
     return True
 
