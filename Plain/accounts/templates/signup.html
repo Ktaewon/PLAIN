@@ -10,7 +10,7 @@ Sign up!
 
 {% block in_container_content %}
 <div class="signup-form">
-    <form action="{% url 'signup' %}" method="post" class="signup-box">
+    <form action="{% url 'create' %}" method="post" class="signup-box">
         {% csrf_token %}
         <div class="welcome-text">
             Create Your Account!

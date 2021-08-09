@@ -21,10 +21,5 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('melody/', include('Melody.urls')),
-<<<<<<< HEAD
-    path('accounts/', include('accounts.urls')),
-]
-=======
     path('sub_page/', include('Comments.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
->>>>>>> 2e6406eba48594f8c4f82cff29822ec437489ab0

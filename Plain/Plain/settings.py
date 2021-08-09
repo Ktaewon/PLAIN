@@ -40,11 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Melody',
     'taggit', #Tags for Melody
-<<<<<<< HEAD
-    'accounts.apps.AccountsConfig',
-=======
     'Comments',
->>>>>>> 2e6406eba48594f8c4f82cff29822ec437489ab0
 ]
 
 MIDDLEWARE = [
