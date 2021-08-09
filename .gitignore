@@ -7,3 +7,5 @@
 /Plain/db.sqlite3
 /Plain/migrations
 /Plain/media
+/Plain/accounts/migrations
+/Plain/accounts/__pycache__

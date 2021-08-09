@@ -75,7 +75,6 @@ def post_like(request, melody_id):
         melody.likes.add(user)
 
     return redirect('/melody/detail/' + str(melody_id))
-<<<<<<< HEAD
 
 # follows
 def follow(request, user_id):
@@ -86,5 +85,3 @@ def follow(request, user_id):
     else: 
         people.follower.add(request.user)
     return redirect('', people.username)
-=======
->>>>>>> 68492e62987834622721fefbd6903d6483719d42
