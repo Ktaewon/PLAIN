@@ -4,7 +4,25 @@
     border-color: #02D5C6 !important;
     margin-top: 50px;
     margin-bottom: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
     padding: 20px;
+    padding-top: 40px;
+}
+label {
+    font-weight: bold;
+}
+.form-select {
+    width: 600px;
+}
+.form-control {
+    width: 600px;
+}
+.mb-3 .prow .form-control {
+    width: 540px;
+}
+#deadline {
+    width: 600px;
 }
 .fcol {
     display: flex;
@@ -29,15 +47,18 @@
     width : 300px;
     height : 300px;
     margin: 20px;
+    background-color: #f0f0f0;
+    border-radius: 27px;
     position: relative;
     /* border-radius: 27px; */
 }
 .img_preview .img-text {
     position:absolute;
-    top:200px;
+    top:120px;
     left:10px;
-    color:gray;
+    color:#d3d3d3;
     font-weight: bold;
+    text-align: center;
     font-size: 17px;
     text-shadow: -1px 0 white,
                 0 1px white,
@@ -47,9 +68,18 @@
 #hashtag_all_div {
     display: none;
 }
+.fa-image {
+    font-size: 50px;
+    color: #d3d3d3;
+}
 #image_section {
     border-style: none;
     border-radius: 27px;
+
+    /* border-style: none; */
+    /*
+    -webkit-filter: opacity(.5) drop-shadow(0 0 0 white);
+    filter: opacity(.5) drop-shadow(0 0 0 white);*/
 }
 #imgInput{
     display: none;
@@ -58,8 +88,8 @@
     display: none;
 }
 #hashtag-btn {
-    height:45px;
-    width: 60px;
+    height:40px;
+    width: 50px;
     margin-left: 5px;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -96,6 +126,16 @@
     height: 300px;
     background-color: lightgray;
     
+}
+#upload-btn {
+    width: 100px;
+    height: 50px;
+    background-color: #02D5C6;
+    border-style: none;
+    font-size: 20px;
+}
+#upload-btn:hover {
+    background-color: #02d5c7b6;
 }
 #music_name {
     display: none;

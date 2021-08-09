@@ -44,12 +44,6 @@ def upload_melody(request):
         messages.warning(request, 'Upload Finish!')
         return redirect('detail', melody.id)
 
-
-
-
-
-
-
 # Comments
 def comment(request, melody_id):
         if request.method == "POST" :
@@ -81,6 +75,7 @@ def post_like(request, melody_id):
         melody.likes.add(user)
 
     return redirect('/melody/detail/' + str(melody_id))
+<<<<<<< HEAD
 
 # follows
 def follow(request, user_id):
@@ -91,3 +86,5 @@ def follow(request, user_id):
     else: 
         people.follower.add(request.user)
     return redirect('', people.username)
+=======
+>>>>>>> 68492e62987834622721fefbd6903d6483719d42

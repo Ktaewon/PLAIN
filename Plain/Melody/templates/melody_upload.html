@@ -5,7 +5,7 @@ Upload Your Melody
 {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/melody_upload5.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/melody_upload8.css' %}" type="text/css">
 {% endblock %}
 
 {% block out_container_content %}
@@ -74,14 +74,14 @@ Upload Your Melody
             </div>
         </div>
         <div class="fcol">
-            <div class="img_preview mb-3 fcol" id="img_up">
+            <div class="img_preview mb-3" id="img_up">
                 <input type="file" id="imgInput" name="imgInput" class="image_inputType_file" accept="img/*" required>
-                <img src="http://placehold.it/300x300" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section">
-                <div class="img-text">
-                    <p>Click to upload your Album Image</p>
-                </div>
-                <div class="invalid-feedback">
-                    Please upload your Album image.
+                <img src="" class="rounded mx-auto d-block" alt="..." id="image_section" name="image_section" onError="this.style.visibility='hidden'" style="border-radius: 27px;">
+                <div class="fcol">
+                    <div class="img-text">
+                        <i class="far fa-image"></i>
+                        <p>Click to upload your Album Image</p>
+                    </div>
                 </div>
             </div>
             <div class="mb-3 umelody fcol" id="up_mel">
@@ -92,9 +92,6 @@ Upload Your Melody
                 <div>
                     <input type="file" id="melodyInput" name="melodyInput" class="" accept="audio/*" required>
                     <div id="music_name"></div>
-                    <div class="invalid-feedback mel-txt">
-                        Please upload your melody.
-                    </div>
                 </div>
                 <audio src="" id="audio_section" controls>오디오 플레이어가 지원되지 않습니다.</audio>
             </div>
@@ -110,7 +107,7 @@ Upload Your Melody
     </div>
     <div class="frow">
         <div class="mb-3">
-            <button class="btn btn-primary" type="submit" >Submit form</button>
+            <button class="btn btn-primary" type="submit" id="upload-btn" >Upload</button>
         </div>
     </div>
 </form>

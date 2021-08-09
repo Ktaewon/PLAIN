@@ -1,0 +1,42 @@
+.signup-form {
+    border-radius: 20px;
+    border: 4px solid #02d5c6;
+    padding: 30px;
+    text-align: center;
+    width: 1000px;
+    margin: 50px auto;
+}
+
+.welcome-text {
+    font-size: 30px;
+    line-height: 41px;
+    font-weight: 900;
+    color: #02d5c6;
+}
+
+input {
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid black;
+    height: 40px;
+    width: 400px;
+    padding-left: 10px;
+}
+
+.sign-up-btn {
+    width: 350px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #02d5c6;
+    color: white;
+    font-size: 23px;
+}
+
+.instrument-select {
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 0px auto;
+    height: 40px;
+}
