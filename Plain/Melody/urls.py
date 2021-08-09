@@ -10,4 +10,10 @@ urlpatterns = [
     #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
     #    name='tagged_object_list'),
     path("default/",views.default,name="default"),
-]
+
+    path('comment/<str:id>', views.comment, name='comment'),
+    path('comment/delete/<str:id>', views.comment_delete, name='comment_delete'),
+    # Like
+    path('like/<int:id>', views.post_like, name='post_like'),
+]   
+
