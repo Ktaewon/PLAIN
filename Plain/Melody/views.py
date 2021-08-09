@@ -72,8 +72,6 @@ def post_like(request, melody_id):
 
 
 def default(request):
-    return render(request,'melody_default.html')
-
     user = request.user
 
     if melody.likes.filter(id=user.id):
@@ -81,9 +79,11 @@ def default(request):
     else: 
         melody.likes.add(user)
 
-    return redirect('/melody/detail/' + str(melody_id))
+    #return redirect('/melody/detail/' + str(melody_id))
 
+    return render(request,'melody_default.html')
 
+    
 # follows
 def follow(request, user_id):
     people = get_object_or_404(User, id=user_id)
@@ -93,4 +93,3 @@ def follow(request, user_id):
     else: 
         people.follower.add(request.user)
     return redirect('', people.username)
-
