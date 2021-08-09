@@ -76,7 +76,7 @@ STATICFILES_DIRS = [
 
 WSGI_APPLICATION = 'Plain.wsgi.application'
 
-
+AUTH_USER_MODEL = "accounts.MyUser"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

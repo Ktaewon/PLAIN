@@ -33,7 +33,7 @@ input {
     font-size: 23px;
 }
 
-.instrument-select {
+select {
     width: fit-content;
     border: 1px solid black;
     border-radius: 8px;
