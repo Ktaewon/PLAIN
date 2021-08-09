@@ -2,7 +2,7 @@ from django.db.models.expressions import Value
 # from Plain.Melody.views import default
 from django.db import models
 from django.db.models.fields import TextField
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 
 # Create your models here.
 class MyUserManager(BaseUserManager):

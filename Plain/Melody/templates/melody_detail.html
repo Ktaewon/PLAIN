@@ -4,17 +4,11 @@
 제목
 {% endblock %}
 
-
-
-
 {% block in_container_content %}
 
     <!--좋아요-->
     <a href="{% url 'post_like' detail.id %}" >{{message}}</a>
     <br>{{detail.likes.count}}명이 좋아합니다.
-
-
-
     <!--댓글-->
     {% for comment in comments %}
         <div class="card">
@@ -34,6 +28,6 @@
                 <textarea name="body" id="" cols="125" rows="5"></textarea>
                 <input class="btn btn-dark" type="submit" value="submit">
         </form>
-        
+
 {% endblock %}
 
