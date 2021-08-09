@@ -66,11 +66,15 @@ def comment_delete(request, comment_id):
 
 # likes
 def post_like(request, melody_id):
+    melody = get_object_or_404(Melody, pk=melody_id)
+    user = request.user
+
     if melody.likes.filter(id=user.id):
         melody.likes.remove(user)
     else: 
         melody.likes.add(user)
-    return redirect('/Melody')
+
+    return redirect('/melody/detail/' + str(melody_id))
 
 
 def default(request):
