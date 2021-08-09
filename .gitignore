@@ -4,6 +4,8 @@
 /Plain/Plain/__pycache__
 /Plain/Melody/__pycache__
 /Plain/Melody/migrations
+/Plain/accounts/__pycache__
+/Plain/accounts/migrations
 /Plain/db.sqlite3
 /Plain/migrations
 /Plain/media
