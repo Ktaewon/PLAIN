@@ -31,3 +31,7 @@ class Comment(models.Model):
 class Like(models.Model):
     melody = models.ForeignKey(Melody, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Follow(models.Model):
+    follower = models.ForeignKey(User, related_name='follower', on_delete=models.CASCADE)
+    followee = models.ForeignKey(User, related_name='followee', on_delete=models.CASCADE)
