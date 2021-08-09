@@ -67,6 +67,11 @@ def comment_delete(request, comment_id):
 # likes
 def post_like(request, melody_id):
     melody = get_object_or_404(Melody, pk=melody_id)
+    melody.delete()
+    return redirect('/Melody')
+
+
+def default(request):
     user = request.user
 
     if melody.likes.filter(id=user.id):
@@ -74,8 +79,11 @@ def post_like(request, melody_id):
     else: 
         melody.likes.add(user)
 
-    return redirect('/melody/detail/' + str(melody_id))
+    #return redirect('/melody/detail/' + str(melody_id))
 
+    return render(request,'melody_default.html')
+
+    
 # follows
 def follow(request, user_id):
     people = get_object_or_404(User, id=user_id)

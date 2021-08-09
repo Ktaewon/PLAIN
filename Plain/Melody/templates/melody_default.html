@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}submain 페이지{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css">
+{% endblock %}
+
+{% block out_container_content %}
+<div id="container1">
+    <div id="owner">
+        <div class="owner_items" id="own_item1">
+            <div id="own_item1_1">
+                <div class="o1_1" id="play_button">
+                    <img class="o1_1" id="play_button_img" src="{% static 'images/play-button.png' %}">
+                </div>
+                <ul class="o1_1">
+                    <li id="player_id">player_id</li>
+                    <li id="title">title</li>
+                </ul>
+                <p class="o1_1" id="hashtag">#drums<br>#indi-music</p>
+               
+            </div>
+            <div id="own_item1_2">
+
+            </div>
+
+        </div>
+        <div class="owener_items" id="own_item2">
+            <img id="upload_img" src="{% static 'images/background.jpeg' %}">
+        </div>
+    </div>
+    <div id="player" >
+        <div id="nav_bar">
+            <button class="bar" id="like">like</button>
+            <button class="bar">Download</button>
+            <button class="bar">repost</button>
+            <button class="bar">pin</button>
+            <button class="bar">+more</button>
+        </div>
+        <div class="instrument" id="guitar">
+            <div class="section">
+                
+            </div>
+            <div class="upload">
+
+            </div>
+
+        </div>
+        <div class="instrument" id="guitar">
+            <div class="section">
+                
+            </div>
+            <div class="upload">
+
+            </div>
+
+        </div>
+        <div class="instrument" id="guitar">
+            <div class="section">
+                
+            </div>
+            <div class="upload">
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+{% endblock %}
+
+{% block in_container_content %}
+
+{% endblock %}
+
+
+
+
+
