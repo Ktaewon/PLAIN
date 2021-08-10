@@ -13,15 +13,15 @@
         <div class="container1-1">
             <div class="container1-1-1">
                 <div class="1">
-                    <button onclick="wavesurfer.playPause()"><img class="button" src="{% static 'images/play-button.png' %}" alt=""></button>
+                    <button onclick="wavesurfer.playPause()"><img class="button" src="https://icongr.am/entypo/controller-play.svg?size=111&color=currentColor" alt=""></button>
                 </div>
-                <div class="2">
-                    <div class="2-1"> {{melody.owner}}  <!--글쓰기--></div>
-                    <div class="2-2">{{ melody.title}}  <!--제목--></div>
+                <div class="class-2">
+                    <div class="owner"> {{melody.owner}}  <!--글쓰기--></div>
+                    <div class="title">{{ melody.title}} <!--제목--></div>
                 </div>
             </div>
             <div class="container1-1-2">
-                <div class="3">
+                <div class="class-3">
                      <!--hashtags-->
                     {% for tag in melody.hashtags.all %}
                     <span class="badge badge-dark">
@@ -31,6 +31,8 @@
                 </div>
             </div>
         </div>
+        <br>
+        <br>
         <div class="container1-2">
             <div class="4">
                 <!--파형그리기-->
@@ -41,8 +43,8 @@
                         // 필수 옵션
                         container: '#waveform',
                         // 선택 옵션들 
-                        waveColor: 'skyblue',
-                        progressColor: 'purple',
+                        waveColor: '#02D5C6',
+                        progressColor: '#008179',
                         barWidth: 3,
                     });
                     //var wav = new Audio("{% static 'audio/music.mp3' %}");
@@ -53,13 +55,28 @@
         </div>
     </div>
     <div class="container2">
-      <div class="5">
+      <div class="class-5">
             <!--image받은 것!-->
-            <img src={{melody.img.url}} alt="My Image" width="100" height="200">
+            <img class="thumbnail" src="{{melody.img.url}}" alt="My Image" width="100" height="200">
       </div>
     </div>
 </div>
 
+<div class="container-all-2">
+    <div class="small-nav">작은네브바 버튼들</div>
+    <div class=comment-melody>
+        <div class="comment-list">
+            <div class="comment-upload">
+                <div class="8">악기</div>
+                <div class="9">올린사람</div> <!--올린사람 프로필이나 닉네임 받아올 수 있게!-->
+                <div class="10">음악파일</div>
+            </div>
+            <div class="11">Comment</div>
+        </div>  
+        <br> 
+        <div class="10">좋아요</div>
+    </div>
+</div>
 
 {% endblock %}
 

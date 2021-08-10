@@ -15,7 +15,7 @@ def detail(request, id):
     #detail = get_object_or_404(Melody, pk=id)
     #comments = Comment.objects.all().filter(Comment_post = detail)
 
-    melody = get_object_or_404(Melody, pk=8)
+    melody = get_object_or_404(Melody, pk=1)
     return render(request,'melody_default.html',{"melody":melody})   #'melody_detail2.html'
 
 
