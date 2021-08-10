@@ -9,10 +9,3 @@
 /Plain/db.sqlite3
 /Plain/migrations
 /Plain/media
-<<<<<<< HEAD
-=======
-/Plain/accounts/migrations
-/Plain/accounts/__pycache__
-/Plain/Comments/__pycache__
-/Plain/Comments/migrations
->>>>>>> 877faf09f84ba1e2dfcd72ac2686bc96dc3aa66b

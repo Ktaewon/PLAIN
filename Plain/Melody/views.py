@@ -10,19 +10,21 @@ def melody(request):
     #form = MelodyForm()
     #return render(request, 'melody_upload.html', {'form' : form })
     return render(request, 'melody_upload.html')
+
 def detail(request, id):
-    detail = get_object_or_404(Melody, pk=id)
-    comments = Comment.objects.all().filter(Comment_post = detail)
+    #detail = get_object_or_404(Melody, pk=id)
+    #comments = Comment.objects.all().filter(Comment_post = detail)
 
     melody = get_object_or_404(Melody, pk=id)
+    return render(request,'melody_detail2.html',{"Melody":melody})
 
 
-    if detail.likes.filter(id=request.user.id):
-        message= "좋아요 취소"
-    else: 
-        message = "좋아요"
-    return render(request, 'melody_detail.html', 
-    {'melody' : melody, 'detail' : detail, 'commnets': comments, 'message':message })
+    #if detail.likes.filter(id=request.user.id):
+    #    message= "좋아요 취소"
+    #else: 
+    #    message = "좋아요"
+    #return render(request, 'melody_detail.html', 
+    #{'melody' : melody, 'detail' : detail, 'commnets': comments, 'message':message })
 
 def upload_melody(request):
     if request.method == "POST":
@@ -42,6 +44,7 @@ def upload_melody(request):
             melody.hashtags.add(tag)
         melody.save()
         messages.warning(request, 'Upload Finish!')
+        #return redirect('default')
         return redirect('detail', melody.id)
 
 # Comments
@@ -67,11 +70,6 @@ def comment_delete(request, comment_id):
 # likes
 def post_like(request, melody_id):
     melody = get_object_or_404(Melody, pk=melody_id)
-    melody.delete()
-    return redirect('/Melody')
-
-
-def default(request):
     user = request.user
 
     if melody.likes.filter(id=user.id):
@@ -79,6 +77,11 @@ def default(request):
     else: 
         melody.likes.add(user)
 
+    return redirect('/melody/detail/' + str(melody_id))
+
+
+def default(request):
+    user = request.user
     #return redirect('/melody/detail/' + str(melody_id))
 
     return render(request,'melody_default.html')

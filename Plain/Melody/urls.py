@@ -9,5 +9,5 @@ urlpatterns = [
     #path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
     #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
     #    name='tagged_object_list'),
-    path("default/",views.default,name="default"),
+    #path("default/",views.default,name="default"),
 ]
