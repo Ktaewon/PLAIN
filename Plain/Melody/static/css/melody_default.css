@@ -1,30 +1,110 @@
 .container-all-1{
     display:flex;
     flex-direction:row;
+    background: linear-gradient(180deg, #FCBDBD 0%, rgba(255, 255, 255, 0.0260417) 76.56%, rgba(255, 255, 255, 0) 100%), #9ABCDC;
+    justify-content:space-between;
+
 }
 
 .container1-1{
-    background-color:yellow;
-    width:800px;
+   
+    width:1300px;
     height: 150px;
     display:flex;
     justify-content:space-between;
+    margin: 20px;
 }
 
 .container1-1-1{
     width:800px;
     height:150px;
-    background-color:red;
     margin:20px;
     display:flex;
     
+  
 }
   
 .container1-1-2{
-    background-color:blue;
-}
   
+    height: 150px;
+    width: 200px;
+    text-align: left;
+}
+
+
 
 .container1-2{
-    background-color:green;
+    padding: 20px;
+    width: 1300px;
+}
+
+.button{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border: none;
+    outline: 0;
+    mix-blend-mode: multiply;
+    background-color:transparent;
+    opacity:1.0;
+    background-color: rgba(255,255,255,0.75);
+}
+
+.class-2{
+    align-items: center;
+    padding-top: 50px;
+    padding-left: 30px;
+    
+}
+.owner{
+    font-size: 30px;
+}
+
+.title{
+    font-size: 40px;
+}
+.thumbnail{
+    height: 300px;
+    width: 300px;
+}
+
+.class-5{
+    padding-right: 100px;
+    padding-top: 100px;
+}
+
+.container1{
+    padding-top: 80px;
+    padding: 40px;
+}
+
+
+.class-3{
+    font-size: 30px;
+    left:0px;
+    text-align: right;
+    padding-top: 20px;
+}
+
+.comment-upload{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    width: 1500px;
+}
+
+.comment-melody{
+    display: flex;
+    padding: 20px;
+}
+
+.small-nav{
+    padding: 20px;
+}
+
+
+
+.container2{
+    justify-content: left;
+    
 }
