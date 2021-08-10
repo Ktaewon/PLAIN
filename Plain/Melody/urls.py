@@ -6,6 +6,8 @@ urlpatterns = [
     path("", views.melody),
     path("uploads/", views.upload_melody, name="upload"),
     path("detail/<str:id>", views.detail, name="detail"),
+    path('comment/<str:id>', views.createcomment, name='comment'),
+
     #path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
     #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
     #    name='tagged_object_list'),

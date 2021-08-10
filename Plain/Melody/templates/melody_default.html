@@ -60,6 +60,35 @@
     </div>
 </div>
 
+<div class="container-all-2">
+    <div class="6">네브 버튼들</div>
+    <div class="7">
+
+        <!--댓글한개-->
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-body">
+                <h5>{{comment.body}}</h5> <!--코멘트-->
+                <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
+                <audio src="{% static 'audio/music.mp3' %}" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+            
+            </div>
+        </div>
+        {% endfor %}
+        <br><br>
+
+        <!--댓글작성 폼-->
+        <form method="POST" action="{% url 'comment' melody.id %}">
+            {% csrf_token %}
+            <textarea cols=125 rows=2 name="body">leave a message</textarea>
+            <audio src="" id="audio_section" controls>오디오 플레이어가 지원되지 않습니다.</audio>
+            <input class="btn btn-dark" type="submit" value="댓글 달기!">
+        </form>
+
+        
+
+    </div>
+</div>
 
 {% endblock %}
 
