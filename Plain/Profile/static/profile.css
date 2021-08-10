@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.profile-text{
+    margin-left: 100px;
+}
+
+.profile{
+    padding:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.profile-content{
+    display: flex;
+    align-items: center;
+}
+
+.profile-content img {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    left: 20px;
