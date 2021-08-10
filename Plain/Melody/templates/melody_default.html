@@ -6,78 +6,64 @@
 <link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css">
 {% endblock %}
 
-
-
 {% block out_container_content %}
-<div id="container1">
-    <div id="owner">
-        <div class="owner_items" id="own_item1">
-            <div id="own_item1_1">
-                <div class="o1_1" id="play_button">
-                    <img class="o1_1" id="play_button_img" src="{% static 'images/play-button.png' %}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+<div class="container-all-1">
+    <div class="container1">
+        <div class="container1-1">
+            <div class="container1-1-1">
+                <div class="1">
+                    <button onclick="wavesurfer.playPause()"><img class="button" src="{% static 'images/play-button.png' %}" alt=""></button>
                 </div>
-                <ul class="o1_1">
-                    <li id="player_id">player_id</li>
-                    <li id="title">title</li>
-                </ul>
-                <p class="o1_1" id="hashtag">#drums<br>#indi-music</p>
-               
+                <div class="2">
+                    <div class="2-1"> {{melody.owner}}  <!--글쓰기--></div>
+                    <div class="2-2">{{ melody.title}}  <!--제목--></div>
+                </div>
             </div>
-            <div id="own_item1_2">
-
+            <div class="container1-1-2">
+                <div class="3">
+                     <!--hashtags-->
+                    {% for tag in melody.hashtags.all %}
+                    <span class="badge badge-dark">
+                    #{{ tag.name }}
+                    </span>
+                    {% endfor %}
+                </div>
             </div>
-
         </div>
-        <div class="owener_items" id="own_item2">
-            <img id="upload_img" src="{% static 'images/background.jpeg' %}">
-        </div>
-    </div>
-    <div id="player" >
-        <div id="nav_bar">
-            <button class="bar" id="like">like</button>
-            <button class="bar">Download</button>
-            <button class="bar">repost</button>
-            <button class="bar">pin</button>
-            <button class="bar">+more</button>
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
+        <div class="container1-2">
+            <div class="4">
+                <!--파형그리기-->
+                <div id="waveform"></div>
+                <script>
+                    var wavesurfer = WaveSurfer.create({
+                        // id="waveform" 인 오브젝트에 파형 생성
+                        // 필수 옵션
+                        container: '#waveform',
+                        // 선택 옵션들 
+                        waveColor: 'skyblue',
+                        progressColor: 'purple',
+                        barWidth: 3,
+                    });
+                    //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                    wavesurfer.load("{% static 'audio/music.mp3' %}");
         
+                </script>
+            </div>
+        </div>
     </div>
-
+    <div class="container2">
+      <div class="5">
+            <!--image받은 것!-->
+            <img src={{melody.img.url}} alt="My Image" width="100" height="200">
+      </div>
+    </div>
 </div>
+
+
 {% endblock %}
 
 {% block in_container_content %}
 
 {% endblock %}
-
-
-
-
 

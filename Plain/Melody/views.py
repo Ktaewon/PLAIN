@@ -15,8 +15,8 @@ def detail(request, id):
     #detail = get_object_or_404(Melody, pk=id)
     #comments = Comment.objects.all().filter(Comment_post = detail)
 
-    melody = get_object_or_404(Melody, pk=id)
-    return render(request,'melody_detail2.html',{"Melody":melody})
+    melody = get_object_or_404(Melody, pk=8)
+    return render(request,'melody_default.html',{"melody":melody})   #'melody_detail2.html'
 
 
     #if detail.likes.filter(id=request.user.id):

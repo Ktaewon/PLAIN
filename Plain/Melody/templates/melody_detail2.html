@@ -1,13 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Upload Your Melody
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/melody_upload8.css' %}" type="text/css">
+
+{% endblock %}
+
+{% block out_container_content %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
     <p>hello</p>
-    
-</body>
-</html>
+
+        
+        {{ melody.title}}  <!--제목-->
+        {{melody.owner}}  <!--글쓰기-->
+        {{melody.body}}  <!--comment-->
+
+        <!--hashtags-->
+        {% for tag in melody.hashtags.all %}
+                <span class="badge badge-dark">
+                #{{ tag.name }}
+                </span>
+        {% endfor %}
+
+        <!--image받은 것!-->
+        <img src={{melody.img.url}} alt="My Image" width="100" height="200">
+        <!--그냥 버튼 이미지-->
+        <img class="o1_1" id="play_button_img" src="{% static 'images/play-button.png' %}">
+
+
+        <!--간단한 오디오 재생방법-->
+        <audio src="{% static 'audio/music.mp3' %}" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>
+
+        <!--button play-->
+        <button class="btn1">play sound1</button>
+        <script>
+            var audio1 = new Audio("{% static 'audio/music.mp3' %}");
+            audio1.loop = false; // 반복재생하지 않음
+            audio1.volume = 0.5; // 음량 설정
+            document.querySelector(".btn1").addEventListener("click", function () {
+            let new_state;
+
+            current_state=audio1.readyState;
+            console.log(current_state);
+
+            audio1.play(); // sound1.mp3 재생
+            setTimeout(function () { // 1초 후 sound2.mp3 일시정지
+            audio1.pause();
+            }, 5000);
+
+            console.log("아무말",audio1.readyState);
+            
+        });
+        </script>
+
+        <!--파형그리기-->
+        <div id="waveform"></div>
+        <button onclick="wavesurfer.playPause()"><img src="{% static 'images/play-button.png' %}" alt=""></button>
+        <script>
+            var wavesurfer = WaveSurfer.create({
+                // id="waveform" 인 오브젝트에 파형 생성
+                // 필수 옵션
+                container: '#waveform',
+                // 선택 옵션들 
+                waveColor: 'skyblue',
+                progressColor: 'purple',
+                barWidth: 3,
+            });
+            //var wav = new Audio("{% static 'audio/music.mp3' %}");
+            wavesurfer.load("{% static 'audio/music.mp3' %}");
+
+           
+        </script>
+        
+
+
+{% endblock %}
