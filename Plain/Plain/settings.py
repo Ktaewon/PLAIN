@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Melody',
     'taggit', #Tags for Melody
     'accounts',
+    'Profile',
 ]
 
 MIDDLEWARE = [
