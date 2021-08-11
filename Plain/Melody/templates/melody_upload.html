@@ -38,16 +38,18 @@ Upload Your Melody
             </div>
             <div class="mb-3">
                 <label for="deadline" class="form-label">3. Necessary Instruments</label>
-                <button type="button" class="btn btn-info btn-inst">+</button>
-                <button type="button" class="btn btn-danger btn-inst">-</button>
-                <select class="form-select" aria-label="select example">
-                    <option value="">Choose your instrument</option>
-                    <option value="1">Piano</option>
-                    <option value="2">Guitar</option>
-                    <option value="3">Bass</option>
-                    <option value="4">Drum</option>
-                    <option value="5">Else...</option>
-                </select>
+                <button type="button" class="btn btn-info btn-inst" id="inst_add">+</button>
+                <button type="button" class="btn btn-danger btn-inst" id="inst_del">-</button>
+                <div id="inst-con">
+                    <select class="form-select" aria-label="select example">
+                        <option value="">Choose your instrument</option>
+                        <option value="1">Piano</option>
+                        <option value="2">Guitar</option>
+                        <option value="3">Bass</option>
+                        <option value="4">Drum</option>
+                        <option value="5">Else...</option>
+                    </select>
+                </div>
             </div>
             <div class="mb-3 date">
                 <label for="deadline" class="form-label">4. Deadline</label>

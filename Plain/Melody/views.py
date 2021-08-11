@@ -15,8 +15,6 @@ def detail(request, id):
     comments = Comment.objects.all().filter(Comment_post = detail)
 
     melody = get_object_or_404(Melody, pk=id)
-
-
     if detail.likes.filter(id=request.user.id):
         message= "좋아요 취소"
     else: 
@@ -72,18 +70,15 @@ def post_like(request, melody_id):
         melody.likes.add(user)
     return redirect('/Melody')
 
-
 def default(request):
     user = request.user
     #return redirect('/melody/detail/' + str(melody_id))
-
     return render(request,'melody_default.html')
 
     
 # follows
 def follow(request, user_id):
     people = get_object_or_404(User, id=user_id)
-
     if request.user in people.follower.all():
         people.follower.remove(request.user)
     else: 

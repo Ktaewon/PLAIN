@@ -15,8 +15,6 @@ class Melody(models.Model):
     myInstrument = models.TextField()
     needInstrument = models.TextField(null=True, blank=True)
     audio = models.FileField(null=False, upload_to="melody/audio/", blank=False)
-
-    
     likes = models.ManyToManyField(User, through='Like', through_fields=('melody', 'user'), related_name="likes")
 
     def __str__(self):
