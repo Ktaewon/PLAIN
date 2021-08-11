@@ -1,56 +1,52 @@
 from django.db import models
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 #세번째로 한거
 class UserManager(BaseUserManager):
-    def create_user(self, email, date_of_birth, password=None):
+    def create_user(self, email, genre, nickname,instrument, name, password=None):
         if not email:
             raise ValueError('Users must have an email address')
-
         user = self.model(
             email=self.normalize_email(email),
-            date_of_birth=date_of_birth,
+            genre=genre,
+            nickname=nickname,
+            instrument=instrument,
+            name=name,
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, date_of_birth, password):
+    def create_superuser(self,nickname, email,password):
         user = self.create_user(
             email,
             password=password,
-            date_of_birth=date_of_birth,
+            nickname=nickname,
         )
         user.is_admin = True
         user.save(using=self._db)
         return user
 
-
-class MyUser(AbstractBaseUser):
+class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email',
         max_length=255,
         unique=True,
     )
-    date_of_birth = models.DateField()
+    objects = UserManager()
+    instrument=models.CharField(max_length=10, default='')
+    genre=models.CharField(max_length=100)
+    nickname = models.CharField(max_length=100, unique=True, default='')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
-    objects = UserManager()
-
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['date_of_birth']
-
+    REQUIRED_FIELDS = ['instrument']
     def __str__(self):
         return self.email
-
     def has_perm(self, perm, obj=None):
         return True
-
     def has_module_perms(self, app_label):
         return True
-
     @property
     def is_staff(self):
         return self.is_admin
