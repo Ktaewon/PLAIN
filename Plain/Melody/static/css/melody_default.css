@@ -47,7 +47,11 @@
     mix-blend-mode: multiply;
     background-color:transparent;
     opacity:1.0;
-    background-color: rgba(255,255,255,0.75);
+}
+.fa-play-circle {
+    font-size: 70px;
+    color: #242424;
+    opacity: 30%;
 }
 
 .class-2{
