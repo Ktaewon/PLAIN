@@ -23,10 +23,10 @@ class Melody(models.Model):
         return f'[{self.pk}]{self.title}'
 
 class Comment(models.Model):
-    Comment_body = models.CharField(max_length=200)
-    Comment_date = models.DateTimeField()
-    Comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
-    Comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
+    comment_body = models.CharField(max_length=200)
+    comment_date = models.DateTimeField()
+    comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
+    comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
 
 class Like(models.Model):
     melody = models.ForeignKey(Melody, on_delete=models.CASCADE)
