@@ -3,10 +3,6 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserChangeForm, UserCreationForm
 from .models import User
-<<<<<<< HEAD
-=======
-
->>>>>>> 8a344c846abef330b47cfc3a375ac60101599f5b
 
 class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
@@ -15,7 +11,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('instrument',)},{'fields': ('nickname',)},{'fields': ('genre',)}),
+        ('Personal info', {'fields': ('instrument', 'nickname','genre')},),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (
@@ -27,11 +23,7 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email','nickname','genre','instrument',)
     ordering = ('email',)
     filter_horizontal = ()
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 8a344c846abef330b47cfc3a375ac60101599f5b
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 

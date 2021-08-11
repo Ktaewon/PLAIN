@@ -34,9 +34,9 @@ class User(AbstractBaseUser):
         unique=True,
     )
     objects = UserManager()
-    instrument=models.CharField(max_length=10, default='')
     genre=models.CharField(max_length=100)
-    nickname = models.CharField(max_length=100, unique=True, default='')
+    instrument=models.CharField(max_length=10, default='')
+    nickname = models.CharField(max_length=100, default='')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
