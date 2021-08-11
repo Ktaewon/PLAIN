@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Melody, Comment, Follow,Joiner
+from .models import Melody, Comment, Follow,Joiner, Chat
 from .forms import MelodyForm
 from django.utils import timezone
 from django.contrib import messages
@@ -14,12 +14,13 @@ def melody(request):
 def detail(request, id):
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
+    chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
         message= "좋아요 취소"
     else: 
         message = "좋아요"
 
-    return render(request,'melody_default.html',{"melody":melody,'comments':comments})   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats})   #'melody_detail2.html'
     
 
 def upload_melody(request):
@@ -92,6 +93,23 @@ def comment_delete(request, comment_id):
     melody_id = comment.post.id
     comment.delete()
     return redirect('/melody/'+str(melody_id))
+
+#Chats
+def chat(request, melody_id):
+    if request.method == "POST" :
+        chat = Chat()
+        chat.body = request.POST['body']
+        chat.date = timezone.datetime.now()
+        chat.chatter = request.user
+        chat.post = get_object_or_404(Melody, pk=melody_id)
+        chat.save()
+
+        return redirect('/melody/default/'+str(melody_id))
+    else:
+        return redirect('/melody/default/'+str(melody_id))
+
+
+
 
 # likes
 def post_like(request, melody_id):
