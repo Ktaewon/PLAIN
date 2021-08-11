@@ -12,7 +12,6 @@ def melody(request):
     return render(request, 'melody_upload.html')
 
 def detail(request, id):
-   
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
     if melody.likes.filter(id=request.user.id):
