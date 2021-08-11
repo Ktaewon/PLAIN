@@ -1,58 +1,112 @@
-from django.db.models.expressions import Value
-# from Plain.Melody.views import default
 from django.db import models
-from django.db.models.fields import TextField
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
-# Create your models here.
-class MyUserManager(BaseUserManager):
-    def create_user(self, email, company_name, phone, password=None):
+#세번째로 한거
+class UserManager(BaseUserManager):
+    def create_user(self, email, date_of_birth, password=None):
         if not email:
-            raise ValueError("email is required")
-        if not company_name:
-            raise ValueError("company name is required")
-        if not phone:
-            raise ValueError("please provide an active phone number")
+            raise ValueError('Users must have an email address')
+
         user = self.model(
-            email = self.normalize_email(email), 
-            company_name = company_name,
-            phone = phone
+            email=self.normalize_email(email),
+            date_of_birth=date_of_birth,
         )
+
         user.set_password(password)
-        user.save(using = self._db)
+        user.save(using=self._db)
         return user
-    def create_superuser(self, email, company_name, phone, password=None):
+
+    def create_superuser(self, email, date_of_birth, password):
         user = self.create_user(
-            email = email,
-            company_name= company_name,
-            phone = phone,
-            password=password
+            email,
+            password=password,
+            date_of_birth=date_of_birth,
         )
         user.is_admin = True
-        user.is_superuser = True
-        user.save(using = self._db)
+        user.save(using=self._db)
         return user
 
-class MyUser(AbstractBaseUser):
-    email = models.EmailField(verbose_name="email address", max_length=60, unique=True)
-    company_name = models.CharField(verbose_name="company name", max_length=200, unique=True)
-    phone = models.CharField(max_length=20, verbose_name="company phone")
-    date_joined = models.DateTimeField(auto_now_add=True, verbose_name="date joined")
-    last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['company_name', 'phone']
-    objects= MyUserManager()
+class User(AbstractBaseUser):
+    email = models.EmailField(
+        verbose_name='email',
+        max_length=255,
+        unique=True,
+    )
+    date_of_birth = models.DateField()
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['date_of_birth']
+
     def __str__(self):
-        return self.company_name
+        return self.email
+
     def has_perm(self, perm, obj=None):
         return True
+
     def has_module_perms(self, app_label):
         return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+#두번째로 한거
+#BaseUserManger클래스에서 User를 생성할 때 사용하는 클래스이고, AbstractBaseUserManager는 상속받아 생성하는 클래스.
+# Create your models here.
+# class MyUserManager(BaseUserManager):
+#     def create_user(self, email, company_name, phone, password=None): #User생성함수
+#         if not email:
+#             raise ValueError("email is required")
+#         if not company_name:
+#             raise ValueError("company name is required")
+#         if not phone:
+#             raise ValueError("please provide an active phone number")
+#         user = self.model(
+#             email = self.normalize_email(email), 
+#             company_name = company_name,
+#             phone = phone
+#         )
+#         user.set_password(password)
+#         user.save(using = self._db)
+#         return user
+#     def create_superuser(self, email, company_name, phone, password=None): #superUser생성함수
+#         user = self.create_user(
+#             email = email,
+#             company_name= company_name,
+#             phone = phone,
+#             password=password
+#         )
+#         user.is_admin = True
+#         user.is_superuser = True
+#         user.save(using = self._db)
+#         return user
+
+# class MyUser(AbstractBaseUser): #AbstractBaseUser클래스는 기본 필드에  password, last_login, is_active=True로 정의되어 있다. is_active, is_admin은 django 필수 모델이기 때문에 반드시 정의되어야 한다. 
+#     objects= MyUserManager()
+#     email = models.EmailField(verbose_name="email address", max_length=60, unique=True)
+#     company_name = models.CharField(verbose_name="company name", max_length=200, unique=True)
+#     phone = models.CharField(max_length=20, verbose_name="company phone")
+#     date_joined = models.DateTimeField(auto_now_add=True, verbose_name="date joined")
+#     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
+#     is_admin = models.BooleanField(default=False)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#     is_superuser = models.BooleanField(default=False)
+
+#     USERNAME_FIELD = "email"
+#     REQUIRED_FIELDS = ['company_name', 'phone']
+#     def __str__(self):
+#         return self.company_name
+#     def has_perm(self, perm, obj=None):
+#         return True
+#     def has_module_perms(self, app_label):
+#         return True
+
+#첫번째로 한거
 # class UserManager(BaseUserManager):
 #     def create_user(self, name, email, nickname, genre, instrument, password=None):
 #         if not name:
