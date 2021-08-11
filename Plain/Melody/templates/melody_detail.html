@@ -5,24 +5,18 @@
 제목
 {% endblock %}
 
-
-
-
 {% block in_container_content %}
 
     <!--좋아요-->
     <a href="{% url 'post_like' detail.id %}" >{{message}}</a>
     <br>{{detail.likes.count}}명이 좋아합니다.
-
-
-
     <!--댓글-->
     {% for comment in comments %}
         <div class="card">
             <div class="card-body">
-                <h5>{{comment.body}}</h5>
-                <h6>작성자: {{comment.writer}} 날짜: {{comment.pub_date}}</h6>
-                {% if comment.writer == user %}
+                <h5>{{comment.comment_body}}</h5>
+                <h6>작성자: {{comment_owner}} 날짜: {{comment.comment_date}}</h6>
+                {% if comment_owner == user %}
                 <a href="{% url 'comment_delete' comment.id %}">
                     <button type="button" class="btn btn-dark">삭제</button>
                 </a>
@@ -35,6 +29,6 @@
                 <textarea name="body" id="" cols="125" rows="5"></textarea>
                 <input class="btn btn-dark" type="submit" value="submit">
         </form>
-        
+
 {% endblock %}
 

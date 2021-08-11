@@ -15,6 +15,10 @@ def detail(request, id):
    
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
+    if melody.likes.filter(id=request.user.id):
+        message= "좋아요 취소"
+    else: 
+        message = "좋아요"
 
     return render(request,'melody_default.html',{"melody":melody,'comments':comments})   #'melody_detail2.html'
     
@@ -73,7 +77,7 @@ def comment(request, melody_id):
         if request.method == "POST" :
             comment = Comment()
             comment.body = request.POST['body']
-            comment.pub_date = timezone.datetime.now()
+            comment.date = timezone.datetime.now()
             comment.writer = request.user
             comment.post = get_object_or_404(Melody, pk=melody_id)
             comment.save()
@@ -105,15 +109,15 @@ def default(request, id):
     user = request.user
     #return redirect('/melody/detail/' + str(melody_id))
 
-    return render(request,'melody_default.html')
+#     return render(request,'melody_default.html')
 
     
-# follows
-def follow(request, user_id):
-    people = get_object_or_404(User, id=user_id)
+# # follows
+# def follow(request, user_id):
+#     people = get_object_or_404(User, id=user_id)
 
-    if request.user in people.follower.all():
-        people.follower.remove(request.user)
-    else: 
-        people.follower.add(request.user)
-    return redirect('', people.username)
+#     if request.user in people.follower.all():
+#         people.follower.remove(request.user)
+#     else: 
+#         people.follower.add(request.user)
+#     return redirect('', people.username)

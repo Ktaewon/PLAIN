@@ -15,8 +15,6 @@ class Melody(models.Model):
     myInstrument = models.TextField()
     needInstrument = models.TextField(null=True, blank=True)
     audio = models.FileField(null=False, upload_to="melody/audio/", blank=False)
-
-    
     likes = models.ManyToManyField(User, through='Like', through_fields=('melody', 'user'), related_name="likes")
 
     def __str__(self):
@@ -37,10 +35,10 @@ class Joiner(models.Model):
 이밑으로는 아직 사용하지 않았음 ,,
 '''
 class Comment(models.Model):
-    Comment_body = models.CharField(max_length=200)
-    Comment_date = models.DateTimeField()
-    Comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
-    Comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
+    comment_body = models.CharField(max_length=200)
+    comment_date = models.DateTimeField()
+    comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
+    comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
 
 class Like(models.Model):
     melody = models.ForeignKey(Melody, on_delete=models.CASCADE)

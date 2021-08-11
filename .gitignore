@@ -9,3 +9,8 @@
 /Plain/db.sqlite3
 /Plain/migrations
 /Plain/media
+
+/Plain/Comments/__pycache__
+/Plain/Comments/migrations
+/Plain/Profile/migrations
+/Plain/Profile/__pycache__
