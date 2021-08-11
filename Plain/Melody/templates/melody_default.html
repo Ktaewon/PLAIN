@@ -6,18 +6,16 @@
 <link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css">
 {% endblock %}
 
-{% block out_container_content %}
+{% block in_container_content %}
 <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
 <div class="container-all-1">
     <div class="container1">
         <div class="container1-1">
             <div class="container1-1-1">
-                <div class="1">
                     <i class="fas fa-play-circle button" onclick="wavesurfer.playPause()"></i>
-                </div>
                 <div class="class-2">
-                    <div class="owner"> {{melody.owner}}  <!--글쓰기--></div>
-                    <div class="title">{{ melody.title}} <!--제목--></div>
+                    <div class="owner"> <span class="text-span">{{melody.owner}}  <!--글쓰기--></span></div>
+                    <div class="title"><span class="text-span">{{ melody.title}} <!--제목--></span></div>
                 </div>
             </div>
             <div class="container1-1-2">
@@ -34,8 +32,8 @@
         <br>
         <br>
         <div class="container1-2">
-            <div class="4">
-                <!--파형그리기-->
+            <!--파형그리기-->
+            <div class="waveclass">
                 <div id="waveform"></div>
                 <script>
                     var wavesurfer = WaveSurfer.create({
@@ -43,14 +41,13 @@
                         // 필수 옵션
                         container: '#waveform',
                         // 선택 옵션들 
-                        waveColor: '#02D5C6',
-                        progressColor: '#008179',
+                        waveColor: '#0094B6',
+                        progressColor: '#036076',
                         barWidth: 3,
                     });
                     //var wav = new Audio("{% static 'audio/music.mp3' %}");
                     //wavesurfer.load("{% static 'audio/music.mp3' %}");
                     wavesurfer.load("{{melody.audio.url}}");
-        
                 </script>
             </div>
         </div>
@@ -62,11 +59,9 @@
       </div>
     </div>
 </div>
-
+<div class="6">네브 버튼들</div>
 <div class="container-all-2">
-
-    <div class="6">네브 버튼들</div>
-    <div class="7">
+    <div class="subupload">
 
         <!--댓글한개-->
         {% for comment in comments %}
@@ -100,14 +95,12 @@
             </div>
         </div>
         {% endfor %}
-        <br><br>
 
         <!--댓글작성 폼-->
-        <form method="POST" action="{% url 'comment' melody.id %}">
+        <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form">
             {% csrf_token %}
-            <textarea cols=125 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
-            <select class="form-select" aria-label="select example">
-                <option value="">Choose your instrument</option>
+            <select class="form-select" aria-label="select example" name="position" id="position">
+                <option value="">Instrument</option>
                 <option value="1">Piano</option>
                 <option value="2">Guitar</option>
                 <option value="3">Bass</option>
@@ -115,20 +108,48 @@
                 <option value="5">Else...</option>
             </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
             <!--음악 파일 삽입하는 부분-->
-            <div>
-                <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required>
+            <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
+            <div class="fcol">
+                <input id="sub-upload-input" type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required >
+                <button type="button" class="btn btn-secondary " id="subupload-btn">Upload</button>
                 <div id="music_name"></div>
             </div>
             
-            <input class="btn btn-dark" type="submit" value="댓글 달기!">
+            <div class="fcol">
+                <button class="btn btn-primary" type="submit" id="upload-btn" >Submit</button>
+            </div>
         </form>
+
+    </div>
+    <div class="real-comment">
+        <textarea name="body">leave a message</textarea>
+    <!--Chats-->
+    <div class=8>
+        {% for chat in chats%}
+        <div class="card">
+            <div class="card-body">
+                <h5>{{chat.body}}</h5>
+                <h6>작성자: {{chat.chatter}}, 날짜: {{chat.date}}</h6>
+            </div>
+        </div>
+        {% endfor %}
+        <form method="POST" action="{% url 'chat' melody.id %}">
+            {% csrf_token %}
+                <textarea cols=125 rows=2 name="body"></textarea>
+                <input class="btn btn-dark" type="submit" value="CHAT!">
+        </form>
+        
+        
 
     </div>
 </div>
 
 {% endblock %}
 
-{% block in_container_content %}
-
+{% block script %}
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{% static 'js/melody_default.js' %}"></script>
 {% endblock %}
+
+
 

@@ -29,16 +29,23 @@ class Joiner(models.Model):
     post = models.ForeignKey(Melody, on_delete = models.CASCADE)     #melody 게시물이랑 연결
     audio = models.FileField(null=False, upload_to="joiner/audio/", blank=False)  #오디오도!
     
-   
-
-'''joiner가 comment랑 똑같은 기능을 하는 객체임!!!!!! 
-이밑으로는 아직 사용하지 않았음 ,,
-'''
 class Comment(models.Model):
     comment_body = models.CharField(max_length=200)
     comment_date = models.DateTimeField()
     comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
     comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
+   
+
+'''joiner가 comment랑 똑같은 기능을 하는 객체임!!!!!! 
+이밑으로는 아직 사용하지 않았음 ,,
+'''
+
+class Chat(models.Model):
+    body = models.CharField(max_length=200)
+    date = models.DateTimeField()
+    chatter = models.ForeignKey(User, related_name="chatter", on_delete=models.CASCADE)
+    post = models.ForeignKey(Melody, related_name="chat_post", on_delete=models.CASCADE)
+
 
 class Like(models.Model):
     melody = models.ForeignKey(Melody, on_delete=models.CASCADE)
