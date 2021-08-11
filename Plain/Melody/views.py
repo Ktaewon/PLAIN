@@ -31,6 +31,8 @@ def upload_melody(request):
         melody.img = request.FILES.get("imgInput")
         if request.POST["body"]:
             melody.body = request.POST["body"]
+        user = get_object_or_404(User, pk=request.user.id)
+        request.user = user
         melody.owner = request.user
         melody.myInstrument = request.POST["mine"]
         melody.audio = request.FILES.get("melodyInput")

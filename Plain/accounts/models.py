@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 #세번째로 한거
 class UserManager(BaseUserManager):
@@ -27,7 +27,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class MyUser(AbstractBaseUser):
+class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email',
         max_length=255,
