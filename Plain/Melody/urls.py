@@ -11,9 +11,9 @@ urlpatterns = [
     #    name='tagged_object_list'),
     path("default/",views.default,name="default"),
 
-    path('comment/<str:id>', views.comment, name='comment'),
-    path('comment/delete/<str:id>', views.comment_delete, name='comment_delete'),
+    path('comment/<str:melody_id>', views.comment, name='comment'),
+    path('comment/delete/<str:comment_id>', views.comment_delete, name='comment_delete'),
     # Like
-    path('like/<int:id>', views.post_like, name='post_like'),
+    path('like/<int:melody_id>', views.post_like, name='post_like'),
 ]   
 

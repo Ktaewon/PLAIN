@@ -12,7 +12,7 @@ def melody(request):
     return render(request, 'melody_upload.html')
 def detail(request, id):
     detail = get_object_or_404(Melody, pk=id)
-    comments = Comment.objects.all().filter(Comment_post = detail)
+    comments = Comment.objects.all().filter(comment_post = detail)
 
     melody = get_object_or_404(Melody, pk=id)
     if detail.likes.filter(id=request.user.id):
@@ -47,7 +47,7 @@ def comment(request, melody_id):
         if request.method == "POST" :
             comment = Comment()
             comment.body = request.POST['body']
-            comment.pub_date = timezone.datetime.now()
+            comment.date = timezone.datetime.now()
             comment.writer = request.user
             comment.post = get_object_or_404(Melody, pk=melody_id)
             comment.save()
@@ -64,23 +64,29 @@ def comment_delete(request, comment_id):
 
 # likes
 def post_like(request, melody_id):
+    melody = get_object_or_404(Melody, pk=melody_id)
+    user = request.user
+
     if melody.likes.filter(id=user.id):
         melody.likes.remove(user)
     else: 
         melody.likes.add(user)
-    return redirect('/Melody')
+
+    return redirect('/melody/detail/' + str(melody_id))
 
 def default(request):
     user = request.user
     #return redirect('/melody/detail/' + str(melody_id))
-    return render(request,'melody_default.html')
+
+#     return render(request,'melody_default.html')
 
     
-# follows
-def follow(request, user_id):
-    people = get_object_or_404(User, id=user_id)
-    if request.user in people.follower.all():
-        people.follower.remove(request.user)
-    else: 
-        people.follower.add(request.user)
-    return redirect('', people.username)
+# # follows
+# def follow(request, user_id):
+#     people = get_object_or_404(User, id=user_id)
+
+#     if request.user in people.follower.all():
+#         people.follower.remove(request.user)
+#     else: 
+#         people.follower.add(request.user)
+#     return redirect('', people.username)
