@@ -38,7 +38,7 @@ def upload_melody(request):
         melody.save()
         messages.warning(request, 'Upload Finish!')
         #return redirect('default')
-        return redirect('detail', melody.id)
+        return redirect('default', melody.id)
 
 
 #commend create
@@ -101,7 +101,7 @@ def post_like(request, melody_id):
     return redirect('/melody/detail/' + str(melody_id))
 
 
-def default(request):
+def default(request, id):
     user = request.user
     #return redirect('/melody/detail/' + str(melody_id))
 
