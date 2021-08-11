@@ -7,74 +7,128 @@
 {% endblock %}
 
 {% block out_container_content %}
-<div id="container1">
-    <div id="owner">
-        <div class="owner_items" id="own_item1">
-            <div id="own_item1_1">
-                <div class="o1_1" id="play_button">
-                    <img class="o1_1" id="play_button_img" src="{% static 'images/play-button.png' %}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+<div class="container-all-1">
+    <div class="container1">
+        <div class="container1-1">
+            <div class="container1-1-1">
+                <div class="1">
+                    <button onclick="wavesurfer.playPause()"><img class="button" src="https://icongr.am/entypo/controller-play.svg?size=111&color=currentColor" alt=""></button>
                 </div>
-                <ul class="o1_1">
-                    <li id="player_id">player_id</li>
-                    <li id="title">title</li>
-                </ul>
-                <p class="o1_1" id="hashtag">#drums<br>#indi-music</p>
+                <div class="class-2">
+                    <div class="owner"> {{melody.owner}}  <!--글쓰기--></div>
+                    <div class="title">{{ melody.title}} <!--제목--></div>
+                </div>
             </div>
-            <div id="own_item1_2">
-
+            <div class="container1-1-2">
+                <div class="class-3">
+                     <!--hashtags-->
+                    {% for tag in melody.hashtags.all %}
+                    <span class="badge badge-dark">
+                    #{{ tag.name }}
+                    </span>
+                    {% endfor %}
+                </div>
             </div>
-
         </div>
-        <div class="owener_items" id="own_item2">
-            <img id="upload_img" src="{% static 'images/background.jpeg' %}">
-        </div>
-    </div>
-    <div id="player" >
-        <div id="nav_bar">
-            <button class="bar" id="like">like</button>
-            <button class="bar">Download</button>
-            <button class="bar">repost</button>
-            <button class="bar">pin</button>
-            <button class="bar">+more</button>
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
-        <div class="instrument" id="guitar">
-            <div class="section">
-                
-            </div>
-            <div class="upload">
-
-            </div>
-
-        </div>
+        <br>
+        <br>
+        <div class="container1-2">
+            <div class="4">
+                <!--파형그리기-->
+                <div id="waveform"></div>
+                <script>
+                    var wavesurfer = WaveSurfer.create({
+                        // id="waveform" 인 오브젝트에 파형 생성
+                        // 필수 옵션
+                        container: '#waveform',
+                        // 선택 옵션들 
+                        waveColor: '#02D5C6',
+                        progressColor: '#008179',
+                        barWidth: 3,
+                    });
+                    //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                    //wavesurfer.load("{% static 'audio/music.mp3' %}");
+                    wavesurfer.load("{{melody.audio.url}}");
         
+                </script>
+            </div>
+        </div>
     </div>
-
+    <div class="container2">
+      <div class="class-5">
+            <!--image받은 것!-->
+            <img class="thumbnail" src="{{melody.img.url}}" alt="My Image" width="100" height="200">
+      </div>
+    </div>
 </div>
+
+<div class="container-all-2">
+
+    <div class="6">네브 버튼들</div>
+    <div class="7">
+
+        <!--댓글한개-->
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-body">
+                <h5>{{comment.body}}</h5> <!--코멘트-->
+                <h6>{{comment.position}}</h6> <!--positon-->
+                <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
+                 <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
+                <audio src="{% static 'audio/music.mp3' %}" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                
+                <!--파형 버전
+                <div id="comment_waveform">
+                    <script>
+                        var wavesurfer = WaveSurfer.create({
+                            // id="waveform" 인 오브젝트에 파형 생성
+                            // 필수 옵션
+                            container: '#comment_waveform',
+                            // 선택 옵션들 
+                            waveColor: '#02D5C6',
+                            progressColor: '#008179',
+                            barWidth: 3,
+                        });
+                        //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                        wavesurfer.load("{% static 'audio/music.mp3' %}");
+                    </script>
+                    <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+                </div>
+                -->
+                
+            </div>
+        </div>
+        {% endfor %}
+        <br><br>
+
+        <!--댓글작성 폼-->
+        <form method="POST" action="{% url 'comment' melody.id %}">
+            {% csrf_token %}
+            <textarea cols=125 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
+            <select class="form-select" aria-label="select example">
+                <option value="">Choose your instrument</option>
+                <option value="1">Piano</option>
+                <option value="2">Guitar</option>
+                <option value="3">Bass</option>
+                <option value="4">Drum</option>
+                <option value="5">Else...</option>
+            </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
+            <!--음악 파일 삽입하는 부분-->
+            <div>
+                <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required>
+                <div id="music_name"></div>
+            </div>
+            
+            <input class="btn btn-dark" type="submit" value="댓글 달기!">
+        </form>
+
+    </div>
+</div>
+
 {% endblock %}
 
 {% block in_container_content %}
 
 {% endblock %}
-
-
-
-
 

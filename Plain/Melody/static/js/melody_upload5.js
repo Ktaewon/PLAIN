@@ -104,3 +104,14 @@ function makehash(){
 
 var hash_btn = document.getElementById("hashtag-btn");
 hash_btn.addEventListener('click', makehash);
+
+function addInst() {
+    document.getElementById("inst-con").innerHTML += '<select class="form-select" aria-label="select example"> \
+<option value="">Choose your instrument</option>\
+<option value="1">Piano</option>\
+<option value="2">Guitar</option>\
+<option value="3">Bass</option>\
+<option value="4">Drum</option>\
+<option value="5">Else...</option>\
+</select>'
+}
