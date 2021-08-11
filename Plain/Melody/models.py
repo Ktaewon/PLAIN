@@ -25,10 +25,12 @@ class Melody(models.Model):
 
 class Joiner(models.Model):
     body = models.TextField(max_length=500)
+    positon=models.TextField(max_length=500,null=True)  #position
     pub_date = models.DateTimeField('data published')
     writer = models.ForeignKey(User , on_delete = models.CASCADE)  #user랑 연결
     post = models.ForeignKey(Melody, on_delete = models.CASCADE)     #melody 게시물이랑 연결
     audio = models.FileField(null=False, upload_to="joiner/audio/", blank=False)  #오디오도!
+    
    
 
 '''joiner가 comment랑 똑같은 기능을 하는 객체임!!!!!! 
