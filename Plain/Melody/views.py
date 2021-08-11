@@ -106,6 +106,12 @@ def chat(request, melody_id):
     else:
         return redirect('/melody/default/'+str(melody_id))
 
+def chat_delete(request, chat_id):
+    chat = get_object_or_404(Chat, pk=chat_id)
+    melody_id = chat.post.id
+    chat.delete()
+
+    return redirect('/melody/default/'+str(melody_id))
 
 
 

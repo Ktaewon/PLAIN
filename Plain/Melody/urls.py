@@ -18,5 +18,6 @@ urlpatterns = [
     # Like
     path('like/<int:melody_id>', views.post_like, name='post_like'),
     path('chat/<str:melody_id>', views.chat, name="chat"),
+    path('chat/delete/<str:chat_id>', views.chat_delete, name="chat_delete"),
 ]   
 
