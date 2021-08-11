@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% statics 'profile/statics/profile.css' %}" type ="text/css">
+{% endblock %}
+
+{% block in_container_content %}
+<div class="profile-top">
+    <h1>Profile</h1>
+        <div class="profile"></div>
+            <div class="profile-content">
+                <img class="round" style="border-radius: 50%;" src = "{{ profile.profile_photo.url}}"  width="80" height="80">
+                <div class="profile-text">
+                    name: {{user.profile.name}}
+                    <br>
+                    genre : {{user.profile.genre}}
+                    <br>
+                    position : {{user.profile.position}} 
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
