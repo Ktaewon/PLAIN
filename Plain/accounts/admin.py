@@ -11,7 +11,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('instrument', 'nickname','genre')},),
+        ('Personal info', {'fields': ('instrument','nickname', 'genre',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (
@@ -23,7 +23,6 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email','nickname','genre','instrument',)
     ordering = ('email',)
     filter_horizontal = ()
-
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 
