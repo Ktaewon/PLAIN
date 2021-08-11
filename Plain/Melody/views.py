@@ -12,7 +12,7 @@ def melody(request):
     return render(request, 'melody_upload.html')
 def detail(request, id):
     detail = get_object_or_404(Melody, pk=id)
-    comments = Comment.objects.all().filter(Comment_post = detail)
+    comments = Comment.objects.all().filter(comment_post = detail)
 
     melody = get_object_or_404(Melody, pk=id)
 
@@ -49,7 +49,7 @@ def comment(request, melody_id):
         if request.method == "POST" :
             comment = Comment()
             comment.body = request.POST['body']
-            comment.pub_date = timezone.datetime.now()
+            comment.date = timezone.datetime.now()
             comment.writer = request.user
             comment.post = get_object_or_404(Melody, pk=melody_id)
             comment.save()
