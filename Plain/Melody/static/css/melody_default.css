@@ -54,7 +54,7 @@
     background-color:transparent;
     opacity:1.0;
 }
-.fa-play-circle {
+#playbutton {
     font-size: 70px;
     color: #242424;
     opacity: 30%;
