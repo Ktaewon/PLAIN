@@ -4,15 +4,23 @@
     /* z-index: -1; */
 }
 
+.bodyClass {
+    position: relative;
+    min-height: 50vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
 .banner {
     position: relative;
 }
 
 .banner_text {
-    color: #A3F9FF;
+    color: #9effff;
     position: absolute;
     top: 50%;
-    /* margin: 0px auto; */
     left: 50%;
     text-align: center;
     transform: translate( -50%, -50%);
@@ -52,7 +60,8 @@
 }
 
 .Title {
-    font-size: 30px;
+    font-size: 23px;
+    font-weight: 400;
 }
 
 .uploadBtnWrapper {
@@ -67,4 +76,49 @@
     color: white;
     height: 40px;
     border-radius: 6px;
+}
+
+.ContentWrapper {
+    position: absolute;
+    display: flex;
+    /* left: 90px; */
+    margin-top: 110px;
+}
+
+.CMB {
+    display: flex;
+    position: relative;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.moreBtn {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.PMB {
+    display: flex;
+    position: relative;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.completeMusic {
+    display: block;
+    border-right: 1px solid rgb(199, 198, 198);
+    padding-right: 60px;
+    margin-right: 60px;
+}
+
+.progressMusic {
+    display: block;
+    margin-right: 30px;
+}
+
+.albumart {
+    margin-right: 30px;
+    width: 13vw;
+    cursor: pointer;
 }
