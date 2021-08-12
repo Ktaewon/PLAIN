@@ -71,7 +71,7 @@
                 <h6>{{comment.position}}</h6> <!--positon-->
                 <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
                  <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                <audio src="{ comment.audio.url }" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
                 <br>
                 <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
                 <br>{{melody.likes.count}}명이 좋아합니다.
@@ -103,11 +103,11 @@
             {% csrf_token %}
             <select class="form-select" aria-label="select example" name="position" id="position">
                 <option value="">Instrument</option>
-                <option value="1">Piano</option>
-                <option value="2">Guitar</option>
-                <option value="3">Bass</option>
-                <option value="4">Drum</option>
-                <option value="5">Else...</option>
+                <option value="Piano">Piano</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Bass">Bass</option>
+                <option value="Drum">Drum</option>
+                <option value="Else...">Else...</option>
             </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
             <!--음악 파일 삽입하는 부분-->
             <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
