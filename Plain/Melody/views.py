@@ -100,10 +100,11 @@ def comment(request, melody_id):
             return redirect('/melody/'+str(melody_id))
 
 def comment_delete(request, comment_id):
+    comment=Comment.object.get(pk=User)
     comment = get_object_or_404(Comment, pk=comment_id)
     melody_id = comment.post.id
     comment.delete()
-    return redirect('/melody/'+str(melody_id))
+    return redirect('/detail/'+str(melody_id))
 
 #Chats
 def chat(request, melody_id):
