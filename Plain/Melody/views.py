@@ -53,11 +53,11 @@ def createcomment(request,id):
 
         comment = Joiner()
         comment.body = request.POST['body']
-        comment.positon=request.POST['position']  
+        comment.positon = request.POST['position']  
         comment.pub_date = timezone.datetime.now()
         comment.writer = request.user
         comment.post = get_object_or_404(Melody , pk=id)
-        comment.audio=request.FILES.get("commendInput")
+        comment.audio = request.FILES.get("commendInput")
         comment.save()
        
 

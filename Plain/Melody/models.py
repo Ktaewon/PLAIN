@@ -27,7 +27,7 @@ class Joiner(models.Model):
     pub_date = models.DateTimeField('data published')
     writer = models.ForeignKey(User , on_delete = models.CASCADE)  #user랑 연결
     post = models.ForeignKey(Melody, on_delete = models.CASCADE)     #melody 게시물이랑 연결
-    audio = models.FileField(null=False, upload_to="joiner/audio/", blank=False)  #오디오도!
+    audio = models.FileField(null=False, upload_to="melody/audio/joiner", blank=False)  #오디오도!
     
 class Comment(models.Model):
     comment_body = models.CharField(max_length=200)
