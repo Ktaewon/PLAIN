@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
 from .forms import UserChangeForm, UserCreationForm
 from .models import User
-
 
 class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
@@ -17,20 +15,18 @@ class UserAdmin(BaseUserAdmin):
         #('Personal info', {'fields': ('date_of_birth',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
-
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    search_fields = ('email',)
+    search_fields = ('email','nickname','genre','instrument',)
     ordering = ('email',)
     filter_horizontal = ()
-
-
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
+
 # Register your models here.
 # class UserAdmin(admin.ModelAdmin):
 #     list_display = (

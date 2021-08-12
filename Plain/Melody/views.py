@@ -20,7 +20,7 @@ def detail(request, id):
     else: 
         message = "좋아요"
 
-    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats})   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats, "message":message},)   #'melody_detail2.html'
     
 
 def upload_melody(request):
@@ -69,8 +69,6 @@ def createcomment(request,id):
 '''이밑으로는 안 쓰임!! comment를 join이라는 모델로 만들었음 !!
    댓글쓴 사람만 댓글 삭제할 수 있는 기능 구현 안됨
    작성자만 게시물 삭제하거나 수정할 수 있는 것도 아직 안 만든 상태
-
-
 '''
 
 
@@ -108,6 +106,12 @@ def chat(request, melody_id):
     else:
         return redirect('/melody/default/'+str(melody_id))
 
+def chat_delete(request, chat_id):
+    chat = get_object_or_404(Chat, pk=chat_id)
+    melody_id = chat.post.id
+    chat.delete()
+
+    return redirect('/melody/default/'+str(melody_id))
 
 
 
@@ -121,7 +125,7 @@ def post_like(request, melody_id):
     else: 
         melody.likes.add(user)
 
-    return redirect('/melody/detail/' + str(melody_id))
+    return redirect('/melody/default/' + str(melody_id))
 
 
 def default(request, id):
