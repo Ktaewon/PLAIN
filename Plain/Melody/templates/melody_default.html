@@ -123,8 +123,13 @@
     </div>
     <div class="real-comment">
         <textarea name="body">leave a message</textarea>
-    <!--Chats-->
+
+
+    
+    <!--Chats & Likes-->
     <div class=8>
+        <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
+        <br>{{detail.likes.count}}명이 좋아합니다.
         {% for chat in chats%}
         <div class="card">
             <div class="card-body">

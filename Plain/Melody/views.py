@@ -20,7 +20,7 @@ def detail(request, id):
     else: 
         message = "좋아요"
 
-    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats})   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats, "message":message},)   #'melody_detail2.html'
     
 
 def upload_melody(request):
@@ -125,7 +125,7 @@ def post_like(request, melody_id):
     else: 
         melody.likes.add(user)
 
-    return redirect('/melody/detail/' + str(melody_id))
+    return redirect('/melody/default/' + str(melody_id))
 
 
 def default(request, id):
