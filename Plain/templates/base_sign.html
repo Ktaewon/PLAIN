@@ -15,14 +15,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <img src="{% static 'logo.svg' %}" class="navbar-brand" href="#" alt="logo" />
+            <a href="/accounts/home">
+                <img src="{% static 'logo.svg' %}" class="navbar-brand" href="#" alt="logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About</a>
+                        <a class="nav-link" aria-current="page" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Place</a>
@@ -34,7 +35,7 @@
                         <a class="nav-link" href="#">Mixing</a>
                     </li>
                     <li class="nav-item">
-                        <select class="form-select" required aria-label="select example">
+                        <select class="form-select">
                             <option value="">More</option>
                             <option value="1">Stream</option>
                             <option value="2">Library</option>
