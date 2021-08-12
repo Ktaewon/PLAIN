@@ -127,6 +127,17 @@ def post_like(request, melody_id):
 
     return redirect('/melody/default/' + str(melody_id))
 
+def joiner_like(request, joiner_id):
+    joiner = get_object_or_404(Joiner, pk=joiner_id)
+    user = request.user
+
+    if joiner.likes.filter(id=user.id):
+        joiner.likes.remove(user)
+    else: 
+        joiner.likes.add(user)
+
+
+
 
 def default(request, id):
     user = request.user

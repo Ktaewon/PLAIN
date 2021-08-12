@@ -72,7 +72,9 @@
                 <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
                  <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
                 <audio src="{ comment.audio.url }" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
-                
+                <br>
+                <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
+                <br>{{melody.likes.count}}명이 좋아합니다.
                 <!--파형 버전
                 <div id="comment_waveform">
                     <script>
@@ -121,15 +123,13 @@
         </form>
 
     </div>
-    <div class="real-comment">
-        <textarea name="body">leave a message</textarea>
-
+  
 
     
     <!--Chats & Likes-->
-    <div class=8>
+    <div class= chats>
         <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
-        <br>{{detail.likes.count}}명이 좋아합니다.
+        <br>{{melody.likes.count}}명이 좋아합니다.
         {% for chat in chats%}
         <div class="card">
             <div class="card-body">
@@ -145,7 +145,7 @@
         {% endfor %}
         <form method="POST" action="{% url 'chat' melody.id %}">
             {% csrf_token %}
-                <textarea cols=125 rows=2 name="body"></textarea>
+                <textarea cols=40 rows=2 name="body"></textarea>
                 <input class="btn btn-dark" type="submit" value="CHAT!">
         </form>
         

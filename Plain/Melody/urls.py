@@ -17,6 +17,8 @@ urlpatterns = [
     path('comment/delete/<str:comment_id>', views.comment_delete, name='comment_delete'),
     # Like
     path('like/<str:melody_id>', views.post_like, name='post_like'),
+    path('like_joiner/<str:joiner_id>', views.joiner_like, name='joiner_like'),
+    # Chats
     path('chat/<str:melody_id>', views.chat, name="chat"),
     path('chat/delete/<str:chat_id>', views.chat_delete, name="chat_delete"),
 ]   
