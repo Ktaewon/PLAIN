@@ -64,38 +64,41 @@
     <div class="subupload">
 
         <!--댓글한개-->
-        {% for comment in comments %}
-        <div class="card">
-            <div class="card-body">
-                <h5>{{comment.body}}</h5> <!--코멘트-->
-                <h6>{{comment.position}}</h6> <!--positon-->
-                <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
-                 <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
-                <br>
-                <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
-                <br>{{melody.likes.count}}명이 좋아합니다.
-                <!--파형 버전
-                <div id="comment_waveform">
-                    <script>
-                        var wavesurfer = WaveSurfer.create({
-                            // id="waveform" 인 오브젝트에 파형 생성
-                            // 필수 옵션
-                            container: '#comment_waveform',
-                            // 선택 옵션들 
-                            waveColor: '#02D5C6',
-                            progressColor: '#008179',
-                            barWidth: 3,
-                        });
-                        //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                        wavesurfer.load("{% static 'audio/music.mp3' %}");
-                    </script>
-                    <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+        {% for comments in comment_sub %}
+            {% for comment in comments %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5>{{comment.body}}</h5> <!--코멘트-->
+                        <h6>{{comment.position}}</h6> <!--positon-->
+                        <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
+                        <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
+                        <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                        <br>
+                        <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
+                        <br>{{melody.likes.count}}명이 좋아합니다.
+                        <!--파형 버전
+                        <div id="comment_waveform">
+                            <script>
+                                var wavesurfer = WaveSurfer.create({
+                                    // id="waveform" 인 오브젝트에 파형 생성
+                                    // 필수 옵션
+                                    container: '#comment_waveform',
+                                    // 선택 옵션들 
+                                    waveColor: '#02D5C6',
+                                    progressColor: '#008179',
+                                    barWidth: 3,
+                                });
+                                //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                                wavesurfer.load("{% static 'audio/music.mp3' %}");
+                            </script>
+                            <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+                        </div>
+                        -->
+                        
+                    </div>
                 </div>
-                -->
-                
-            </div>
-        </div>
+            {% end for %}
+        
         {% endfor %}
 
         <!--댓글작성 폼-->
