@@ -71,7 +71,7 @@
                 <h6>{{comment.position}}</h6> <!--positon-->
                 <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
                  <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                <audio src="{% static 'audio/music.mp3' %}" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                <audio src="{ comment.audio.url }" autoplay loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
                 
                 <!--파형 버전
                 <div id="comment_waveform">
@@ -97,7 +97,7 @@
         {% endfor %}
 
         <!--댓글작성 폼-->
-        <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form">
+        <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
             {% csrf_token %}
             <select class="form-select" aria-label="select example" name="position" id="position">
                 <option value="">Instrument</option>
