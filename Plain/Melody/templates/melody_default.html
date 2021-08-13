@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block title %}submain 페이지{% endblock %} {% block style %}
+{% extends "base.html" %} {% load static %} {% block title %}{{ melody.title }}{% endblock %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css"> {% endblock %} {% block out_container_content %}
 <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js">
 </script>
@@ -181,16 +181,16 @@
     <!--Chats & Likes-->
     <div class="fcol commentpart sf">
         <div class=c hats>
-            <form method="POST" action="{% url 'chat' melody.id %}">
+            <form method="POST" action="{% url 'chat' melody.id %}" id="chat-form" class="frow">
                 {% csrf_token %}
-                <textarea cols=40 rows=2 name="body"></textarea>
-                <input class="btn btn-dark" type="submit" value="CHAT!">
+                <textarea id="chat-area" cols=40 rows=2 name="body"></textarea>
+                <input class="btn btn-dark" type="submit" value="CHAT!" id="chat-btn">
             </form>
             {% for chat in chats%}
-            <div class="card">
+            <div class="card chat-con">
                 <div class="card-body">
                     <h5>{{chat.body}}</h5>
-                    <h6>작성자: {{chat.chatter}}, 날짜: {{chat.date}}</h6>
+                    <h6>작성자: {{chat.chatter.nickname}}, 날짜: {{chat.date}}</h6>
                     {% if chat.chatter == user %}
                     <a href="{% url 'chat_delete' chat.id %}">
                         <button type="button" class="deleteBtn">삭제</button>
