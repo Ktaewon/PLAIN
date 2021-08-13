@@ -1,3 +1,4 @@
+
 $("#subupload-btn").on('click', function() {
     document.all.commendInput.click();
 });
@@ -15,3 +16,23 @@ $("#playbutton").on('click', function() {
 });
 
 var comment_waveforms = []
+
+const checking_button=document.querySelector("#checkedbutton");
+
+function findout_checked()
+{
+    //console.log("hello")
+
+    var obj_length = document.getElementsByName("checked").length;
+  
+        for (var i=0; i<obj_length; i++) {
+            if (document.getElementsByName("checked")[i].checked == true) {
+                console.log(document.getElementsByName("checked")[i].value)
+   
+            }
+        }
+
+    
+}
+
+checking_button.addEventListener("click",findout_checked);
