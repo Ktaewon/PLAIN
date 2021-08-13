@@ -15,27 +15,50 @@ $("#playbutton").on('click', function() {
     }
 });
 
-var comment_waveforms = []
-
-
 
 function findout_checked()
 {
     //console.log("hello")
 
     var obj_length = document.getElementsByName("checked").length;
+    let checked_list=[]
   
         for (var i=0; i<obj_length; i++) {
             if (document.getElementsByName("checked")[i].checked == true) {
-                console.log(document.getElementsByName("checked")[i].value)
+                console.log("안녕",document.getElementsByName("checked")[i].value)
+                checked_list.push(document.getElementsByName("checked")[i].value)        
    
             }
         }
+        console.log(checked_list)
+        
+         //Play button 들 다 가져오기
+        let elementList = document.querySelectorAll(".cm_play");
+        console.dir(elementList)
+        console.dir(elementList[0].attributes[3].nodeValue)   //이걸로 가져올 수 있음 ㅠㅠ
+       
+        for (var i=0; i<elementList.length;i++)
+        {
+            for (var j=0; j<checked_list.length;j++)
+            {
+               if (elementList[i].attributes[3].value == parseInt(checked_list[j])) 
+               {
+                   console.log("이걸 클릭해!!")
+                   elementList[i].click();
+               }
+            }
+            
+        }
 
-    
+        
+       
 }
+
 const checking_button=document.querySelector("#checkedbutton");
 checking_button.addEventListener("click",findout_checked);
+
+
+
 $("#comment_play").on('click', function() {
     if (check == 0){
         check = 1;

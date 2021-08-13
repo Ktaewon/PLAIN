@@ -12,11 +12,7 @@
     <div class="container1">
         <div class="container1-1">
             <div class="container1-1-1">
-<<<<<<< HEAD
-                    <i class="fas fa-play-circle button"  id="playbutton"></i>
-=======
                     <i class="fas fa-play-circle button" id="playbutton"></i>
->>>>>>> 887f5b1eab761b55167795fb4d9dc18b557c62f6
                 <div class="class-2">
                     <div class="owner"> <span class="text-span">{{melody.owner}}  <!--글쓰기--></span></div>
                     <div class="title"><span class="text-span">{{ melody.title}} <!--제목--></span></div>
@@ -159,7 +155,7 @@
                                             {% endif %}
                                         </a>{{joiner.joiner_likes.count}}
                                         <div class="frow sp">
-                                            <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play">
+                                            <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play" class="cm_play" name="{{ comment.id }}" >
                                                 <i class="fas fa-play-circle button" id="comment_playbutton" ></i>
                                             </div>
                                             <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
