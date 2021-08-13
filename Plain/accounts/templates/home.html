@@ -28,12 +28,32 @@
         <br>
     </div>
     <div class="ContentWrapper">
+        
+        <div class="progressMusic">
+            <div class="PMB">
+                <div class="progressTitle Title">진행중인 음악</div>
+                <div class="moreBtn">More 👉</div>
+            </div>
+            <div class="progressImg">
+                {% for art in melodys %}
+                    <!--image받은 것!-->
+                    
+                    <a href="{% url 'default' art.id %}"><img class="albumart" src="{{art.img.url}}" alt="My Image" width="100" height="200">
+                    </a>   <!--views.py에서 필요로하는 인자값이 두개이므로 두개-->
+                {% endfor %}
+                <!--<img class="albumart" src="{% static 'img/4.png' %}">
+                <img class="albumart" src="{% static 'img/5.png' %}">
+                <img class="albumart" src="{% static 'img/6.png' %}">-->
+
+            </div>
+        </div>
         <div class="completeMusic">
             <div class="CMB">
                 <div class="completeTitle Title">완성된 음악</div>
                 <div class="moreBtn">More 👉</div>
             </div>
             <div class="completeImg">
+                
                 <a href="{% url 'default' 1 %}">
                     <img class="albumart" src="{% static 'img/1.png' %}">
                 </a>
@@ -43,17 +63,17 @@
                 <a href="{% url 'default' 3 %}">
                     <img class="albumart" src="{% static 'img/3.png' %}">
                 </a>
-            </div>
-        </div>
-        <div class="progressMusic">
-            <div class="PMB">
-                <div class="progressTitle Title">진행중인 음악</div>
-                <div class="moreBtn">More 👉</div>
-            </div>
-            <div class="progressImg">
-                <img class="albumart" src="{% static 'img/4.png' %}">
-                <img class="albumart" src="{% static 'img/5.png' %}">
-                <img class="albumart" src="{% static 'img/6.png' %}">
+                
+
+                <!--
+                {% for art in melodys %}
+                    --image받은 것!
+                    
+                    <a href="{% url 'default' art.id %}"><img class="albumart" src="{{art.img.url}}" alt="My Image" width="100" height="200">
+                    </a>   --views.py에서 필요로하는 인자값이 두개이므로 두개
+                {% endfor %}
+                -->
+
             </div>
         </div>
     </div>

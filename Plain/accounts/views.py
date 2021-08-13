@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import auth
 
+from django.apps import apps
+
+
+
+
 # Create your views here.
 def signup(request):
     if request.method == "POST":
@@ -40,7 +45,9 @@ def login(request):
         return render(request, 'login.html')
 
 def home(request):
-        return render(request, 'home.html')
+        Melody=apps.get_model('Melody',"Melody")
+        preview=Melody.objects.all()
+        return render(request, 'home.html',{"melodys":preview})
 def profile(request):
         return render(request, 'profile.html')
 
@@ -49,4 +56,11 @@ def logout(request):
         auth.logout(request)
         return redirect('home')
     return render(request, 'home.html')
+
+def home2(request):
+    return render(request, 'home.html')
+
+
+
+
 

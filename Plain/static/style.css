@@ -38,6 +38,10 @@ li {
     margin-right: 0;
 }
 
+footer {
+    width: 100%;
+}
+
 .footer-content {
     margin: 0px auto;
     padding-top: 2rem;
