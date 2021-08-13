@@ -15,19 +15,19 @@ Sign up!
 {{error}}
 {% endif %}
 <div class="signup-form">
-    <form action="{% url 'create' %}" method="post" class="signup-box">
+    <form action="{% url 'create' %}" method="POST" class="signup-box" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="welcome-text">
             Create Your Account!
         </div>
         Profile Image
-        <div class="img_preview" id="img_up">
+        {% comment %} <div class="img_preview" id="img_up">
             <input type="file" id="imgInput" name="imgInput" class="image_inputType_file" accept="img/*" required>
             <img src="" class="" alt="..." id="img" name="img" onError="this.style.visibility='hidden'">
             <div class="img-text">
                 Click to upload your Profile Image
             </div>
-        </div>
+        </div> {% endcomment %}
         <br>
         Email <br>
         <input type="text" name="email" class="email info" placeholder="Your email">

@@ -30,7 +30,7 @@ class User(AbstractBaseUser):
     genre=models.CharField(verbose_name='genre',max_length=30, blank=False)
     instrument=models.CharField(verbose_name='instrument',max_length=30, blank=False)
     profile_message=models.CharField(verbose_name='profile-message', max_length=30, blank=False)
-    img = models.ImageField(null=True, upload_to="accounts/img/", blank=True)
+    # img = models.ImageField(null=True, upload_to="accounts/img/", blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     objects = UserManager()

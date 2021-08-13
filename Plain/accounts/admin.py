@@ -12,7 +12,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('nickname', 'genre', 'instrument','profile_message','img')}),
+        ('Personal info', {'fields': ('nickname', 'genre', 'instrument','profile_message',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (
@@ -21,7 +21,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    search_fields = ('email','nickname','genre','instrument','profile_message','img')
+    search_fields = ('email','nickname','genre','instrument','profile_message',)
     ordering = ('email',)
     filter_horizontal = ()
 admin.site.register(User, UserAdmin)

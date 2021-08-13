@@ -3,14 +3,27 @@
     flex-direction: row;
     background: linear-gradient(180deg, #FCBDBD 0%, rgba(255, 255, 255, 0.0260417) 76.56%, rgba(255, 255, 255, 0) 100%), #9ABCDC;
     justify-content: space-around;
+    margin: 0;
+}
+
+.cm_play {
+    width: 4vw;
+    position: relative;
+}
+
+.playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .musicpart {
-    width: 90vw;
+    width: 80vw;
 }
 
 .commmentpart {
-    width: 10vw;
+    width: 20vw;
 }
 
 .container1 {
@@ -31,10 +44,13 @@
     justify-content: space-around;
 }
 
-.frow {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.instIcon {
+    width: fit-content;
+    padding-right: 30px;
+}
+
+.ls {
+    justify-content: flex-start;
 }
 
 .container1-1-1 {
@@ -151,30 +167,54 @@
     justify-content: space-between;
 }
 
-.subupload {
-    border-style: solid;
-    border-radius: 18px;
-    border-color: #C4C4c4;
+.subupload-input {
+    border: none;
+    width: 80vw;
+    height: 6vh;
     display: flex;
     flex-direction: column;
+    margin-left: 10vw;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.subupload {
+    border-bottom: 1px solid rgb(197, 197, 197);
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .real-comment {
     border-style: solid;
 }
 
+.btnWrapper {
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+
+.menu {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.addmusictext {
+    line-height: 4vh;
+    margin-right: 1vw;
+}
+
 .subupload-form {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: 10px;
-    width: 900px;
 }
 
 .form-select {
-    width: 150px;
+    width: 8vw;
+    height: 4vh;
+    margin-right: 1vw;
 }
 
 #commendInput {
@@ -182,15 +222,19 @@
 }
 
 #subupload-btn {
-    width: 60px;
-    height: 50px;
-    font-size: 20px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 6px;
+    background-color: white;
+    /* width: 10px; */
+    height: 4vh;
+    line-height: 3.5vh;
+    margin-right: 1vw;
 }
 
 .frow {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .fcol {
@@ -201,11 +245,13 @@
 
 .form-control {
     width: 550px;
+    height: 3.5vh;
+    margin-right: 1vw;
 }
 
 #upload-btn {
     width: 100px;
-    height: 50px;
+    height: 4vh;
     background-color: #02D5C6;
     border-style: none;
     font-size: 20px;
@@ -213,10 +259,6 @@
 
 #upload-btn:hover {
     background-color: #02d5c7b6;
-}
-
-.card {
-    border-radius: 15px;
 }
 
 .chats {
@@ -227,6 +269,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: max-content;
     /* justify-content: center; */
 }
 
@@ -237,17 +280,20 @@
     margin-left: 70px;
 }
 
+.card {
+    border: none;
+    border-left: 1px solid rgb(190, 190, 190);
+    border-radius: 0;
+}
+
 .card-con {
     display: flex;
     flex-direction: column;
 }
 
-.sp {
-    justify-content: space-between;
-}
-
-.card-body {
-    width: 700px;
+.deleteBtn {
+    background-color: #FCBDBD;
+    border: none;
 }
 
 #comment_playbutton {
@@ -256,5 +302,11 @@
 }
 
 .comment_waveform {
-    width: 600px;
+    width: 60vw;
+}
+
+.checkText {
+    margin-left: 60vw;
+    font-size: 1.7rem;
+    margin-bottom: -2vh;
 }
