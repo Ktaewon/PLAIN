@@ -295,8 +295,9 @@
     background-color: #FCBDBD;
     border: none;
 }
-#comment_play {
-}
+
+#comment_play {}
+
 #comment_playbutton {
     font-size: 50px !important;
     color: #02D5C6;

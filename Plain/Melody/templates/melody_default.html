@@ -181,6 +181,11 @@
     <!--Chats & Likes-->
     <div class="fcol commentpart">
         <div class=c hats>
+            <form method="POST" action="{% url 'chat' melody.id %}">
+                {% csrf_token %}
+                <textarea cols=40 rows=2 name="body"></textarea>
+                <input class="btn btn-dark" type="submit" value="CHAT!">
+            </form>
             {% for chat in chats%}
             <div class="card">
                 <div class="card-body">
@@ -194,11 +199,6 @@
                 </div>
             </div>
             {% endfor %}
-            <form method="POST" action="{% url 'chat' melody.id %}">
-                {% csrf_token %}
-                <textarea cols=40 rows=2 name="body"></textarea>
-                <input class="btn btn-dark" type="submit" value="CHAT!">
-            </form>
         </div>
     </div>
 </div>
