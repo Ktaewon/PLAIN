@@ -37,6 +37,33 @@ li {
     cursor: pointer;
 }
 
+.signInBtn {
+    border-radius: 6px;
+    height: 40px;
+    width: 97px;
+    line-height: 20px;
+    border: 1px solid #7a7a7a;
+    background-color: white;
+    margin-right: 20px;
+    color: #7a7a7a;
+}
+
+.signUpBtn {
+    border-radius: 6px;
+    height: 40px;
+    width: 97px;
+    line-height: 40px;
+    border: none;
+    background-color: #02d5c6;
+    color: white;
+}
+
+#navbar-nav-right-btn {
+    position: absolute;
+    right: 30px;
+    margin-right: 0;
+}
+
 #navbar-nav-right {
     margin-right: 0;
     position: absolute;
