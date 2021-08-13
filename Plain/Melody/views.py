@@ -20,7 +20,7 @@ def detail(request, id):
     else: 
         message = 2
     message_joiner = 0
-    
+    count = 0
     if comments:
         joiner=get_object_or_404(Joiner, pk=id)
         if joiner.joiner_likes.filter(id=request.user.id):
@@ -45,7 +45,7 @@ def detail(request, id):
         elif comment.position == "5": #else
             comment_sub[5].append(comment)
     print(comment_sub)
-    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_joiner":message_joiner},)   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_joiner":message_joiner, "count":count},)   #'melody_detail2.html'
     
 
 def upload_melody(request):

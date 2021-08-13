@@ -69,7 +69,7 @@
     </div>
 </div>
 <div class="6">네브 버튼들</div>
-         
+
 <div class="container-all-2">
     <div class="subupload-con">
         <div class="subupload">
@@ -97,6 +97,9 @@
                 </div>
             </form>
         </div>
+            <script>
+                var i = 0;
+            </script>
             <!--댓글한개-->
             {% for comments in comment_sub %}
                 {% if comments %}
@@ -123,7 +126,7 @@
                         <!-- <div class="fcol"> -->
                             <div class="card-con">
                             {% for comment in comments %}
-                            {{ forloop.counter }} {# starting index 1 #}
+                            <!-- {{ forloop.counter }} {# starting index 1 #} -->
                                 <div class="card">
                                     <div class="card-body">
                                         <h5>{{comment.body}}</h5> <!--코멘트-->
@@ -145,22 +148,25 @@
                                         </a>
                                         {% endif %}
                                         
-                                        <div id="comment_waveform_{{ forloop.counter }}">
+                                        <div id="comment_waveform_{{ comment.id }}">
                                             <script>
-                                                var wavesurfer = WaveSurfer.create({
+                                                //var wavesurfer = 
+                                                var comment_wavesurfer = WaveSurfer.create({
                                                     // id="waveform" 인 오브젝트에 파형 생성
                                                     // 필수 옵션
-                                                    container: '#comment_waveform_{{ forloop.counter }}',
+                                                    container: '#comment_waveform_' + "{{ comment.id }}",
                                                     // 선택 옵션들 
                                                     waveColor: '#02D5C6',
                                                     progressColor: '#008179',
                                                     barWidth: 3,
                                                 });
                                                 //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                                                wavesurfer.load("{{ comment.audio.url }}");
+                                                comment_wavesurfer.load("{{ comment.audio.url }}");
                                             </script>
-                                            <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+                                            <button onclick="comment_wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
                                         </div>
+                                        {{ count|add:1 }}
+                                        {{count}}
                                     </div>
                                 </div>
                             <!-- </div> -->
