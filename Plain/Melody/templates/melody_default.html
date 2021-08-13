@@ -20,12 +20,21 @@
             </div>
             <div class="container1-1-2">
                 <div class="class-3">
-                     <!--hashtags-->
+                    <!--hashtags-->
                     {% for tag in melody.hashtags.all %}
                     <span class="badge badge-dark">
                     #{{ tag.name }}
                     </span>
                     {% endfor %}
+                    <a href="{% url 'post_like' melody.id %}" >
+                        {% if message == 2%}
+                        <i class="far fa-heart"></i>
+                        {% endif %}
+                        {% if message == 1%}
+                        <i class="fas fa-heart"></i>
+                        {% endif %}
+                        {{melody.likes.count}}
+                    </a>
                 </div>
             </div>
         </div>
@@ -60,111 +69,131 @@
     </div>
 </div>
 <div class="6">네브 버튼들</div>
+         
 <div class="container-all-2">
-    <div class="subupload">
-
-        <!--댓글한개-->
-        {% for comment in comments %}
-        
-        <div class="card">
-            <div class="card-body">
-                <h5>{{comment.body}}</h5> <!--코멘트-->
-                <h6>{{comment.position}}</h6> <!--position-->
-                <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
-                 <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
-                <br>
-                <a href ="{% url 'joiner_like' joiner.id %}">
-                    {% if message_join == 2%}
-                    <i class="far fa-heart"></i>
-                    {% endif %}
-                    {% if message_join == 1%}
-                    <i class="fas fa-heart"></i>
-                    {% endif %}
-                </a>{{joiner.likes.count}}
-                {% if comment.writer == user %}
-                <a href="{% url 'comment_delete' comment.id %}">
-                    <button type="button" class="btn btn-dark">삭제</button>
-                </a>
-                {% endif %}
-                <!--파형 버전
-                <div id="comment_waveform">
-                    <script>
-                        var wavesurfer = WaveSurfer.create({
-                            // id="waveform" 인 오브젝트에 파형 생성
-                            // 필수 옵션
-                            container: '#comment_waveform',
-                            // 선택 옵션들 
-                            waveColor: '#02D5C6',
-                            progressColor: '#008179',
-                            barWidth: 3,
-                        });
-                        //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                        wavesurfer.load("{% static 'audio/music.mp3' %}");
-                    </script>
-                    <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+    <div class="subupload-con">
+        <div class="subupload">
+            <!--댓글작성 폼-->
+            <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <select class="form-select" aria-label="select example" name="position" id="position">
+                    <option value="">Instrument</option>
+                    <option value="1">Piano</option>
+                    <option value="2">Guitar</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Drum</option>
+                    <option value="5">Else...</option>
+                </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
+                <!--음악 파일 삽입하는 부분-->
+                <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
+                <div class="fcol">
+                    <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required >
+                    <button type="button" class="btn btn-secondary " id="subupload-btn"><i class="fas fa-music"></i></button>
+                    <div id="music_name"></div>
                 </div>
-                -->
                 
-            </div>
+                <div class="fcol">
+                    <button class="btn btn-primary" type="submit" id="upload-btn" >Submit</button>
+                </div>
+            </form>
         </div>
-        
-        {% endfor %}
-
-        <!--댓글작성 폼-->
-        <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <select class="form-select" aria-label="select example" name="position" id="position">
-                <option value="">Instrument</option>
-                <option value="Piano">Piano</option>
-                <option value="Guitar">Guitar</option>
-                <option value="Bass">Bass</option>
-                <option value="Drum">Drum</option>
-                <option value="Else..">Else...</option>
-            </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
-            <!--음악 파일 삽입하는 부분-->
-            <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
-            <div class="fcol">
-                <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required >
-                <button type="button" class="btn btn-secondary " id="subupload-btn">Upload</button>
-                <div id="music_name"></div>
-            </div>
-            
-            <div class="fcol">
-                <button class="btn btn-primary" type="submit" id="upload-btn" >Submit</button>
-            </div>
-        </form>
-
-    </div>
-  
-
-    
-    <!--Chats & Likes-->
-    <div class= chats>
-        <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
-        <br>{{melody.likes.count}}명이 좋아합니다.
-        {% for chat in chats%}
-        <div class="card">
-            <div class="card-body">
-                <h5>{{chat.body}}</h5>
-                <h6>작성자: {{chat.chatter}}, 날짜: {{chat.date}}</h6>
-                {% if chat.chatter == user %}
-                <a href="{% url 'chat_delete' chat.id %}">
-                    <button type="button" class="btn btn-dark">삭제</button>
-                </a>
+            <!--댓글한개-->
+            {% for comments in comment_sub %}
+                {% if comments %}
+                <div class="subupload">
+                    <div class="frow sp">
+                            <div>
+                                <i class="fas fa-guitar icon"></i>
+                                {% if comments.position == 1 %}
+                                    <i class="fas fa-guitar icon"></i>
+                                {% endif %}
+                                {% if comments.position == 2 %}
+                                    <i class="fas fa-guitar icon"></i>
+                                {% endif %}
+                                {% if comments.position == "3" %}
+                                    <i class="fas fa-guitar icon"></i>
+                                {% endif %}
+                                {% if comments.position == "4" %}
+                                    <i class="fas fa-guitar icon"></i>
+                                {% endif %}
+                                {% if comments.position == "5" %}
+                                    <i class="fas fa-guitar icon"></i>
+                                {% endif %}
+                            </div>
+                        <!-- <div class="fcol"> -->
+                            <div class="card-con">
+                            {% for comment in comments %}
+                            {{ forloop.counter }} {# starting index 1 #}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>{{comment.body}}</h5> <!--코멘트-->
+                                        <h6>작성자 : {{comment.writer}}</h6> <!--작성자랑 정보-->
+                                        <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
+                                        <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                                        <br>
+                                        <a href ="{% url 'joiner_like' melody.id %}">
+                                            {% if message_join == 2%}
+                                            <i class="far fa-heart"></i>
+                                            {% endif %}
+                                            {% if message_join == 1%}
+                                            <i class="fas fa-heart"></i>
+                                            {% endif %}
+                                        </a>{{joiner.joiner_likes.count}}
+                                        {% if comment.writer == user %}
+                                        <a href="{% url 'comment_delete' comment.id %}">
+                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
+                                        </a>
+                                        {% endif %}
+                                        
+                                        <div id="comment_waveform_{{ forloop.counter }}">
+                                            <script>
+                                                var wavesurfer = WaveSurfer.create({
+                                                    // id="waveform" 인 오브젝트에 파형 생성
+                                                    // 필수 옵션
+                                                    container: '#comment_waveform_{{ forloop.counter }}',
+                                                    // 선택 옵션들 
+                                                    waveColor: '#02D5C6',
+                                                    progressColor: '#008179',
+                                                    barWidth: 3,
+                                                });
+                                                //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                                                wavesurfer.load("{{ comment.audio.url }}");
+                                            </script>
+                                            <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
-            </div>
-        </div>
-        {% endfor %}
-        <form method="POST" action="{% url 'chat' melody.id %}">
-            {% csrf_token %}
-                <textarea cols=40 rows=2 name="body"></textarea>
-                <input class="btn btn-dark" type="submit" value="CHAT!">
-        </form>
-        
-        
-
+            {% endfor %}
     </div>
+        <!--Chats & Likes-->
+        <div class= chats>
+  
+            {% for chat in chats%}
+            <div class="card">
+                <div class="card-body">
+                    <h5>{{chat.body}}</h5>
+                    <h6>작성자: {{chat.chatter}}, 날짜: {{chat.date}}</h6>
+                    {% if chat.chatter == user %}
+                    <a href="{% url 'chat_delete' chat.id %}">
+                        <button type="button" class="btn btn-dark">삭제</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <form method="POST" action="{% url 'chat' melody.id %}">
+                {% csrf_token %}
+                    <textarea cols=40 rows=2 name="body"></textarea>
+                    <input class="btn btn-dark" type="submit" value="CHAT!">
+            </form>
+        </div>
+    
 </div>
 
 {% endblock %}

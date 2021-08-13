@@ -13,3 +13,5 @@ $("#playbutton").on('click', function() {
         document.getElementById("playbutton").classList.replace("fa-pause-circle", "fa-play-circle");
     }
 });
+
+var comment_waveforms = []

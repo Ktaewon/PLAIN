@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import get_list_or_404, redirect, render, get_object_or_404
 from .models import Melody, Comment, Follow,Joiner, Chat
 from .forms import MelodyForm
 from django.utils import timezone
@@ -14,33 +14,38 @@ def melody(request):
 def detail(request, id):
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
-    joiner = get_object_or_404(Joiner, pk=id)
     chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
-        message= "좋아요 취소"
+        message= 1
     else: 
-        message = "좋아요"
-
-    if joiner.joiner_likes.filter(id=request.user.id):
-         message_join= 1
-    else:
-         message_join= 2
+        message = 2
+    message_joiner = 0
+    
+    if comments:
+        joiner=get_object_or_404(Joiner, pk=id)
+        if joiner.joiner_likes.filter(id=request.user.id):
+            message_joiner = 1
+        else:
+            message_joiner = 2
+        
     
     comment_sub = []
     for i in range(0, 6):
-        comment_sub[i] = []
+        comment_sub.append(list())
     for comment in comments:
-        if comment.position == 1: #piano
+        print(comment.position)
+        if comment.position == "1": #piano
             comment_sub[1].append(comment)
-        elif comment.position == 2: #guitar
+        elif comment.position == "2": #guitar
             comment_sub[2].append(comment)
-        elif comment.position == 3: #bass
+        elif comment.position == "3": #bass
             comment_sub[3].append(comment)
-        elif comment.position == 4: #drum
+        elif comment.position == "4": #drum
             comment_sub[4].append(comment)
-        elif comment.position == 5: #else
+        elif comment.position == "5": #else
             comment_sub[5].append(comment)
-    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_join":message_join},)   #'melody_detail2.html'
+    print(comment_sub)
+    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_joiner":message_joiner},)   #'melody_detail2.html'
     
 
 def upload_melody(request):
@@ -68,26 +73,23 @@ def upload_melody(request):
 
 
 #commend create
-def createcomment(request,melody_id):
+def createcomment(request,id):
     if request.method == "POST":
-
         comment = Joiner()
         comment.body = request.POST['body']
         comment.position = request.POST['position']  
         comment.pub_date = timezone.datetime.now()
         comment.writer = request.user
-        comment.post = get_object_or_404(Melody , pk=melody_id)
+        comment.post = get_object_or_404(Melody , pk=id)
         comment.audio = request.FILES.get("commendInput")
         comment.save()
-       
-
         return redirect('detail',id)
     else:
         return redirect('detail',id)
 
 
 def comment_delete(request, comment_id):
-    comment = get_object_or_404(Comment, pk=comment_id)
+    comment = get_object_or_404(Joiner, pk=comment_id)
     melody_id = comment.post.id
     comment.delete()
 
