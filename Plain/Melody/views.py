@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import get_list_or_404, redirect, render, get_object_or_404
 from .models import Melody, Comment, Follow,Joiner, Chat
 from .forms import MelodyForm
 from django.utils import timezone
@@ -16,9 +16,18 @@ def detail(request, id):
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
     chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
-        message= "좋아요 취소"
+        message= 1
     else: 
-        message = "좋아요"
+        message = 2
+    message_joiner = 0
+    
+    if comments:
+        joiner=get_object_or_404(Joiner, pk=id)
+        if joiner.joiner_likes.filter(id=request.user.id):
+            message_joiner = 1
+        else:
+            message_joiner = 2
+        
     
     comment_sub = []
     for i in range(0, 6):
@@ -36,7 +45,7 @@ def detail(request, id):
         elif comment.position == "5": #else
             comment_sub[5].append(comment)
     print(comment_sub)
-    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message},)   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_joiner":message_joiner},)   #'melody_detail2.html'
     
 
 def upload_melody(request):

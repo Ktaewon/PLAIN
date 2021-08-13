@@ -26,6 +26,15 @@
                     #{{ tag.name }}
                     </span>
                     {% endfor %}
+                    <a href="{% url 'post_like' melody.id %}" >
+                        {% if message == 2%}
+                        <i class="far fa-heart"></i>
+                        {% endif %}
+                        {% if message == 1%}
+                        <i class="fas fa-heart"></i>
+                        {% endif %}
+                        {{melody.likes.count}}
+                    </a>
                 </div>
             </div>
         </div>
@@ -60,6 +69,7 @@
     </div>
 </div>
 <div class="6">네브 버튼들</div>
+         
 <div class="container-all-2">
     <div class="subupload-con">
         <div class="subupload">
@@ -121,8 +131,14 @@
                                         <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
                                         <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
                                         <br>
-                                        <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
-                                        <br>{{melody.likes.count}}명이 좋아합니다.
+                                        <a href ="{% url 'joiner_like' melody.id %}">
+                                            {% if message_join == 2%}
+                                            <i class="far fa-heart"></i>
+                                            {% endif %}
+                                            {% if message_join == 1%}
+                                            <i class="fas fa-heart"></i>
+                                            {% endif %}
+                                        </a>{{joiner.joiner_likes.count}}
                                         {% if comment.writer == user %}
                                         <a href="{% url 'comment_delete' comment.id %}">
                                             <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
@@ -157,8 +173,7 @@
     </div>
         <!--Chats & Likes-->
         <div class= chats>
-            <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
-            <br>{{melody.likes.count}}명이 좋아합니다.
+  
             {% for chat in chats%}
             <div class="card">
                 <div class="card-body">
