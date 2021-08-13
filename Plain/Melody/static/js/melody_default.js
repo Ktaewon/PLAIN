@@ -17,7 +17,7 @@ $("#playbutton").on('click', function() {
 
 var comment_waveforms = []
 
-const checking_button=document.querySelector("#checkedbutton");
+
 
 function findout_checked()
 {
@@ -34,5 +34,15 @@ function findout_checked()
 
     
 }
-
+const checking_button=document.querySelector("#checkedbutton");
 checking_button.addEventListener("click",findout_checked);
+$("#comment_play").on('click', function() {
+    if (check == 0){
+        check = 1;
+        document.getElementById("comment_playbutton").classList.replace("fa-play-circle", "fa-pause-circle");
+    }
+    else {
+        check = 0;
+        document.getElementById("comment_playbutton").classList.replace("fa-pause-circle", "fa-play-circle");
+    }
+});

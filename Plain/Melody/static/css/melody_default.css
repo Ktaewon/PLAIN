@@ -216,3 +216,10 @@
     width : 700px;
 }
 
+#comment_playbutton {
+    font-size: 50px !important;
+    color:#02D5C6;
+}
+.comment_waveform {
+    width: 600px;
+}
