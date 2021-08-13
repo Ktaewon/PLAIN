@@ -29,12 +29,15 @@ li {
     background: #E0E0E0;
     opacity: 0.5;
     border-radius: 8px;
+    box-shadow: none!important;
 }
 
 .form-select {
     border: none;
     line-height: 29px;
+    width: 5.5rem;
     cursor: pointer;
+    box-shadow: none!important;
 }
 
 .signInBtn {
@@ -70,7 +73,18 @@ li {
     right: 0;
 }
 
+.footer-content {
+    margin: 0px auto;
+    border-top: 1px solid #cccaca;
+    width: 80vw;
+    justify-content: center;
+}
+
 #footer-logo {
     height: 100px;
-    margin-left: 150px;
+}
+
+.col {
+    text-align: center;
+    font-size: 0.8rem;
 }

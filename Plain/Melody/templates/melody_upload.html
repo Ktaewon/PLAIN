@@ -9,10 +9,14 @@ Upload Your Melody
 {% endblock %}
 
 {% block out_container_content %}
-<img id="upload_bg" src="{% static 'images/upload_bg.png' %}">
+<div class="banner">
+    <div class="banner_title">Upload your own music</div>
+    <img class="banner_img" id="upload_bg" src="{% static 'images/upload_bg.png' %}">
+</div>
 {% endblock %}
 
 {% block in_container_content %}
+
 <form class="was-validated f1" action="{% url 'upload'  %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="frow">

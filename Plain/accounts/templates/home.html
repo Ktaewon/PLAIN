@@ -1,4 +1,11 @@
-{% extends "base_home.html" %} {% load static %} {% block title %} PLAiN - Make your own music {% endblock %} {% block style %}
+{% extends "base_home.html" %} 
+{% load static %} 
+
+{% block title %} 
+PLAiN - Make your own music 
+{% endblock %} 
+
+{% block style %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css"> {% endblock %} {% block out_container_content %}
 <div class="banner">
     <div class="banner_text">
@@ -6,11 +13,12 @@
         <div class="banner_comment">Discover, stream, and share constantly expanding mix of music <br>for emerging and major artists around the world</div>
         {% if user.is_authenticated %}
         {% else %}
-        <button>sign in</button>
+        <button class="signinbutton" onclick="location.href = '/accounts/signup'">Sign up for free</button>
         {% endif %}
     </div> 
     <img src="{% static 'img/homeImage.png' %}" id="banner_img">
 </div>
+
 <div class="bodyClass">
     <div class="searchAndBtn">
         <div class="searchBar">
@@ -21,7 +29,12 @@
             </form>
         </div>
         <div class="uploadBtnWrapper">
+        {% if user.is_authenticated %}
             <button class="uploadBtn" onclick="location.href = '/melody'">Upload your own</button>
+        {% else %}
+            <button class="uploadBtn" onclick="location.href = '/accounts/login'">Upload your own</button>
+        {% endif %}
+
         </div>
         <br>
     </div>

@@ -4,6 +4,18 @@
     /* z-index: -1; */
 }
 
+.signinbutton {
+    border-radius: 6px;
+    height: 5vh;
+    width: 12vw;
+    line-height: 40px;
+    border: none;
+    background-color: #02d5c6;
+    color: white;
+    margin-top: 3vh;
+    font-size: 1.2rem;
+}
+
 .bodyClass {
     position: relative;
     min-height: 50vh;

@@ -1,5 +1,5 @@
 .f1 {
-    border-style:solid !important;
+    border-style: solid !important;
     border-radius: 20px !important;
     border-color: #02D5C6 !important;
     margin-top: 50px;
@@ -9,86 +9,98 @@
     padding: 20px;
     padding-top: 40px;
 }
+
 label {
     font-weight: bold;
 }
+
 .form-select {
     width: 600px;
 }
+
 .form-control {
     width: 600px;
 }
+
 .mb-3 .prow .form-control {
     width: 540px;
 }
+
 #deadline {
     width: 600px;
 }
+
 .fcol {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin:20px;
+    margin: 20px;
 }
+
 .frow {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+
 .prow {
     display: flex;
     justify-content: space-around !important;
 }
+
 .img_preview {
     /* display: flex; */
     /*float: left !important;*/
     cursor: pointer;
-    flex-direction: column; 
-    width : 300px;
-    height : 300px;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
     margin: 20px;
     background-color: #f0f0f0;
     border-radius: 27px;
     position: relative;
     /* border-radius: 27px; */
 }
+
 .img_preview .img-text {
-    position:absolute;
-    top:120px;
-    left:10px;
-    color:#d3d3d3;
+    position: absolute;
+    top: 120px;
+    left: 10px;
+    color: #d3d3d3;
     font-weight: bold;
     text-align: center;
     font-size: 17px;
-    text-shadow: -1px 0 white,
-                0 1px white,
-                1px 0 white,
-                0 -1px white;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
 #hashtag_all_div {
     display: none;
 }
+
 .fa-image {
     font-size: 50px;
     color: #d3d3d3;
 }
+
 #image_section {
     border-style: none;
     border-radius: 27px;
-
     /* border-style: none; */
     /*
     -webkit-filter: opacity(.5) drop-shadow(0 0 0 white);
     filter: opacity(.5) drop-shadow(0 0 0 white);*/
 }
-#imgInput{
+
+#imgInput {
     display: none;
 }
+
 #melodyInput {
     display: none;
 }
+
 #hashtag-btn {
-    height:40px;
+    height: 40px;
     width: 50px;
     margin-left: 5px;
     padding-top: 3px;
@@ -96,37 +108,52 @@ label {
     padding-left: 1px;
     padding-right: 1px;
 }
+
 #hash {
     border-style: none;
     border-radius: 5px;
     background-color: lightgrey;
     padding: 3px;
-    margin:5px;
+    margin: 5px;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner_title {
+    color: #9effff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate( -50%, -50%);
+    font-size: 5rem;
+    font-weight: 600;
 }
 
 .btn-inst {
-    width : 20px;
+    width: 20px;
     height: 20px;
     color: white;
     text-align: center;
 }
 
-
 #upload_bg {
     object-fit: cover;
-    width : 100%;
+    width: 100%;
 }
 
-.melody_content{
-    outline: 2px dashed #92b0b3 ;
-    outline-offset:-10px;  
+.melody_content {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
     text-align: center;
     transition: all .15s ease-in-out;
     width: 300px;
     height: 300px;
     background-color: lightgray;
-    
 }
+
 #upload-btn {
     width: 100px;
     height: 50px;
@@ -134,9 +161,11 @@ label {
     border-style: none;
     font-size: 20px;
 }
+
 #upload-btn:hover {
     background-color: #02d5c7b6;
 }
+
 #music_name {
     display: none;
     border-style: solid;
@@ -147,36 +176,43 @@ label {
     background-color: #f1f3f4;
     font-size: 12px;
     text-align: center;
-    padding:20px;
+    padding: 20px;
 }
+
 .umelody {
     cursor: pointer;
-    width : 300px;
-    height : 300px;
+    width: 300px;
+    height: 300px;
     margin: 20px;
     position: relative;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
     border-radius: 27px;
     border-style: none;
     background-color: #f0f0f0;
 }
+
 .mel-text {
     text-align: center;
-    padding:10px;
+    padding: 10px;
 }
+
 .fa-music {
     text-align: center;
     font-size: 50px;
-    color:lightgray;
+    color: lightgray;
     padding-bottom: 20px;
 }
-#ump{
+
+#ump {
     padding: 20px;
 }
 
+
 /**/
-h3, p {
+
+h3,
+p {
     text-align: center;
 }
 
@@ -190,6 +226,7 @@ h3, p {
     outline-offset: -15px;
     background-color: #eee;
 }
+
 .file-upload .form-control:before {
     content: "\f093";
     font: normal normal normal 14px/1 FontAwesome;
@@ -200,6 +237,7 @@ h3, p {
     margin: 20px auto;
     text-align: center;
 }
+
 .file-upload .form-control:after {
     content: attr(data-message);
     left: 0;
@@ -208,6 +246,7 @@ h3, p {
     text-align: center;
     display: block;
 }
+
 .file-upload .form-control input[type="file"] {
     cursor: pointer;
     opacity: 0;
@@ -219,6 +258,7 @@ h3, p {
     right: 0;
     left: 0;
 }
+
 body.dragged .file-upload .form-control input[type="file"] {
     /* Make sure it is full screen, whatever the position absolute container */
     position: fixed;
@@ -254,4 +294,3 @@ body.dragged:after {
     opacity: 1;
     visibility: visible;
 }
-
