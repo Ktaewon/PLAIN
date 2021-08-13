@@ -8,6 +8,7 @@ urlpatterns = [
     path("detail/<str:id>", views.detail, name="detail"),
     path('comment/<str:id>', views.createcomment, name='comment'),
     path("default/<str:id>", views.detail, name="default"),
+    path('preview',views.preview,name="preview"),
 
     #path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
     #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
@@ -21,5 +22,6 @@ urlpatterns = [
     # Chats
     path('chat/<str:melody_id>', views.chat, name="chat"),
     path('chat/delete/<str:chat_id>', views.chat_delete, name="chat_delete"),
+   
 ]   
 

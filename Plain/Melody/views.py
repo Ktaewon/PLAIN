@@ -72,6 +72,12 @@ def upload_melody(request):
         return redirect('default', melody.id)
 
 
+def preview(request):
+    preview=Melody.objects.all()
+    return redirect('home')
+
+
+
 #commend create
 def createcomment(request,id):
     if request.method == "POST":
