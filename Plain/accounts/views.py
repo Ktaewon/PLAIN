@@ -6,24 +6,16 @@ from django.contrib import auth
 def signup(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
-            # try:
-            #     user=User.objects.get(username=request.POST['username'])
-            #     return render(request, 'signup.html', {'error': 'Username has already been taken'})
-            # except User.DoesNotExist:
             user=User.objects.create_user(request.POST['username'], password=request.POST['password1'])
             auth.login(request, user)
             return redirect('home')
-        # else: 
-        #     return render(request, 'signup.html', {'error':'Passwords must match'}
-        #     )
-    # else: 
     return render(request, 'signup.html')
         
 def create(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
             new_user=User.objects.create_user(request.POST['email'], password=request.POST['password1'])
-            new_user.img = request.FILES.get("imgInput")
+            # new_user.img = request.FILES.get("imgInput")
             #new_user.email=request.POST['email']
             new_user.nickname=request.POST['nickname']
             new_user.genre=request.POST['genre']

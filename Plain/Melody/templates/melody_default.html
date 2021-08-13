@@ -64,20 +64,21 @@
                 </div>
             </div>
         </div>
-        <div class="6">
-            <button>❤Like</button>
-            <button>💾Download</button>
-            <button>🚀Repost</button>
-            <button>📌PIN</button>
-            <button>➕More</button>
-            <button id="checkedbutton">play together</button>
+        <div class="btnWrapper">
+            <button class="menu">❤Like</button>
+            <button class="menu">💾Download</button>
+            <button class="menu">🚀Repost</button>
+            <button class="menu">📌PIN</button>
+            <button class="menu">➕More</button>
+            <button class="menu" id="checkedbutton">play together</button>
         </div>
 
         <div class="container-all-2">
             <div class="subupload-con">
-                <div class="subupload">
+                <div class="subupload-input">
                     <!--댓글작성 폼-->
                     <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
+                        <div class="addmusictext">Add your music!</div>
                         {% csrf_token %}
                         <select class="form-select" aria-label="select example" name="position" id="position">
                     <option value="">Instrument</option>
@@ -89,17 +90,14 @@
                 </select>
                         <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
                         <!--음악 파일 삽입하는 부분-->
-                        <textarea class="form-control" cols=70 rows=2 name="body" placeholder="leave a message"></textarea>
+                        <textarea class="form-control" rows=1 name="body" placeholder="leave a message"></textarea>
                         <!--comment 남기는 것-->
-                        <div class="fcol">
-                            <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required>
-                            <button type="button" class="btn btn-secondary " id="subupload-btn"><i class="fas fa-music"></i></button>
-                            <div id="music_name"></div>
-                        </div>
+                        <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required>
+                        <button type="button" id="subupload-btn">🎵</button>
+                        <div id="music_name"></div>
 
-                        <div class="fcol">
-                            <button class="btn btn-primary" type="submit" id="upload-btn">Submit</button>
-                        </div>
+                        <button class="btn btn-primary" type="submit" id="upload-btn">Submit</button>
+
                     </form>
                 </div>
                 <script>
@@ -109,8 +107,8 @@
                 <!--댓글한개-->
                 {% for comments in comment_sub %} {% if comments %}
                 <div class="subupload">
-                    <div class="frow sp">
-                        <div>
+                    <div class="frow ls">
+                        <div class="instIcon">
                             <i class="fas fa-guitar icon"></i> {% if comments.position == 1 %}
                             <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == 2 %}
                             <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == "3" %}
@@ -118,17 +116,14 @@
                             <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == "5" %}
                             <i class="fas fa-guitar icon"></i> {% endif %}
                         </div>
-                        <!-- <div class="fcol"> -->
                         <div class="card-con">
                             {% for comment in comments %}
-                            <!-- {{ forloop.counter }} {# starting index 1 #} -->
-
                             <div class="card">
                                 <div class="card-body">
-                                    <p>동시재생 여부 <input id="checking" name="checked" type="checkbox" value="{{ comment.id }}"></p>
+                                    <p class="checkText">🎶<input id="checking" name="checked" type="checkbox" value="{{ comment.id }}"></p>
                                     <h5>{{comment.body}}</h5>
                                     <!--코멘트-->
-                                    작성자 : {{comment.writer}}
+                                    Added By : {{comment.writer}}
                                     <!--작성자랑 정보-->
                                     {% if comment.writer == user %}
                                     <a href="{% url 'comment_delete' comment.id %}">
@@ -150,7 +145,7 @@
                                         </a>{{joiner.joiner_likes.count}}
                                     <div class="frow sp">
                                         <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play" class="cm_play" name="{{ comment.id }}">
-                                            <i class="fas fa-play-circle button" id="comment_playbutton"></i>
+                                            <i class="fas fa-play-circle playButton" id="comment_playbutton"></i>
                                         </div>
                                         <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
                                             <script>
@@ -186,6 +181,11 @@
     <!--Chats & Likes-->
     <div class="fcol commentpart">
         <div class=c hats>
+            <form method="POST" action="{% url 'chat' melody.id %}">
+                {% csrf_token %}
+                <textarea cols=40 rows=2 name="body"></textarea>
+                <input class="btn btn-dark" type="submit" value="CHAT!">
+            </form>
             {% for chat in chats%}
             <div class="card">
                 <div class="card-body">
@@ -193,17 +193,12 @@
                     <h6>작성자: {{chat.chatter}}, 날짜: {{chat.date}}</h6>
                     {% if chat.chatter == user %}
                     <a href="{% url 'chat_delete' chat.id %}">
-                        <button type="button" class="btn btn-dark">삭제</button>
+                        <button type="button" class="deleteBtn">삭제</button>
                     </a>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
-            <form method="POST" action="{% url 'chat' melody.id %}">
-                {% csrf_token %}
-                <textarea cols=40 rows=2 name="body"></textarea>
-                <input class="btn btn-dark" type="submit" value="CHAT!">
-            </form>
         </div>
     </div>
 </div>

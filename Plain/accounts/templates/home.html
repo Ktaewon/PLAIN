@@ -1,21 +1,12 @@
-{% extends "base_home.html" %} 
-{% load static %} 
-
-{% block title %} 
-PLAiN - Make your own music 
-{% endblock %} 
-
-{% block style %}
+{% extends "base_home.html" %} {% load static %} {% block title %} PLAiN - Make your own music {% endblock %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css"> {% endblock %} {% block out_container_content %}
 <div class="banner">
     <div class="banner_text">
         <div class="banner_title">Connect on PLAiN</div>
         <div class="banner_comment">Discover, stream, and share constantly expanding mix of music <br>for emerging and major artists around the world</div>
-        {% if user.is_authenticated %}
-        {% else %}
-        <button class="signinbutton" onclick="location.href = '/accounts/signup'">Sign up for free</button>
-        {% endif %}
-    </div> 
+        {% if user.is_authenticated %} {% else %}
+        <button class="signinbutton" onclick="location.href = '/accounts/signup'">Sign up for free</button> {% endif %}
+    </div>
     <img src="{% static 'img/homeImage.png' %}" id="banner_img">
 </div>
 
@@ -29,11 +20,9 @@ PLAiN - Make your own music
             </form>
         </div>
         <div class="uploadBtnWrapper">
-        {% if user.is_authenticated %}
-            <button class="uploadBtn" onclick="location.href = '/melody'">Upload your own</button>
-        {% else %}
-            <button class="uploadBtn" onclick="location.href = '/accounts/login'">Upload your own</button>
-        {% endif %}
+            {% if user.is_authenticated %}
+            <button class="uploadBtn" onclick="location.href = '/melody'">Upload your own</button> {% else %}
+            <button class="uploadBtn" onclick="location.href = '/accounts/login'">Upload your own</button> {% endif %}
 
         </div>
         <br>
@@ -45,9 +34,15 @@ PLAiN - Make your own music
                 <div class="moreBtn">More 👉</div>
             </div>
             <div class="completeImg">
-                <img class="albumart" src="{% static 'img/1.png' %}">
-                <img class="albumart" src="{% static 'img/2.png' %}">
-                <img class="albumart" src="{% static 'img/3.png' %}">
+                <a href="{% url 'default' 1 %}">
+                    <img class="albumart" src="{% static 'img/1.png' %}">
+                </a>
+                <a href="{% url 'default' 2 %}">
+                    <img class="albumart" src="{% static 'img/2.png' %}">
+                </a>
+                <a href="{% url 'default' 3 %}">
+                    <img class="albumart" src="{% static 'img/3.png' %}">
+                </a>
             </div>
         </div>
         <div class="progressMusic">
