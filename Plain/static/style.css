@@ -38,6 +38,10 @@ li {
     margin-right: 0;
 }
 
+footer {
+    width: 100%;
+}
+
 .footer-content {
     margin: 0px auto;
     padding-top: 2rem;
@@ -53,4 +57,7 @@ li {
 .col {
     text-align: center;
     font-size: 0.8rem;
+}
+.out {
+    margin-bottom: 50px;
 }

@@ -3,7 +3,7 @@
     flex-direction: row;
     background: linear-gradient(180deg, #FCBDBD 0%, rgba(255, 255, 255, 0.0260417) 76.56%, rgba(255, 255, 255, 0) 100%), #9ABCDC;
     justify-content: space-around;
-    margin: 0;
+    margin-bottom: 0;
 }
 
 .cm_play {
@@ -311,4 +311,26 @@
     margin-left: 60vw;
     font-size: 1.7rem;
     margin-bottom: -2vh;
+}
+
+.sf {
+    justify-content:flex-start;
+}
+#chat-form {
+    margin: 10px;
+}
+#chat-area {
+    border-radius: 15px;
+}
+#chat-btn {
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    height:45px;
+}
+
+.chat-con {
+    border-bottom: 1px solid rgb(190, 190, 190);
 }
