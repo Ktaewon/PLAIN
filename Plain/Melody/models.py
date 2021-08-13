@@ -32,8 +32,8 @@ class Joiner(models.Model):
 class Comment(models.Model):
     comment_body = models.CharField(max_length=200)
     comment_date = models.DateTimeField()
-    comment_owner = models.ForeignKey(User, related_name='comment_ownerr', on_delete=models.CASCADE)
-    comment_post = models.ForeignKey(Melody, related_name='comment_postt', on_delete=models.CASCADE)
+    comment_owner = models.ForeignKey(User, related_name='comment_owner', on_delete=models.CASCADE)
+    comment_post = models.ForeignKey(Melody, related_name='comment_post', on_delete=models.CASCADE)
    
 
 '''joiner가 comment랑 똑같은 기능을 하는 객체임!!!!!! 

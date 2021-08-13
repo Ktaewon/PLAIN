@@ -48,15 +48,15 @@ def upload_melody(request):
 
 
 #commend create
-def createcomment(request,id):
+def createcomment(request,melody_id):
     if request.method == "POST":
 
         comment = Joiner()
         comment.body = request.POST['body']
-        comment.positon = request.POST['position']  
+        comment.position = request.POST['position']  
         comment.pub_date = timezone.datetime.now()
         comment.writer = request.user
-        comment.post = get_object_or_404(Melody , pk=id)
+        comment.post = get_object_or_404(Melody , pk=melody_id)
         comment.audio = request.FILES.get("commendInput")
         comment.save()
        
@@ -66,32 +66,18 @@ def createcomment(request,id):
         return redirect('detail',id)
 
 
+def comment_delete(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    melody_id = comment.post.id
+    comment.delete()
+
+    return redirect('/melody/default/'+str(melody_id))
+
 '''이밑으로는 안 쓰임!! comment를 join이라는 모델로 만들었음 !!
    댓글쓴 사람만 댓글 삭제할 수 있는 기능 구현 안됨
    작성자만 게시물 삭제하거나 수정할 수 있는 것도 아직 안 만든 상태
 '''
 
-
-# Comments
-def comment(request, melody_id):
-        if request.method == "POST" :
-            comment = Comment()
-            comment.body = request.POST['body']
-            comment.date = timezone.datetime.now()
-            comment.writer = request.user
-            comment.post = get_object_or_404(Melody, pk=melody_id)
-            comment.save()
-
-            return redirect('/melody/'+str(melody_id))
-        else:
-            return redirect('/melody/'+str(melody_id))
-
-def comment_delete(request, comment_id):
-    comment=Comment.object.get(pk=User)
-    comment = get_object_or_404(Comment, pk=comment_id)
-    melody_id = comment.post.id
-    comment.delete()
-    return redirect('/detail/'+str(melody_id))
 
 #Chats
 def chat(request, melody_id):

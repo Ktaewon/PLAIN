@@ -65,6 +65,7 @@
 
         <!--댓글한개-->
         {% for comment in comments %}
+        
         <div class="card">
             <div class="card-body">
                 <h5>{{comment.body}}</h5> <!--코멘트-->
@@ -75,6 +76,11 @@
                 <br>
                 <a href="{% url 'post_like' melody.id %}" >{{message}}</a>
                 <br>{{melody.likes.count}}명이 좋아합니다.
+                {% if comment.writer == user %}
+                <a href="{% url 'comment_delete' comment.id %}">
+                    <button type="button" class="btn btn-dark">삭제</button>
+                </a>
+                {% endif %}
                 <!--파형 버전
                 <div id="comment_waveform">
                     <script>
@@ -96,6 +102,7 @@
                 
             </div>
         </div>
+        
         {% endfor %}
 
         <!--댓글작성 폼-->
@@ -103,11 +110,11 @@
             {% csrf_token %}
             <select class="form-select" aria-label="select example" name="position" id="position">
                 <option value="">Instrument</option>
-                <option value="1">Piano</option>
-                <option value="2">Guitar</option>
-                <option value="3">Bass</option>
-                <option value="4">Drum</option>
-                <option value="5">Else...</option>
+                <option value="Piano">Piano</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Bass">Bass</option>
+                <option value="Drum">Drum</option>
+                <option value="Else..">Else...</option>
             </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
             <!--음악 파일 삽입하는 부분-->
             <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->

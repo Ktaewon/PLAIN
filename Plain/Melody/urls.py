@@ -13,7 +13,7 @@ urlpatterns = [
     #path('tag/<str:tag>', views.TaggedObjectLV.as_view(), 
     #    name='tagged_object_list'),
 
-    path('comment/<str:melody_id>', views.comment, name='comment'),
+    
     path('comment/delete/<str:comment_id>', views.comment_delete, name='comment_delete'),
     # Like
     path('like/<str:melody_id>', views.post_like, name='post_like'),
