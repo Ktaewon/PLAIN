@@ -1,94 +1,101 @@
-.navbar {
-    border-bottom: 1px solid #E5E9F2;
-    height: 55px;
-    font-family: inherit;
-    font-size: 17px;
-}
-
-.navbar-brand {
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 30px;
-}
-
-.btn {
-    padding: 0;
-    height: 29px;
-}
-
-li {
-    margin-right: 32px;
-}
-
-.nav-item {
-    cursor: pointer;
-}
-
-.form-control {
-    width: 700px;
-    background: #E0E0E0;
-    opacity: 0.5;
-    border-radius: 8px;
-    box-shadow: none!important;
-}
-
-.form-select {
-    border: none;
-    line-height: 29px;
-    width: 5.5rem;
-    cursor: pointer;
-    box-shadow: none!important;
-}
-
-.signInBtn {
-    border-radius: 6px;
-    height: 40px;
-    width: 97px;
-    line-height: 20px;
-    border: 1px solid #7a7a7a;
-    background-color: white;
-    margin-right: 20px;
-    color: #7a7a7a;
-}
-
-.signUpBtn {
-    border-radius: 6px;
-    height: 40px;
-    width: 97px;
-    line-height: 40px;
-    border: none;
-    background-color: #02d5c6;
-    color: white;
-}
-
-#navbar-nav-right-btn {
-    position: absolute;
-    right: 30px;
-    margin-right: 0;
-}
-
-#navbar-nav-right {
-    margin-right: 0;
-    position: absolute;
-    right: 0;
-}
-
-footer {
-    width: 100%;
-}
-
-.footer-content {
-    margin: 0px auto;
-    border-top: 1px solid #cccaca;
-    width: 80vw;
-    justify-content: center;
-}
-
-#footer-logo {
-    height: 100px;
-}
-
-.col {
-    text-align: center;
-    font-size: 0.8rem;
-}
+    .navbar {
+        border-bottom: 1px solid #E5E9F2;
+        height: 55px;
+        font-family: inherit;
+        font-size: 17px;
+    }
+    
+    .navbar-brand {
+        width: 100px;
+        margin-left: 10px;
+        margin-right: 30px;
+    }
+    
+    .btn {
+        padding: 0;
+        height: 29px;
+    }
+    
+    li {
+        margin-right: 32px;
+    }
+    
+    .nav-item {
+        cursor: pointer;
+    }
+    
+    .form-control {
+        width: 700px;
+        background: #E0E0E0;
+        opacity: 0.5;
+        border-radius: 8px;
+        box-shadow: none!important;
+    }
+    
+    .form-select {
+        border: 1px solid #02d5c6;
+        background-color: #02d5c6;
+        line-height: 29px;
+        width: 5.5rem;
+        cursor: pointer;
+        box-shadow: none!important;
+    }
+    
+    .upload {
+        border: 1px solid #02d5c6;
+        background-color: #02d5c6;
+        border-radius: 3px;
+    }
+    
+    .signInBtn {
+        border-radius: 6px;
+        height: 40px;
+        width: 97px;
+        line-height: 20px;
+        border: 1px solid #7a7a7a;
+        background-color: white;
+        margin-right: 20px;
+        color: #7a7a7a;
+    }
+    
+    .signUpBtn {
+        border-radius: 6px;
+        height: 40px;
+        width: 97px;
+        line-height: 40px;
+        border: none;
+        background-color: #02d5c6;
+        color: white;
+    }
+    
+    #navbar-nav-right-btn {
+        position: absolute;
+        right: 30px;
+        margin-right: 0;
+    }
+    
+    #navbar-nav-right {
+        margin-right: 0;
+        position: absolute;
+        right: 0;
+    }
+    
+    footer {
+        width: 100%;
+    }
+    
+    .footer-content {
+        margin: 0px auto;
+        border-top: 1px solid #cccaca;
+        width: 80vw;
+        justify-content: center;
+    }
+    
+    #footer-logo {
+        height: 100px;
+    }
+    
+    .col {
+        text-align: center;
+        font-size: 0.8rem;
+    }

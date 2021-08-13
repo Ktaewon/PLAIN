@@ -65,13 +65,13 @@
             </div>
         </div>
         <div class="btnWrapper">
-            <a href="{% url 'preview' %}">🚀you must click</a>   
-            <button class="menu" id="checkedbutton">play together</button>    
+            <a href="{% url 'preview' %}" class="clickHere">🚀you must click</a>
+            <button class="menu together" id="checkedbutton">play together</button>
             <button class="menu">❤Like</button>
             <button class="menu">💾Download</button>
             <button class="menu">📌PIN</button>
             <button class="menu">➕More</button>
-        
+
         </div>
 
         <div class="container-all-2">
@@ -181,7 +181,7 @@
     </div>
     <!--Chats & Likes-->
     <div class="fcol commentpart sf">
-        <div class=c hats>
+        <div>
             <form method="POST" action="{% url 'chat' melody.id %}" id="chat-form" class="frow">
                 {% csrf_token %}
                 <textarea id="chat-area" cols=40 rows=2 name="body"></textarea>
