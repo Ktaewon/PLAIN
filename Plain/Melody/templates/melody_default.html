@@ -111,8 +111,11 @@
                         <div class="instIcon">
                             {% if comments.0.position == "1" %}
                             <img class="inst-icon" src="{% static 'images/piano.jpg' %}">
-                            <i class="fas fa-piano icon"></i> {% endif %} {% if comments.0.position == "2" %}
-                            <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.0.position == "3" %}
+                            {% endif %} 
+                            {% if comments.0.position == "2" %}
+                            <img class="inst-icon" src="{% static 'images/guitar.png' %}">
+                            {% endif %} 
+                            {% if comments.0.position == "3" %}
                             <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.0.position == "4" %}
                             <i class="fas fa-drum icon"></i> {% endif %} {% if comments.0.position == "5" %}
                             <i class="fas fa-guitar icon"></i> {% endif %}
