@@ -74,7 +74,7 @@
                  <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
                 <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
                 <br>
-                <a href ="{% url 'joiner_like' melody.id %}">
+                <a href ="{% url 'joiner_like' joiner.id %}">
                     {% if message_join == 2%}
                     <i class="far fa-heart"></i>
                     {% endif %}
