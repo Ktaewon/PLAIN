@@ -130,9 +130,14 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5>{{comment.body}}</h5> <!--코멘트-->
-                                        <h6>작성자 : {{comment.writer}}</h6> <!--작성자랑 정보-->
+                                        작성자 : {{comment.writer}} <!--작성자랑 정보-->
+                                        {% if comment.writer == user %}
+                                        <a href="{% url 'comment_delete' comment.id %}">
+                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
+                                        </a>
+                                        {% endif %}
                                         <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                                        <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                                        <!--<audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>-->  <!--오디오파일-->
                                         <br>
                                         <a href ="{% url 'joiner_like' melody.id %}">
                                             {% if message_join == 2%}
@@ -142,11 +147,7 @@
                                             <i class="fas fa-heart"></i>
                                             {% endif %}
                                         </a>{{joiner.joiner_likes.count}}
-                                        {% if comment.writer == user %}
-                                        <a href="{% url 'comment_delete' comment.id %}">
-                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
-                                        </a>
-                                        {% endif %}
+                                        
                                         
                                         <div id="comment_waveform_{{ comment.id }}">
                                             <script>
@@ -165,8 +166,6 @@
                                             </script>
                                             <button onclick="comment_wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
                                         </div>
-                                        {{ count|add:1 }}
-                                        {{count}}
                                     </div>
                                 </div>
                             <!-- </div> -->
