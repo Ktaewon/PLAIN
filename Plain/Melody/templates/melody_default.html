@@ -113,6 +113,7 @@
                         <!-- <div class="fcol"> -->
                             <div class="card-con">
                             {% for comment in comments %}
+                            {{ forloop.counter }} {# starting index 1 #}
                                 <div class="card">
                                     <div class="card-body">
                                         <h5>{{comment.body}}</h5> <!--코멘트-->
@@ -124,28 +125,26 @@
                                         <br>{{melody.likes.count}}명이 좋아합니다.
                                         {% if comment.writer == user %}
                                         <a href="{% url 'comment_delete' comment.id %}">
-                                            <button type="button" class="btn btn-dark">삭제</button>
+                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
                                         </a>
                                         {% endif %}
-                                        <!--파형 버전
-                                        <div id="comment_waveform">
+                                        
+                                        <div id="comment_waveform_{{ forloop.counter }}">
                                             <script>
                                                 var wavesurfer = WaveSurfer.create({
                                                     // id="waveform" 인 오브젝트에 파형 생성
                                                     // 필수 옵션
-                                                    container: '#comment_waveform',
+                                                    container: '#comment_waveform_{{ forloop.counter }}',
                                                     // 선택 옵션들 
                                                     waveColor: '#02D5C6',
                                                     progressColor: '#008179',
                                                     barWidth: 3,
                                                 });
                                                 //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                                                wavesurfer.load("{% static 'audio/music.mp3' %}");
+                                                wavesurfer.load("{{ comment.audio.url }}");
                                             </script>
                                             <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
                                         </div>
-                                        -->
-                                        
                                     </div>
                                 </div>
                             <!-- </div> -->

@@ -64,14 +64,14 @@ def upload_melody(request):
 
 
 #commend create
-def createcomment(request,melody_id):
+def createcomment(request,id):
     if request.method == "POST":
         comment = Joiner()
         comment.body = request.POST['body']
         comment.position = request.POST['position']  
         comment.pub_date = timezone.datetime.now()
         comment.writer = request.user
-        comment.post = get_object_or_404(Melody , pk=melody_id)
+        comment.post = get_object_or_404(Melody , pk=id)
         comment.audio = request.FILES.get("commendInput")
         comment.save()
         return redirect('detail',id)
