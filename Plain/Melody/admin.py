@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Melody, Comment, Like, Follow,Joiner, Chat
+from .models import Melody, Comment, Like, Follow,Joiner, Chat, Joiner_like
 
 # Register your models here.
 """
@@ -26,3 +26,4 @@ admin.site.register(Like)
 admin.site.register(Follow)
 
 admin.site.register(Chat)
+admin.site.register(Joiner_like)
