@@ -35,5 +35,11 @@ def login(request):
     else:
         return render(request, 'login.html')
 def home(request):
-    return render(request, 'home.html')
+#    if request.user.is_authenticated:
+#        print("User is logged in :)")
+#        print(f"Username --> {request.user.username}")
+#        return render(request, 'home.html')
+#    else:
+#        print("User is not logged in :(")
+        return render(request, 'home.html')
 

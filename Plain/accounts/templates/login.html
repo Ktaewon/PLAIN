@@ -7,20 +7,22 @@
 {% endblock %} 
 
 {% block in_container_content %}
-<div class="login-form">
-    <form action="{% url 'login' %}" method="post" class="login-box">
-        {% csrf_token %}
-        <div class="welcome-text">
-            Welcome!
-        </div>
-        <br>
-        <div></div>
-        <input type="text" name="username" class="Id" placeholder="Your account">
-        <br>
-        <br>
-        <input type="password" name="password" class="password" placeholder="Type Password">
-        <br><br>
-        <button type="submit" class="sign-in-btn">Sign In!</button>
-    </form>
+<div class="ContentContainer">
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post" class="login-box">
+            {% csrf_token %}
+            <div class="welcome-text">
+                Welcome!
+            </div>
+            <br>
+            <div></div>
+            <input type="text" name="username" class="Id" placeholder="Your email">
+            <br>
+            <br>
+            <input type="password" name="password" class="password" placeholder="Type Password">
+            <br><br>
+            <button type="submit" class="sign-in-btn">Sign In!</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

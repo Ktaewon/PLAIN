@@ -69,7 +69,7 @@
         <div class="card">
             <div class="card-body">
                 <h5>{{comment.body}}</h5> <!--코멘트-->
-                <h6>{{comment.position}}</h6> <!--positon-->
+                <h6>{{comment.position}}</h6> <!--position-->
                 <h6>작성자 : {{comment.writer}} 날짜 : {{comment.pub_date}}</h6> <!--작성자랑 정보-->
                  <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
                 <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->

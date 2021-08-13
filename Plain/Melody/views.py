@@ -19,8 +19,21 @@ def detail(request, id):
         message= "좋아요 취소"
     else: 
         message = "좋아요"
-
-    return render(request,'melody_default.html',{"melody":melody,"comments":comments, "chats":chats, "message":message},)   #'melody_detail2.html'
+    comment_sub = []
+    for i in range(0, 6):
+        comment_sub[i] = []
+    for comment in comments:
+        if comment.position == 1: #piano
+            comment_sub[1].append(comment)
+        elif comment.position == 2: #guitar
+            comment_sub[2].append(comment)
+        elif comment.position == 3: #bass
+            comment_sub[3].append(comment)
+        elif comment.position == 4: #drum
+            comment_sub[4].append(comment)
+        elif comment.position == 5: #else
+            comment_sub[5].append(comment)
+    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message},)   #'melody_detail2.html'
     
 
 def upload_melody(request):
