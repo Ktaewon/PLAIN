@@ -80,7 +80,7 @@ def createcomment(request,melody_id):
 
 
 def comment_delete(request, comment_id):
-    comment = get_object_or_404(Comment, pk=comment_id)
+    comment = get_object_or_404(Joiner, pk=comment_id)
     melody_id = comment.post.id
     comment.delete()
 
