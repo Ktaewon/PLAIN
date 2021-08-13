@@ -14,6 +14,7 @@ def melody(request):
 def detail(request, id):
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
+    print(comments)
     chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
         message= "좋아요 취소"
@@ -21,18 +22,20 @@ def detail(request, id):
         message = "좋아요"
     comment_sub = []
     for i in range(0, 6):
-        comment_sub[i] = []
+        comment_sub.append(list())
     for comment in comments:
-        if comment.position == 1: #piano
+        print(comment.position)
+        if comment.position == "1": #piano
             comment_sub[1].append(comment)
-        elif comment.position == 2: #guitar
+        elif comment.position == "2": #guitar
             comment_sub[2].append(comment)
-        elif comment.position == 3: #bass
+        elif comment.position == "3": #bass
             comment_sub[3].append(comment)
-        elif comment.position == 4: #drum
+        elif comment.position == "4": #drum
             comment_sub[4].append(comment)
-        elif comment.position == 5: #else
+        elif comment.position == "5": #else
             comment_sub[5].append(comment)
+    print(comment_sub)
     return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message},)   #'melody_detail2.html'
     
 
@@ -63,17 +66,14 @@ def upload_melody(request):
 #commend create
 def createcomment(request,id):
     if request.method == "POST":
-
         comment = Joiner()
         comment.body = request.POST['body']
-        comment.positon = request.POST['position']  
+        comment.position = request.POST['position']  
         comment.pub_date = timezone.datetime.now()
         comment.writer = request.user
         comment.post = get_object_or_404(Melody , pk=id)
         comment.audio = request.FILES.get("commendInput")
         comment.save()
-       
-
         return redirect('detail',id)
     else:
         return redirect('detail',id)
