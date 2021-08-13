@@ -12,7 +12,7 @@
     <div class="container1">
         <div class="container1-1">
             <div class="container1-1-1">
-                    <i class="fas fa-play-circle button" onclick="wavesurfer.playPause()" id="playbutton"></i>
+                    <i class="fas fa-play-circle button" id="playbutton"></i>
                 <div class="class-2">
                     <div class="owner"> <span class="text-span">{{melody.owner}}  <!--글쓰기--></span></div>
                     <div class="title"><span class="text-span">{{ melody.title}} <!--제목--></span></div>
@@ -26,6 +26,7 @@
                     #{{ tag.name }}
                     </span>
                     {% endfor %}
+                    <br>
                     <a href="{% url 'post_like' melody.id %}" >
                         {% if message == 2%}
                         <i class="far fa-heart"></i>
@@ -68,8 +69,10 @@
       </div>
     </div>
 </div>
-<div class="6">네브 버튼들</div>
-         
+<div class="6">네브버튼들
+    <button id="checkedbutton">체크된 객체 value 가져오기</button>
+</div>
+
 <div class="container-all-2">
     <div class="subupload-con">
         <div class="subupload">
@@ -97,6 +100,10 @@
                 </div>
             </form>
         </div>
+            <script>
+                var comment_waveforms = {};
+            </script>
+            
             <!--댓글한개-->
             {% for comments in comment_sub %}
                 {% if comments %}
@@ -123,13 +130,21 @@
                         <!-- <div class="fcol"> -->
                             <div class="card-con">
                             {% for comment in comments %}
-                            {{ forloop.counter }} {# starting index 1 #}
+                            <!-- {{ forloop.counter }} {# starting index 1 #} -->
+                                
                                 <div class="card">
                                     <div class="card-body">
+                                        <p>동시재생 여부 <input id="checking" name="checked" type="checkbox" value="{{ comment.id }}"></p>
                                         <h5>{{comment.body}}</h5> <!--코멘트-->
-                                        <h6>작성자 : {{comment.writer}}</h6> <!--작성자랑 정보-->
+                                        작성자 : {{comment.writer}} <!--작성자랑 정보-->
+                                        {% if comment.writer == user %}
+                                        <a href="{% url 'comment_delete' comment.id %}">
+                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
+                                        </a>
+                                        {% endif %}
                                         <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                                        <audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>  <!--오디오파일-->
+                                        <!--<audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>-->  <!--오디오파일-->
+                                        
                                         <br>
                                         <a href ="{% url 'joiner_like' melody.id %}">
                                             {% if message_join == 2%}
@@ -139,27 +154,29 @@
                                             <i class="fas fa-heart"></i>
                                             {% endif %}
                                         </a>{{joiner.joiner_likes.count}}
-                                        {% if comment.writer == user %}
-                                        <a href="{% url 'comment_delete' comment.id %}">
-                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
-                                        </a>
-                                        {% endif %}
-                                        
-                                        <div id="comment_waveform_{{ forloop.counter }}">
-                                            <script>
-                                                var wavesurfer = WaveSurfer.create({
-                                                    // id="waveform" 인 오브젝트에 파형 생성
-                                                    // 필수 옵션
-                                                    container: '#comment_waveform_{{ forloop.counter }}',
-                                                    // 선택 옵션들 
-                                                    waveColor: '#02D5C6',
-                                                    progressColor: '#008179',
-                                                    barWidth: 3,
-                                                });
-                                                //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                                                wavesurfer.load("{{ comment.audio.url }}");
-                                            </script>
-                                            <button onclick="wavesurfer.playPause()"><img class="button2"  alt="">play/pause</button>
+                                        <div class="frow sp">
+                                            <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play" class="cm_play" name="{{ comment.id }}" >
+                                                <i class="fas fa-play-circle button" id="comment_playbutton" ></i>
+                                            </div>
+                                            <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
+                                                <script>
+                                                    //var wavesurfer = 
+                                                    var comment_wavesurfer = WaveSurfer.create({
+                                                        // id="waveform" 인 오브젝트에 파형 생성
+                                                        // 필수 옵션
+                                                        container: '#comment_waveform_' + "{{ comment.id }}",
+                                                        // 선택 옵션들 
+                                                        waveColor: '#02D5C6',
+                                                        progressColor: '#008179',
+                                                        barWidth: 3,
+                                                    });
+                                                    //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                                                    comment_wavesurfer.load("{{ comment.audio.url }}");
+                                                    comment_waveforms["{{ comment.id }}"] = comment_wavesurfer;
+                                                    console.log(comment_wavesurfer);
+                                                    console.log(comment_waveforms["{{ comment.id }}"]);
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
