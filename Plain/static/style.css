@@ -38,7 +38,19 @@ li {
     margin-right: 0;
 }
 
+.footer-content {
+    margin: 0px auto;
+    padding-top: 2rem;
+    border-top: 1px solid #cccaca;
+    width: 80vw;
+    justify-content: center;
+}
+
 #footer-logo {
     height: 100px;
-    margin-left: 150px;
+}
+
+.col {
+    text-align: center;
+    font-size: 0.8rem;
 }

@@ -75,7 +75,7 @@ li {
 
 .footer-content {
     margin: 0px auto;
-    border-top: 1px solid #a5a5a5;
+    border-top: 1px solid #cccaca;
     width: 80vw;
     justify-content: center;
 }
@@ -86,4 +86,5 @@ li {
 
 .col {
     text-align: center;
+    font-size: 0.8rem;
 }
