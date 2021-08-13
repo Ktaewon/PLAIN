@@ -1,33 +1,28 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}submain 페이지{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css">
-{% endblock %}
-
-{% block in_container_content %}
-<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
-<div class="container-all-1">
-    <div class="container1">
-        <div class="container1-1">
-            <div class="container1-1-1">
-                    <i class="fas fa-play-circle button" id="playbutton"></i>
-                <div class="class-2">
-                    <div class="owner"> <span class="text-span">{{melody.owner}}  <!--글쓰기--></span></div>
-                    <div class="title"><span class="text-span">{{ melody.title}} <!--제목--></span></div>
-                </div>
-            </div>
-            <div class="container1-1-2">
-                <div class="class-3">
-                    <!--hashtags-->
-                    {% for tag in melody.hashtags.all %}
-                    <span class="badge badge-dark">
+{% extends "base.html" %} {% load static %} {% block title %}submain 페이지{% endblock %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/melody_default.css' %}" type="text/css"> {% endblock %} {% block out_container_content %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js">
+</script>
+<div class="frow">
+    <div class="fcol musicpart">
+        <div class="container-all-1">
+            <div class="container1">
+                <div class="container1-1">
+                    <div class="container1-1-1">
+                        <i class="fas fa-play-circle button" id="playbutton"></i>
+                        <div class="class-2">
+                            <div class="owner"> <span class="text-span">{{melody.owner}}  <!--글쓰기--></span></div>
+                            <div class="title"><span class="text-span">{{ melody.title}} <!--제목--></span></div>
+                        </div>
+                    </div>
+                    <div class="container1-1-2">
+                        <div class="class-3">
+                            <!--hashtags-->
+                            {% for tag in melody.hashtags.all %}
+                            <span class="badge badge-dark">
                     #{{ tag.name }}
-                    </span>
-                    {% endfor %}
-                    <br>
-                    <a href="{% url 'post_like' melody.id %}" >
+                    </span> {% endfor %}
+                            <br>
+                            <a href="{% url 'post_like' melody.id %}">
                         {% if message == 2%}
                         <i class="far fa-heart"></i>
                         {% endif %}
@@ -36,111 +31,116 @@
                         {% endif %}
                         {{melody.likes.count}}
                     </a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="container1-2">
+                    <!--파형그리기-->
+                    <div class="waveclass">
+                        <div id="waveform"></div>
+                        <script>
+                            var wavesurfer = WaveSurfer.create({
+                                // id="waveform" 인 오브젝트에 파형 생성
+                                // 필수 옵션
+                                container: '#waveform',
+                                // 선택 옵션들 
+                                waveColor: '#0094B6',
+                                progressColor: '#036076',
+                                barWidth: 3,
+                            });
+                            //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                            //wavesurfer.load("{% static 'audio/music.mp3' %}");
+                            wavesurfer.load("{{melody.audio.url}}");
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="container2">
+                <div class="class-5">
+                    <!--image받은 것!-->
+                    <img class="thumbnail" src="{{melody.img.url}}" alt="My Image" width="100" height="200">
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <div class="container1-2">
-            <!--파형그리기-->
-            <div class="waveclass">
-                <div id="waveform"></div>
-                <script>
-                    var wavesurfer = WaveSurfer.create({
-                        // id="waveform" 인 오브젝트에 파형 생성
-                        // 필수 옵션
-                        container: '#waveform',
-                        // 선택 옵션들 
-                        waveColor: '#0094B6',
-                        progressColor: '#036076',
-                        barWidth: 3,
-                    });
-                    //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                    //wavesurfer.load("{% static 'audio/music.mp3' %}");
-                    wavesurfer.load("{{melody.audio.url}}");
-                </script>
-            </div>
+        <div class="6">
+            <button>❤Like</button>
+            <button>💾Download</button>
+            <button>🚀Repost</button>
+            <button>📌PIN</button>
+            <button>➕More</button>
+            <button id="checkedbutton">play together</button>
         </div>
-    </div>
-    <div class="container2">
-      <div class="class-5">
-            <!--image받은 것!-->
-            <img class="thumbnail" src="{{melody.img.url}}" alt="My Image" width="100" height="200" >
-      </div>
-    </div>
-</div>
-<div class="6">네브 버튼들</div>
 
-<div class="container-all-2">
-    <div class="subupload-con">
-        <div class="subupload">
-            <!--댓글작성 폼-->
-            <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
-                {% csrf_token %}
-                <select class="form-select" aria-label="select example" name="position" id="position">
+        <div class="container-all-2">
+            <div class="subupload-con">
+                <div class="subupload">
+                    <!--댓글작성 폼-->
+                    <form method="POST" action="{% url 'comment' melody.id %}" class="subupload-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <select class="form-select" aria-label="select example" name="position" id="position">
                     <option value="">Instrument</option>
                     <option value="1">Piano</option>
                     <option value="2">Guitar</option>
                     <option value="3">Bass</option>
                     <option value="4">Drum</option>
                     <option value="5">Else...</option>
-                </select>  <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
-                <!--음악 파일 삽입하는 부분-->
-                <textarea class="form-control" cols=70 rows=2 name="body">leave a message</textarea>  <!--comment 남기는 것-->
-                <div class="fcol">
-                    <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required >
-                    <button type="button" class="btn btn-secondary " id="subupload-btn"><i class="fas fa-music"></i></button>
-                    <div id="music_name"></div>
+                </select>
+                        <!--position 받기  (나중에는 textarea 말고 melody에서 받은 position값으로 checkbox 만들고 선택하도록하면 될듯)-->
+                        <!--음악 파일 삽입하는 부분-->
+                        <textarea class="form-control" cols=70 rows=2 name="body" placeholder="leave a message"></textarea>
+                        <!--comment 남기는 것-->
+                        <div class="fcol">
+                            <input type="file" id="commendInput" name="commendInput" class="" accept="audio/*" required>
+                            <button type="button" class="btn btn-secondary " id="subupload-btn"><i class="fas fa-music"></i></button>
+                            <div id="music_name"></div>
+                        </div>
+
+                        <div class="fcol">
+                            <button class="btn btn-primary" type="submit" id="upload-btn">Submit</button>
+                        </div>
+                    </form>
                 </div>
-                
-                <div class="fcol">
-                    <button class="btn btn-primary" type="submit" id="upload-btn" >Submit</button>
-                </div>
-            </form>
-        </div>
-            <script>
-                var comment_waveforms = {};
-            </script>
-            <!--댓글한개-->
-            {% for comments in comment_sub %}
-                {% if comments %}
+                <script>
+                    var comment_waveforms = {};
+                </script>
+
+                <!--댓글한개-->
+                {% for comments in comment_sub %} {% if comments %}
                 <div class="subupload">
                     <div class="frow sp">
-                            <div>
-                                <i class="fas fa-guitar icon"></i>
-                                {% if comments.position == 1 %}
-                                    <i class="fas fa-guitar icon"></i>
-                                {% endif %}
-                                {% if comments.position == 2 %}
-                                    <i class="fas fa-guitar icon"></i>
-                                {% endif %}
-                                {% if comments.position == "3" %}
-                                    <i class="fas fa-guitar icon"></i>
-                                {% endif %}
-                                {% if comments.position == "4" %}
-                                    <i class="fas fa-guitar icon"></i>
-                                {% endif %}
-                                {% if comments.position == "5" %}
-                                    <i class="fas fa-guitar icon"></i>
-                                {% endif %}
-                            </div>
+                        <div>
+                            <i class="fas fa-guitar icon"></i> {% if comments.position == 1 %}
+                            <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == 2 %}
+                            <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == "3" %}
+                            <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == "4" %}
+                            <i class="fas fa-guitar icon"></i> {% endif %} {% if comments.position == "5" %}
+                            <i class="fas fa-guitar icon"></i> {% endif %}
+                        </div>
                         <!-- <div class="fcol"> -->
-                            <div class="card-con">
+                        <div class="card-con">
                             {% for comment in comments %}
                             <!-- {{ forloop.counter }} {# starting index 1 #} -->
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5>{{comment.body}}</h5> <!--코멘트-->
-                                        작성자 : {{comment.writer}} <!--작성자랑 정보-->
-                                        {% if comment.writer == user %}
-                                        <a href="{% url 'comment_delete' comment.id %}">
-                                            <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
-                                        </a>
-                                        {% endif %}
-                                        <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
-                                        <!--<audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>-->  <!--오디오파일-->
-                                        <br>
-                                        <a href ="{% url 'joiner_like' melody.id %}">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>동시재생 여부 <input id="checking" name="checked" type="checkbox" value="{{ comment.id }}"></p>
+                                    <h5>{{comment.body}}</h5>
+                                    <!--코멘트-->
+                                    작성자 : {{comment.writer}}
+                                    <!--작성자랑 정보-->
+                                    {% if comment.writer == user %}
+                                    <a href="{% url 'comment_delete' comment.id %}">
+                                        <button type="button" class="btn btn-dark"><i class="far fa-trash-alt"></i></button>
+                                    </a>
+                                    {% endif %}
+                                    <!--오디오파일 "{% static 'audio/music.mp3' %}" -->
+                                    <!--<audio src="{{ comment.audio.url }}"  loop controls id="myAudio">오디오 지원되지 않는 브라우저</audio>-->
+                                    <!--오디오파일-->
+
+                                    <br>
+                                    <a href="{% url 'joiner_like' melody.id %}">
                                             {% if message_join == 2%}
                                             <i class="far fa-heart"></i>
                                             {% endif %}
@@ -148,43 +148,44 @@
                                             <i class="fas fa-heart"></i>
                                             {% endif %}
                                         </a>{{joiner.joiner_likes.count}}
-                                        <div class="frow sp">
-                                            <div class="cm-play" onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play">
-                                                <i class="fas fa-play-circle button" id="comment_playbutton" ></i>
-                                            </div>
-                                            <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
-                                                <script>
-                                                    //var wavesurfer = 
-                                                    var comment_wavesurfer = WaveSurfer.create({
-                                                        // id="waveform" 인 오브젝트에 파형 생성
-                                                        // 필수 옵션
-                                                        container: '#comment_waveform_' + "{{ comment.id }}",
-                                                        // 선택 옵션들 
-                                                        waveColor: '#02D5C6',
-                                                        progressColor: '#008179',
-                                                        barWidth: 3,
-                                                    });
-                                                    //var wav = new Audio("{% static 'audio/music.mp3' %}");
-                                                    comment_wavesurfer.load("{{ comment.audio.url }}");
-                                                    comment_waveforms["{{ comment.id }}"] = comment_wavesurfer;
-                                                    console.log(comment_wavesurfer);
-                                                    console.log(comment_waveforms["{{ comment.id }}"]);
-                                                </script>
-                                            </div>
+                                    <div class="frow sp">
+                                        <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play" class="cm_play" name="{{ comment.id }}">
+                                            <i class="fas fa-play-circle button" id="comment_playbutton"></i>
+                                        </div>
+                                        <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
+                                            <script>
+                                                //var wavesurfer = 
+                                                var comment_wavesurfer = WaveSurfer.create({
+                                                    // id="waveform" 인 오브젝트에 파형 생성
+                                                    // 필수 옵션
+                                                    container: '#comment_waveform_' + "{{ comment.id }}",
+                                                    // 선택 옵션들 
+                                                    waveColor: '#02D5C6',
+                                                    progressColor: '#008179',
+                                                    barWidth: 3,
+                                                });
+                                                //var wav = new Audio("{% static 'audio/music.mp3' %}");
+                                                comment_wavesurfer.load("{{ comment.audio.url }}");
+                                                comment_waveforms["{{ comment.id }}"] = comment_wavesurfer;
+                                                console.log(comment_wavesurfer);
+                                                console.log(comment_waveforms["{{ comment.id }}"]);
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             <!-- </div> -->
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-                {% endif %}
-            {% endfor %}
+                {% endif %} {% endfor %}
+            </div>
+        </div>
     </div>
-        <!--Chats & Likes-->
-        <div class= chats>
-  
+    <!--Chats & Likes-->
+    <div class="fcol commentpart">
+        <div class=c hats>
             {% for chat in chats%}
             <div class="card">
                 <div class="card-body">
@@ -200,19 +201,14 @@
             {% endfor %}
             <form method="POST" action="{% url 'chat' melody.id %}">
                 {% csrf_token %}
-                    <textarea cols=40 rows=2 name="body"></textarea>
-                    <input class="btn btn-dark" type="submit" value="CHAT!">
+                <textarea cols=40 rows=2 name="body"></textarea>
+                <input class="btn btn-dark" type="submit" value="CHAT!">
             </form>
         </div>
-    
+    </div>
 </div>
 
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="{% static 'js/melody_default.js' %}"></script>
 {% endblock %}
-
-
-

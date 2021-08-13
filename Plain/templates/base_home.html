@@ -47,7 +47,8 @@
                         </select>
                     </li>
                     <form id="logout" method="POST" action="{% url 'logout' %}">
-                        {% csrf_token %} <input type="hidden"/>
+                        {% csrf_token %} 
+                        <input type="hidden"/>
                     </form>
                 </ul>
                     {% if user.is_authenticated %}
@@ -56,7 +57,7 @@
                             <a class="nav-link" href="/melody">Upload</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{user.email}}</a>
+                            <a class="nav-link" href="#">{{user.nickname}}</a>
                         </li>
                         <li class="nav-item">
                             <img class="nav-link" href="#" src="{% static 'email.png' %}" style="height: 40px;" />

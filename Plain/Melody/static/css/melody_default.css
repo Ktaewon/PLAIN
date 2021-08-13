@@ -1,59 +1,81 @@
-.container-all-1{
-    display:flex;
-    flex-direction:row;
+.container-all-1 {
+    display: flex;
+    flex-direction: row;
     background: linear-gradient(180deg, #FCBDBD 0%, rgba(255, 255, 255, 0.0260417) 76.56%, rgba(255, 255, 255, 0) 100%), #9ABCDC;
-    justify-content:space-around;
+    justify-content: space-around;
 }
+
+.musicpart {
+    width: 90vw;
+}
+
+.commmentpart {
+    width: 10vw;
+}
+
 .container1 {
     width: 75%;
 }
-.container1-1{
+
+.container1-1 {
     object-fit: cover;
     height: 150px;
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
     margin: 0px;
 }
 
-.container1-1-1{
+.fcol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.frow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.container1-1-1 {
     /* width:800px; */
-    height:150px;
-    display:flex;
-    margin-left : 20px;
+    height: 150px;
+    display: flex;
+    margin-left: 20px;
     margin-top: 18px;
 }
-  
-.container1-1-2{
-  
+
+.container1-1-2 {
     height: 150px;
     width: 200px;
     text-align: left;
 }
 
-
-
-.container1-2{
+.container1-2 {
     /* object-fit: cover;
     margin-left: 20px; */
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
     justify-content: center;
-    margin-left:25px;
-    margin-bottom: 25px;;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    ;
 }
+
 .waveclass {
     width: 100%;
 }
 
-.button{
+.button {
     padding-top: 20px;
     border: none;
     outline: 0;
     mix-blend-mode: multiply;
-    background-color:transparent;
-    opacity:1.0;
+    background-color: transparent;
+    opacity: 1.0;
 }
+
 #playbutton {
     font-size: 70px;
     color: #242424;
@@ -61,82 +83,84 @@
     text-align: center;
 }
 
-.class-2{
+.class-2 {
     align-items: center;
     margin: 18px;
 }
-.owner{
+
+.owner {
     font-size: 20px;
 }
 
-.title{
+.title {
     font-size: 27px;
     font-weight: bold;
 }
-.thumbnail{
+
+.thumbnail {
     height: 250px;
     width: 250px;
 }
 
-.class-5{
-    padding :10px;
+.class-5 {
+    padding: 10px;
 }
 
-
-
-.class-3{
+.class-3 {
     font-size: 30px;
-    left:0px;
+    left: 0px;
     text-align: right;
     padding-top: 20px;
     margin-top: 5px;
 }
 
-.comment-upload{
+.comment-upload {
     display: flex;
     padding: 20px;
     justify-content: space-between;
     width: 1500px;
 }
 
-.comment-melody{
+.comment-melody {
     display: flex;
     padding: 20px;
 }
 
-.small-nav{
+.small-nav {
     padding: 20px;
 }
 
-
-
-.container2{
+.container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 25%;
 }
-.text-span{
+
+.text-span {
     background-color: #C4C4c4;
-    color:#242424;
+    color: #242424;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
 }
+
 .container-all-2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .subupload {
     border-style: solid;
     border-radius: 18px;
     border-color: #C4C4c4;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    margin-top:10px;
-    margin-bottom:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
 .real-comment {
     border-style: solid;
 }
@@ -152,14 +176,17 @@
 .form-select {
     width: 150px;
 }
+
 #commendInput {
     display: none;
 }
+
 #subupload-btn {
     width: 60px;
     height: 50px;
     font-size: 20px;
 }
+
 .frow {
     display: flex;
     flex-direction: row;
@@ -171,9 +198,11 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .form-control {
     width: 550px;
 }
+
 #upload-btn {
     width: 100px;
     height: 50px;
@@ -181,9 +210,11 @@
     border-style: none;
     font-size: 20px;
 }
+
 #upload-btn:hover {
     background-color: #02d5c7b6;
 }
+
 .card {
     border-radius: 15px;
 }
@@ -191,6 +222,7 @@
 .chats {
     width: 25%;
 }
+
 .subupload-con {
     display: flex;
     flex-direction: column;
@@ -209,19 +241,21 @@
     display: flex;
     flex-direction: column;
 }
+
 .sp {
     justify-content: space-between;
 }
+
 .card-body {
-    width : 700px;
+    width: 700px;
 }
 #comment_play {
 }
 #comment_playbutton {
     font-size: 50px !important;
-    color:#02D5C6;
-
+    color: #02D5C6;
 }
+
 .comment_waveform {
     width: 600px;
 }
