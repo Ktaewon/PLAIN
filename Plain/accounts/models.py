@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
 #세번째로 한거
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -21,13 +20,17 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
-
 class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email',
         max_length=255,
         unique=True,
     )
+    nickname=models.CharField(verbose_name='nickname', max_length=20, blank=False)
+    genre=models.CharField(verbose_name='genre',max_length=30, blank=False)
+    instrument=models.CharField(verbose_name='instrument',max_length=30, blank=False)
+    profile_message=models.CharField(verbose_name='profile-message', max_length=30, blank=False)
+    img = models.ImageField(null=True, upload_to="accounts/img/", blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     objects = UserManager()
