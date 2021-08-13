@@ -16,9 +16,9 @@ def detail(request, id):
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
     chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
-        message= "좋아요 취소"
+        message= 1
     else: 
-        message = "좋아요"
+        message = 2
     
     comment_sub = []
     for i in range(0, 6):
