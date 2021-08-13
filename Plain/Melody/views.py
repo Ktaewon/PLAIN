@@ -14,21 +14,18 @@ def melody(request):
 def detail(request, id):
     melody = get_object_or_404(Melody, pk=id)  #melody를 작성한 id 값이 들어감
     comments = Joiner.objects.filter( post =melody)  #melody와 연관된 comments들 다 가져오기
-    joiner = get_object_or_404(Joiner, pk=id)
+    
     chats = Chat.objects.all().filter(post = melody)
     if melody.likes.filter(id=request.user.id):
         message= "좋아요 취소"
     else: 
         message = "좋아요"
 
-    if joiner.joiner_likes.filter(id=request.user.id):
-         message_join= 1
-    else:
-         message_join= 2
+   
     
     comment_sub = []
     for i in range(0, 6):
-        comment_sub[i] = []
+        comment_sub.append(list())
     for comment in comments:
         if comment.position == 1: #piano
             comment_sub[1].append(comment)
@@ -40,7 +37,7 @@ def detail(request, id):
             comment_sub[4].append(comment)
         elif comment.position == 5: #else
             comment_sub[5].append(comment)
-    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message, "message_join":message_join},)   #'melody_detail2.html'
+    return render(request,'melody_default.html',{"melody":melody,"comment_sub":comment_sub, "chats":chats, "message":message},)   #'melody_detail2.html'
     
 
 def upload_melody(request):
