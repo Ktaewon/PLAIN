@@ -149,7 +149,7 @@
                                             {% endif %}
                                         </a>{{joiner.joiner_likes.count}}
                                         <div class="frow sp">
-                                            <div onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play">
+                                            <div class="cm-play" onclick="comment_waveforms['{{ comment.id }}'].playPause()" id="comment_play">
                                                 <i class="fas fa-play-circle button" id="comment_playbutton" ></i>
                                             </div>
                                             <div class="comment_waveform" id="comment_waveform_{{ comment.id }}">
