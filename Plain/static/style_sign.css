@@ -61,6 +61,8 @@ button {
     border: none;
     line-height: 29px;
     cursor: pointer;
+    box-shadow: none!important;
+    width: 6rem;
 }
 
 #navbar-nav-right {

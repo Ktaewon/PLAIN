@@ -31,11 +31,13 @@ li {
     background: #E0E0E0;
     opacity: 0.5;
     border-radius: 8px;
+    box-shadow: none!important;
 }
 
 #navbar-nav-right {
     margin-right: 0;
 }
+
 #footer-logo {
     height: 100px;
     margin-left: 150px;
