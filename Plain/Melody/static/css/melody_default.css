@@ -52,7 +52,6 @@
 
 .instIcon {
     width: fit-content;
-    padding-right: 30px;
 }
 
 .ls {
@@ -346,5 +345,12 @@
 }
 
 .chat-con {
+    border-left-style: none !important;
     border-bottom: 1px solid rgb(190, 190, 190);
+}
+.inst-icon {
+    width:200px;
+}
+.png {
+    padding:20px;
 }
