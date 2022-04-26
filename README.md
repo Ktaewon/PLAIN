@@ -5,6 +5,7 @@
 ## 음악 창작계의 깃허브, 새로운 작곡협업 플랫폼!Let’s play in PLAIN!
 
 ![image](https://user-images.githubusercontent.com/33050476/165384654-3e4e8eb2-f040-4c6e-a054-28ba05a83f4c.png)
+![image](https://user-images.githubusercontent.com/33050476/165387919-f575f07e-1b4c-4677-a468-b0d954615367.png)
 
 ### 💬 서비스 기획 배경
 
