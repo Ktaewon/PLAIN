@@ -101,10 +101,10 @@ def comment_delete(request, comment_id):
 
     return redirect('/melody/default/'+str(melody_id))
 
-'''이밑으로는 안 쓰임!! comment를 join이라는 모델로 만들었음 !!
-   댓글쓴 사람만 댓글 삭제할 수 있는 기능 구현 안됨
-   작성자만 게시물 삭제하거나 수정할 수 있는 것도 아직 안 만든 상태
-'''
+# '''이밑으로는 안 쓰임!! comment를 join이라는 모델로 만들었음 !!
+#    댓글쓴 사람만 댓글 삭제할 수 있는 기능 구현 안됨
+#    작성자만 게시물 삭제하거나 수정할 수 있는 것도 아직 안 만든 상태
+# '''
 
 
 #Chats

@@ -1,13 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import auth
-
 from django.apps import apps
+import simplejson as json
 
-
-
-
-# Create your views here.
 def signup(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
@@ -15,7 +11,7 @@ def signup(request):
             auth.login(request, user)
             return redirect('home')
     return render(request, 'signup.html')
-        
+    
 def create(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
@@ -59,8 +55,6 @@ def logout(request):
 
 def home2(request):
     return render(request, 'home.html')
-
-
 
 
 

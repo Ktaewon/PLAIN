@@ -24,16 +24,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="#">Stream</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="#">Library</a>
                     </li>
-                    <li class="nav-item">
+                    {% comment %} <li class="nav-item">
                         <a class="nav-link" href="#">Mix</a>
                     </li>
                     <li class="nav-item">
@@ -45,7 +45,7 @@
                             <option value="javascript:{document.getElementById('logout').submit()}">Log out</option>
                             {% endif %}
                         </select>
-                    </li>
+                    </li> {% endcomment %}
                     <form id="logout" method="POST" action="{% url 'logout' %}">
                         {% csrf_token %} 
                         <input type="hidden"/>
@@ -53,25 +53,25 @@
                 </ul>
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav mb-2 mb-lg-0" id="navbar-nav-right">
-                        <li class="nav-item">
+                        <li>
                             <a class="nav-link upload" href="/melody">Upload</a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <a class="nav-link profile" href="#">{{user.nickname}}</a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <img class="nav-link" href="#" src="{% static 'email.png' %}" style="height: 40px;" />
                         </li>
-                        <li class="nav-item" style="margin-right: 20px;">
+                        <li style="margin-right: 20px;">
                             <img class="nav-link" href="#" src="{% static 'notifications.png' %}" style="height: 40px;" />
                         </li>
-                        <li class="nav-item" style="margin-right: 0;">
+                        <li style="margin-right: 0;">
                             <img class="nav-link" href="#" src="{% static 'More.png' %}" style="height: 40px;" />
                         </li>
                     {% else %}
                         <ul class="navbar-nav" id="navbar-nav-right-btn">
-                            <button type="submit" class="signInBtn" value="Sign In" onclick="location.href='{% url 'login' %}'">Sign In</button>
-                            <button type="submit" class="signUpBtn" value="Sign Up" onclick="location.href='{% url 'signup' %}'">Join</button>
+                            <button type="submit" class="signInBtn" value="Sign In" onclick="location.href='{% url 'login' %}'">로그인</button>
+                            <button type="submit" class="signUpBtn" value="Sign Up" onclick="location.href='{% url 'signup' %}'">회원가입</button>
                         </ul>
                     {% endif %}
                 </ul>
@@ -91,9 +91,9 @@
 </body>
 <footer class="row">
     <div class="footer-content">
-        <a href="/" class="d-flex align-items-center mb-2 link-dark text-decoration-none">
+        <a href="/" class="d-flex align-items-center link-dark text-decoration-none">
         <div class="col">
-            © 2021 Yogurt, Inc
+            © 2022 WithUS
         </div>
         <div class="col">
             Terms
@@ -113,9 +113,10 @@
         <div class="col">
         <img src="{% static 'logo.svg' %}" width="50" id="footer-logo">
         </div>
-        <div class="col">
-            Contact Yogurt
-        </div>
+    
+            <div class="col">
+                Contact WithUS
+            </div>
         <div class="col">
             Pricing
         </div>

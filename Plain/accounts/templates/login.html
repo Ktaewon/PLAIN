@@ -7,22 +7,44 @@
 {% endblock %} 
 
 {% block in_container_content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type='text/javascript'>
+    function login(){
+        const $email = $(".email").val();
+        const $password = $(".password").val();
+
+        let param = {
+            email: $email,
+            password: $password
+        }
+        $.ajax({
+            type: 'POST',
+            url: 'http://192.168.0.16:5000/api/auth/signin',
+            accepts: 'application/json',
+            contentType: 'application/json',
+            data: JSON.stringify(param),
+            //xhrFields: { withCredentials: true },
+            success: function(response){
+                location.replace('{%url 'home'%}')
+            },
+            error: function(response){
+                console.log('error');
+            },
+        });
+    }
+</script>
 <div class="ContentContainer">
     <div class="login-form">
-        <form action="{% url 'login' %}" method="post" class="login-box">
+        {% comment %} <form class="login-box"> {% endcomment %}
+        <div class= "login-box">
             {% csrf_token %}
-            <div class="welcome-text">
-                Welcome!
-            </div>
-            <br>
-            <div></div>
-            <input type="text" name="username" class="Id" placeholder="Your email">
-            <br>
-            <br>
-            <input type="password" name="password" class="password" placeholder="Type Password">
+            <img src="{% static 'logo.svg' %}" href="#" alt="logo" class ="logo" />
+            <input type="text" name="username" class="email" placeholder="이메일">
             <br><br>
-            <button type="submit" class="sign-in-btn">Sign In!</button>
-        </form>
+            <input type="password" name="password" class="password" placeholder="비밀번호">
+            <button type="submit" class="sign-in-btn" onclick = "login()">로그인</button>
+        </div>
+        {% comment %} </form> {% endcomment %}
     </div>
 </div>
 {% endblock %}

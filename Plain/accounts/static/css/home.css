@@ -1,136 +1,177 @@
-#banner_img {
-    width: 100%;
-    height: 50vh;
-    /* z-index: -1; */
+@font-face {
+  font-family: "Shrikhand";
+  src: url("../Shrikhand-Regular.ttf");
 }
-
-.signinbutton {
-    border-radius: 6px;
-    height: 5vh;
-    width: 12vw;
-    line-height: 40px;
-    border: none;
-    background-color: #02d5c6;
-    color: white;
-    margin-top: 3vh;
-    font-size: 1.2rem;
+.largeshell {
+  width: 100%;
 }
-
-.bodyClass {
-    position: relative;
-    min-height: 50vh;
-    /* width: 100vw; */
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
+.imgshell {
+  width: 1500px;
 }
-
-.banner {
-    position: relative;
+.banner_img {
+  filter: brightness(80%);
+  position: absolute;
+  top: 0px;
+  width: auto;
+  min-width: 100%;
+  height: 400px;
 }
-
-.banner_text {
-    color: #9effff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate( -50%, -50%);
+section {
+  display: block;
+  width: 100%;
+  height: 400px;
+  color: #ffffff;
+  position: relative;
 }
-
+.shell {
+  width: 1300px;
+  height: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
 .banner_title {
-    font-size: 5rem;
-    font-weight: 600;
+  position: relative;
+  z-index: 1000;
+  width: 1250px;
+  top: 20%;
+  font-family: "Shrikhand";
+  margin: auto 0;
+  color: #ff7a00;
+  font-size: 5em;
 }
 
 .banner_comment {
-    font-size: 1.3rem;
+  position: relative;
+  z-index: 1000;
+  width: 1250px;
+  top: 20%;
+  transform: translateY(-20%);
+  color: #ffffff;
+  margin: 0 auto;
+  font-size: 1.3rem;
+}
+.banner {
+  display: block;
+  margin: 0 auto;
+  position: relative;
 }
 
+.signinbutton {
+  position: relative;
+  z-index: 1000;
+  top: 30%;
+  transform: translateY(-30%);
+  border-radius: 6px;
+  height: 3rem;
+  width: 9rem;
+  border: none;
+  background-color: #ff7a00;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.bodyClass {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.search {
+  width: 1300px;
+  margin: 0 auto;
+}
 .searchAndBtn {
-    width: fit-content;
-    height: fit-content;
-    margin: 0px auto;
-    margin-top: 3vh;
-    line-height: 40px;
+  display: block;
+  width: fit-content;
+  min-width: fit-content;
+  height: fit-content;
+  margin: 3vh auto;
+  line-height: 40px;
 }
 
 .searchBar {
-    float: left;
+  float: left;
 }
 
 .form-control {
-    height: 40px;
+  height: 40px;
 }
 
 .btn {
-    height: 40px;
+  height: 40px;
 }
 
 .or {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .Title {
-    font-size: 1.7rem;
-    font-weight: 400;
+  font-size: 1.7rem;
+  font-weight: 400;
 }
 
 .uploadBtnWrapper {
-    float: left;
-    margin-left: 10px;
+  float: left;
+  margin-left: 10px;
 }
 
 .uploadBtn {
-    width: 200px;
-    border: none;
-    background-color: #02d5c6;
-    color: white;
-    height: 40px;
-    border-radius: 6px;
+  width: 150px;
+  border: none;
+  background-color: #ff7a00;
+  color: white;
+  height: 40px;
+  border-radius: 6px;
 }
 
 .ContentWrapper {
-    position: absolute;
-    display: flex;
-    /* left: 90px; */
-    margin-top: 10vh;
+  /* position: absolute; */
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  /* margin-top: 10vh; */
 }
 
 .CMB {
-    display: flex;
-    position: relative;
-    line-height: 30px;
-    margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  width: 600px;
+  line-height: 30px;
+  margin-bottom: 20px;
 }
 
 .moreBtn {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 
 .PMB {
-    display: flex;
-    position: relative;
-    line-height: 30px;
-    margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  width: 600px;
+  line-height: 30px;
+  margin-bottom: 20px;
 }
 
 .completeMusic {
-    display: block;
-    border-right: 1px solid rgb(199, 198, 198);
-    padding-right: 2vw;
-    margin-right: 2vw;
+  display: block;
+  padding: 20px;
+  margin-left: 10px;
+  width: 650px;
 }
 
 .progressMusic {
-    display: block;
-    margin-right: 1vw;
+  display: block;
+  padding: 20px;
+  width: 650px;
+  margin-right: 0;
+  border-right: 0.5px solid #cccaca;
 }
 
 .albumart {
-    margin-right: 2vw;
-    width: 13vw;
-    cursor: pointer;
+  margin-right: 20px;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
 }
