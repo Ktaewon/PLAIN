@@ -4,8 +4,10 @@
 
 ## 음악 창작계의 깃허브, 새로운 작곡협업 플랫폼!Let’s play in PLAIN!
 
-![image](https://user-images.githubusercontent.com/33050476/165384654-3e4e8eb2-f040-4c6e-a054-28ba05a83f4c.png)
-![image](https://user-images.githubusercontent.com/33050476/165387919-f575f07e-1b4c-4677-a468-b0d954615367.png)
+![plain1](https://user-images.githubusercontent.com/75407186/204603284-90779ed4-b6db-4326-9d91-72b9d07f653e.png)
+![plain2](https://user-images.githubusercontent.com/75407186/204603289-1a173c10-8a27-49ab-87cd-b871d9055bc9.png)
+![plain3](https://user-images.githubusercontent.com/75407186/204603297-447035ae-05be-401b-a768-23ad819f173b.png)
+
 
 ### 💬 서비스 기획 배경
 
